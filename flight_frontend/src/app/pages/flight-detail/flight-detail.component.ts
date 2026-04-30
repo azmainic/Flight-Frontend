@@ -14,25 +14,21 @@ import { Passenger } from '../../models/passenger.model';
   template: `
     <div class="container py-4">
 
-      <!-- Loading -->
       <div class="text-center py-5" *ngIf="loading">
         <div class="spinner-border text-primary"></div>
         <p class="mt-2 text-muted">Loading flight details...</p>
       </div>
 
-      <!-- Error -->
       <div class="alert alert-danger" *ngIf="errorMessage">
         <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ errorMessage }}
       </div>
 
       <ng-container *ngIf="flight && !loading">
 
-        <!-- Back -->
         <a routerLink="/flights" class="btn btn-outline-secondary btn-sm mb-3">
           <i class="bi bi-arrow-left me-1"></i>Back to Flights
         </a>
 
-        <!-- Header -->
         <div class="card border-0 shadow mb-4">
           <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
             <div>
@@ -50,17 +46,41 @@ import { Passenger } from '../../models/passenger.model';
                 <div class="text-muted">{{ flight.origin.country }}</div>
                 <div class="mt-2 fw-semibold">{{ flight.departure_time | date:'dd MMM yyyy, HH:mm' }}</div>
               </div>
-
               <div class="col-md-4 text-center">
                 <i class="bi bi-airplane-fill text-primary" style="font-size:2.5rem;"></i>
                 <div class="text-muted small mt-1">Direct Flight</div>
               </div>
-
               <div class="col-md-4 text-center">
                 <div class="display-6 fw-bold text-primary">{{ flight.destination.code }}</div>
                 <div class="fs-5">{{ flight.destination.city }}</div>
                 <div class="text-muted">{{ flight.destination.country }}</div>
                 <div class="mt-2 fw-semibold">{{ flight.arrival_time | date:'dd MMM yyyy, HH:mm' }}</div>
+              </div>
+            </div>
+
+            <!-- Price section -->
+            <hr>
+            <div class="row g-3 text-center">
+              <div class="col-md-4">
+                <div class="card border-0 bg-light p-3">
+                  <div class="text-muted small">Economy</div>
+                  <div class="fs-4 fw-bold text-success">£199</div>
+                  <div class="text-muted small">per person</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card border-0 bg-light p-3">
+                  <div class="text-muted small">Business</div>
+                  <div class="fs-4 fw-bold text-primary">£599</div>
+                  <div class="text-muted small">per person</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card border-0 bg-light p-3">
+                  <div class="text-muted small">First Class</div>
+                  <div class="fs-4 fw-bold text-warning">£1,299</div>
+                  <div class="text-muted small">per person</div>
+                </div>
               </div>
             </div>
           </div>
@@ -72,32 +92,23 @@ import { Passenger } from '../../models/passenger.model';
           </div>
         </div>
 
-        <!-- Passengers (only for logged-in users) -->
+        <!-- Passengers — visible to any logged in user -->
         <div class="card border-0 shadow" *ngIf="isLoggedIn">
           <div class="card-header bg-light fw-bold">
             <i class="bi bi-people-fill me-2"></i>Passengers
           </div>
           <div class="card-body">
-
             <div class="text-center py-3" *ngIf="passengersLoading">
               <div class="spinner-border text-primary spinner-border-sm"></div>
               <span class="ms-2 text-muted">Loading passengers...</span>
             </div>
-
-            <div class="alert alert-warning" *ngIf="passengersError">
-              {{ passengersError }}
-            </div>
-
+            <div class="alert alert-warning" *ngIf="passengersError">{{ passengersError }}</div>
             <div class="table-responsive" *ngIf="!passengersLoading && passengers.length > 0">
               <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                   <tr>
-                    <th>Name</th>
-                    <th>Passport</th>
-                    <th>Nationality</th>
-                    <th>Seat</th>
-                    <th>Class</th>
-                    <th>Status</th>
+                    <th>Name</th><th>Passport</th><th>Nationality</th>
+                    <th>Seat</th><th>Class</th><th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -116,10 +127,9 @@ import { Passenger } from '../../models/passenger.model';
                 </tbody>
               </table>
             </div>
-
             <p class="text-muted text-center mb-0"
                *ngIf="!passengersLoading && passengers.length === 0 && !passengersError">
-              No passengers found for this flight.
+              No passengers found.
             </p>
           </div>
         </div>
@@ -150,7 +160,11 @@ export class FlightDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedIn();
+    // Subscribe so it reacts to Auth0 login state too
+    this.authService.currentUser$.subscribe(user => {
+      this.isLoggedIn = !!user;
+    });
+
     const id = this.route.snapshot.paramMap.get('id')!;
     this.loadFlight(id);
   }
@@ -173,10 +187,7 @@ export class FlightDetailComponent implements OnInit {
   loadPassengers(flightId: string): void {
     this.passengersLoading = true;
     this.passengersService.getPassengers(flightId).subscribe({
-      next: (data) => {
-        this.passengers = data;
-        this.passengersLoading = false;
-      },
+      next: (data) => { this.passengers = data; this.passengersLoading = false; },
       error: (err) => {
         this.passengersError = err.error?.message ?? 'Could not load passengers.';
         this.passengersLoading = false;
@@ -187,15 +198,15 @@ export class FlightDetailComponent implements OnInit {
   get statusBadgeClass(): string {
     const map: Record<string, string> = {
       scheduled: 'bg-secondary', boarding: 'bg-success',
-      departed:  'bg-info text-dark', arrived: 'bg-dark',
-      delayed:   'bg-warning text-dark', cancelled: 'bg-danger'
+      departed: 'bg-info text-dark', arrived: 'bg-dark',
+      delayed: 'bg-warning text-dark', cancelled: 'bg-danger'
     };
     return map[this.flight?.status ?? ''] ?? 'bg-secondary';
   }
 
   passengerStatusClass(status: string): string {
     const map: Record<string, string> = {
-      confirmed:  'bg-success', cancelled: 'bg-danger',
+      confirmed: 'bg-success', cancelled: 'bg-danger',
       checked_in: 'bg-info text-dark', booked: 'bg-secondary'
     };
     return map[status] ?? 'bg-secondary';

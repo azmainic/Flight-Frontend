@@ -1,0 +1,791 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>flight-frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">flight-frontend documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  BookingRow</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/pages/my-bookings/my-bookings.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#flight" 
+>
+                                            flight
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#passenger" 
+>
+                                            passenger
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="flight"></a>
+                                        <span class="name "><b>flight</b>
+                                            <a href="#flight">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>flight:         <code><a href="../interfaces/Flight.html" target="_self" >Flight</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/Flight.html" target="_self" >Flight</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="passenger"></a>
+                                        <span class="name "><b>passenger</b>
+                                            <a href="#passenger">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>passenger:         <code><a href="../interfaces/Passenger.html" target="_self" >Passenger</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/Passenger.html" target="_self" >Passenger</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
+import { AuthService, AuthUser } from &#x27;../../services/auth.service&#x27;;
+import { AuthService as Auth0Service } from &#x27;@auth0/auth0-angular&#x27;;
+import { FlightsService } from &#x27;../../services/flights.service&#x27;;
+import { PassengersService } from &#x27;../../services/passengers.service&#x27;;
+import { Flight } from &#x27;../../models/flight.model&#x27;;
+import { Passenger } from &#x27;../../models/passenger.model&#x27;;
+import { forkJoin, of } from &#x27;rxjs&#x27;;
+import { catchError } from &#x27;rxjs/operators&#x27;;
+ 
+interface BookingRow { flight: Flight; passenger: Passenger; }
+ 
+@Component({
+  selector: &#x27;app-my-bookings&#x27;,
+  standalone: true,
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule],
+  template: &#x60;
+    &lt;!-- Toast --&gt;
+    &lt;div class&#x3D;&quot;position-fixed top-0 end-0 p-3&quot; style&#x3D;&quot;z-index:9999&quot;&gt;
+      &lt;div class&#x3D;&quot;toast show align-items-center text-white border-0 bg-success&quot;
+           *ngIf&#x3D;&quot;toast.visible&quot; style&#x3D;&quot;min-width:280px&quot;&gt;
+        &lt;div class&#x3D;&quot;d-flex&quot;&gt;
+          &lt;div class&#x3D;&quot;toast-body fw-semibold&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-check-circle-fill me-2&quot;&gt;&lt;/i&gt;{{ toast.message }}
+          &lt;/div&gt;
+          &lt;button class&#x3D;&quot;btn-close btn-close-white me-2 m-auto&quot;
+                  (click)&#x3D;&quot;toast.visible&#x3D;false&quot;&gt;&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+ 
+    &lt;div class&#x3D;&quot;bg-primary text-white py-4 mb-4&quot;&gt;
+      &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;h2 class&#x3D;&quot;fw-bold mb-0&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-person-circle me-2&quot;&gt;&lt;/i&gt;My Profile &amp; Bookings
+        &lt;/h2&gt;
+        &lt;p class&#x3D;&quot;mb-0 text-white-50&quot;&gt;Welcome, {{ displayName }}&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+ 
+    &lt;div class&#x3D;&quot;container pb-5&quot;&gt;
+      &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+ 
+        &lt;!-- Profile Panel --&gt;
+        &lt;div class&#x3D;&quot;col-lg-4&quot;&gt;
+          &lt;div class&#x3D;&quot;card border-0 shadow-sm rounded-4 sticky-top&quot; style&#x3D;&quot;top:20px&quot;&gt;
+            &lt;div class&#x3D;&quot;card-body text-center p-4&quot;&gt;
+ 
+              &lt;!-- Avatar --&gt;
+              &lt;div class&#x3D;&quot;position-relative d-inline-block mb-3&quot;&gt;
+                &lt;img *ngIf&#x3D;&quot;profilePicture&quot; [src]&#x3D;&quot;profilePicture&quot;
+                     class&#x3D;&quot;rounded-circle border border-3 border-primary&quot;
+                     width&#x3D;&quot;90&quot; height&#x3D;&quot;90&quot; style&#x3D;&quot;object-fit:cover&quot;&gt;
+                &lt;div *ngIf&#x3D;&quot;!profilePicture&quot;
+                     class&#x3D;&quot;rounded-circle bg-primary d-flex align-items-center justify-content-center mx-auto&quot;
+                     style&#x3D;&quot;width:90px;height:90px&quot;&gt;
+                  &lt;span class&#x3D;&quot;text-white fw-bold fs-2&quot;&gt;{{ initials }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;label class&#x3D;&quot;position-absolute bottom-0 end-0 btn btn-sm btn-primary rounded-circle p-1&quot;
+                       style&#x3D;&quot;width:28px;height:28px;cursor:pointer&quot; title&#x3D;&quot;Change photo&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-camera-fill&quot; style&#x3D;&quot;font-size:0.7rem&quot;&gt;&lt;/i&gt;
+                  &lt;input type&#x3D;&quot;file&quot; accept&#x3D;&quot;image/*&quot; class&#x3D;&quot;d-none&quot; (change)&#x3D;&quot;onPhotoChange($event)&quot;&gt;
+                &lt;/label&gt;
+              &lt;/div&gt;
+ 
+              &lt;h5 class&#x3D;&quot;fw-bold mb-0&quot;&gt;{{ displayName }}&lt;/h5&gt;
+              &lt;p class&#x3D;&quot;text-muted small mb-1&quot;&gt;{{ displayEmail }}&lt;/p&gt;
+              &lt;span class&#x3D;&quot;badge mb-3&quot;
+                    [class.bg-primary]&#x3D;&quot;!isAuth0User&quot;
+                    [class.bg-success]&#x3D;&quot;isAuth0User&quot;&gt;
+                {{ isAuth0User ? &#x27;🔐 Social Account&#x27; : &#x27;✈ SkyBook Account&#x27; }}
+              &lt;/span&gt;
+ 
+              &lt;!-- Edit toggle --&gt;
+              &lt;button class&#x3D;&quot;btn btn-outline-primary btn-sm w-100 mb-2&quot;
+                      (click)&#x3D;&quot;editingProfile &#x3D; !editingProfile&quot;&gt;
+                &lt;i class&#x3D;&quot;bi&quot; [class.bi-pencil]&#x3D;&quot;!editingProfile&quot;
+                              [class.bi-x-lg]&#x3D;&quot;editingProfile&quot; class&#x3D;&quot;me-1&quot;&gt;&lt;/i&gt;
+                {{ editingProfile ? &#x27;Cancel&#x27; : &#x27;Edit Profile&#x27; }}
+              &lt;/button&gt;
+ 
+              &lt;!-- Edit form --&gt;
+              &lt;div *ngIf&#x3D;&quot;editingProfile&quot; class&#x3D;&quot;text-start mt-3 border-top pt-3&quot;&gt;
+                &lt;form [formGroup]&#x3D;&quot;profileForm&quot; (ngSubmit)&#x3D;&quot;saveProfile()&quot;&gt;
+                  &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Full Name&lt;/label&gt;
+                    &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                           formControlName&#x3D;&quot;fullName&quot; placeholder&#x3D;&quot;Your full name&quot;&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Mobile Number&lt;/label&gt;
+                    &lt;input type&#x3D;&quot;tel&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                           formControlName&#x3D;&quot;mobile&quot; placeholder&#x3D;&quot;+44 7000 000000&quot;&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Nationality&lt;/label&gt;
+                    &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                           formControlName&#x3D;&quot;nationality&quot; placeholder&#x3D;&quot;e.g. British&quot;&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;About&lt;/label&gt;
+                    &lt;textarea class&#x3D;&quot;form-control form-control-sm&quot; rows&#x3D;&quot;2&quot;
+                              formControlName&#x3D;&quot;about&quot; placeholder&#x3D;&quot;Short bio...&quot;&gt;&lt;/textarea&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Passport Photo&lt;/label&gt;
+                    &lt;input type&#x3D;&quot;file&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                           accept&#x3D;&quot;image/*&quot; (change)&#x3D;&quot;onPassportPhotoChange($event)&quot;&gt;
+                    &lt;div class&#x3D;&quot;form-text text-danger small&quot;&gt;
+                      ⚠ Passport number cannot be changed after booking.
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary btn-sm w-100&quot;&gt;
+                    &lt;i class&#x3D;&quot;bi bi-check me-1&quot;&gt;&lt;/i&gt;Save Changes
+                  &lt;/button&gt;
+                &lt;/form&gt;
+              &lt;/div&gt;
+ 
+              &lt;!-- Profile summary --&gt;
+              &lt;div class&#x3D;&quot;text-start mt-2 border-top pt-2 small&quot; *ngIf&#x3D;&quot;!editingProfile&quot;&gt;
+                &lt;div class&#x3D;&quot;text-muted mb-1 fw-semibold small&quot;&gt;PROFILE INFO&lt;/div&gt;
+                &lt;div class&#x3D;&quot;mb-1&quot; *ngIf&#x3D;&quot;profile.mobile&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-phone text-muted me-2&quot;&gt;&lt;/i&gt;{{ profile.mobile }}
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;mb-1&quot; *ngIf&#x3D;&quot;profile.nationality&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-flag text-muted me-2&quot;&gt;&lt;/i&gt;{{ profile.nationality }}
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;mb-1&quot; *ngIf&#x3D;&quot;profile.about&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-info-circle text-muted me-2&quot;&gt;&lt;/i&gt;{{ profile.about }}
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;text-muted small&quot; *ngIf&#x3D;&quot;!profile.mobile &amp;&amp; !profile.nationality &amp;&amp; !profile.about&quot;&gt;
+                  Click &quot;Edit Profile&quot; to add your details.
+                &lt;/div&gt;
+                &lt;div *ngIf&#x3D;&quot;passportPhotoUrl&quot; class&#x3D;&quot;mt-2&quot;&gt;
+                  &lt;div class&#x3D;&quot;text-muted mb-1 fw-semibold small&quot;&gt;PASSPORT PHOTO&lt;/div&gt;
+                  &lt;img [src]&#x3D;&quot;passportPhotoUrl&quot; class&#x3D;&quot;img-thumbnail rounded&quot; style&#x3D;&quot;max-height:80px&quot;&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+ 
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+ 
+        &lt;!-- Bookings Panel --&gt;
+        &lt;div class&#x3D;&quot;col-lg-8&quot;&gt;
+ 
+          &lt;ul class&#x3D;&quot;nav nav-pills mb-4&quot;&gt;
+            &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+              &lt;button class&#x3D;&quot;nav-link&quot; [class.active]&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;bookings&#x27;&quot;
+                      (click)&#x3D;&quot;activeTab&#x3D;&#x27;bookings&#x27;&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-ticket-perforated me-1&quot;&gt;&lt;/i&gt;My Bookings
+                &lt;span class&#x3D;&quot;badge bg-white text-primary ms-1&quot; *ngIf&#x3D;&quot;myBookings.length&gt;0&quot;&gt;
+                  {{ myBookings.length }}
+                &lt;/span&gt;
+              &lt;/button&gt;
+            &lt;/li&gt;
+            &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+              &lt;button class&#x3D;&quot;nav-link&quot; [class.active]&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;saved&#x27;&quot;
+                      (click)&#x3D;&quot;activeTab&#x3D;&#x27;saved&#x27;&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-bookmark me-1&quot;&gt;&lt;/i&gt;Saved Flights
+              &lt;/button&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+ 
+          &lt;!-- Bookings Tab --&gt;
+          &lt;div *ngIf&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;bookings&#x27;&quot;&gt;
+ 
+            &lt;!-- Loading --&gt;
+            &lt;div class&#x3D;&quot;text-center py-4&quot; *ngIf&#x3D;&quot;bookingsLoading&quot;&gt;
+              &lt;div class&#x3D;&quot;spinner-border text-primary&quot;&gt;&lt;/div&gt;
+              &lt;p class&#x3D;&quot;mt-2 text-muted small&quot;&gt;Loading your bookings...&lt;/p&gt;
+            &lt;/div&gt;
+ 
+            &lt;!-- API not running --&gt;
+            &lt;div class&#x3D;&quot;alert alert-warning rounded-4&quot; *ngIf&#x3D;&quot;!bookingsLoading &amp;&amp; !apiConnected&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-exclamation-triangle-fill me-2&quot;&gt;&lt;/i&gt;
+              &lt;strong&gt;Flask API not running.&lt;/strong&gt;
+              Start it with: &lt;code&gt;python app.py&lt;/code&gt;
+            &lt;/div&gt;
+ 
+            &lt;!-- No bookings --&gt;
+            &lt;div class&#x3D;&quot;text-center py-5&quot;
+                 *ngIf&#x3D;&quot;!bookingsLoading &amp;&amp; apiConnected &amp;&amp; myBookings.length&#x3D;&#x3D;&#x3D;0&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-ticket text-muted&quot; style&#x3D;&quot;font-size:3.5rem&quot;&gt;&lt;/i&gt;
+              &lt;h5 class&#x3D;&quot;mt-3 fw-semibold&quot;&gt;No bookings yet&lt;/h5&gt;
+              &lt;p class&#x3D;&quot;text-muted small&quot;&gt;Book a flight to see it here&lt;/p&gt;
+              &lt;a routerLink&#x3D;&quot;/flights&quot; class&#x3D;&quot;btn btn-primary btn-sm px-4&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-search me-1&quot;&gt;&lt;/i&gt;Browse Flights
+              &lt;/a&gt;
+            &lt;/div&gt;
+ 
+            &lt;!-- Bookings list --&gt;
+            &lt;div *ngFor&#x3D;&quot;let b of myBookings&quot;
+                 class&#x3D;&quot;card border-0 shadow-sm rounded-4 mb-3 booking-card&quot;&gt;
+              &lt;div class&#x3D;&quot;card-header d-flex justify-content-between align-items-center py-2 px-3&quot;
+                   [ngClass]&#x3D;&quot;flightHeaderClass(b.flight.status)&quot;&gt;
+                &lt;div&gt;
+                  &lt;span class&#x3D;&quot;badge bg-primary me-2&quot;&gt;{{ b.flight.flight_number }}&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;fw-semibold&quot;&gt;{{ b.flight.airline }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;span class&#x3D;&quot;badge&quot; [ngClass]&#x3D;&quot;flightStatusBadge(b.flight.status)&quot;&gt;
+                  {{ b.flight.status | titlecase }}
+                &lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;card-body p-3&quot;&gt;
+                &lt;div class&#x3D;&quot;row align-items-center g-3&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-md-7&quot;&gt;
+                    &lt;div class&#x3D;&quot;d-flex align-items-center gap-3&quot;&gt;
+                      &lt;div class&#x3D;&quot;text-center&quot;&gt;
+                        &lt;div class&#x3D;&quot;fs-5 fw-bold text-primary&quot;&gt;{{ b.flight.origin.code }}&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;small text-muted&quot;&gt;{{ b.flight.origin.city }}&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;small fw-semibold&quot;&gt;{{ b.flight.departure_time | date:&#x27;dd MMM, HH:mm&#x27; }}&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class&#x3D;&quot;flex-grow-1 text-center&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-airplane-fill text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class&#x3D;&quot;small text-muted&quot;&gt;{{ b.flight.aircraft_type }}&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class&#x3D;&quot;text-center&quot;&gt;
+                        &lt;div class&#x3D;&quot;fs-5 fw-bold text-primary&quot;&gt;{{ b.flight.destination.code }}&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;small text-muted&quot;&gt;{{ b.flight.destination.city }}&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;small fw-semibold&quot;&gt;{{ b.flight.arrival_time | date:&#x27;dd MMM, HH:mm&#x27; }}&lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col-md-5&quot;&gt;
+                    &lt;div class&#x3D;&quot;d-flex flex-column gap-1&quot;&gt;
+                      &lt;span class&#x3D;&quot;badge bg-light text-dark border text-start px-2 py-1&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-person me-1&quot;&gt;&lt;/i&gt;{{ b.passenger.full_name }}
+                      &lt;/span&gt;
+                      &lt;span class&#x3D;&quot;badge bg-light text-dark border text-start px-2 py-1&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-credit-card me-1&quot;&gt;&lt;/i&gt;{{ b.passenger.passport_number }}
+                      &lt;/span&gt;
+                      &lt;div class&#x3D;&quot;d-flex gap-1&quot;&gt;
+                        &lt;span class&#x3D;&quot;badge bg-secondary&quot;&gt;Seat {{ b.passenger.seat_number }}&lt;/span&gt;
+                        &lt;span class&#x3D;&quot;badge bg-info text-dark&quot;&gt;{{ b.passenger.seat_class | titlecase }}&lt;/span&gt;
+                        &lt;span class&#x3D;&quot;badge&quot; [ngClass]&#x3D;&quot;bookingStatusBadge(b.passenger.booking_status)&quot;&gt;
+                          {{ b.passenger.booking_status | titlecase }}
+                        &lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+ 
+          &lt;/div&gt;
+ 
+          &lt;!-- Saved Tab --&gt;
+          &lt;div *ngIf&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;saved&#x27;&quot;&gt;
+            &lt;div class&#x3D;&quot;text-center py-5&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-bookmark text-muted&quot; style&#x3D;&quot;font-size:3rem&quot;&gt;&lt;/i&gt;
+              &lt;p class&#x3D;&quot;mt-2 text-muted&quot;&gt;No saved flights yet&lt;/p&gt;
+              &lt;a routerLink&#x3D;&quot;/flights&quot; class&#x3D;&quot;btn btn-outline-primary btn-sm&quot;&gt;Browse Flights&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+ 
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &#x60;,
+  styles: [&#x60;
+    .booking-card { transition: box-shadow 0.2s; }
+    .booking-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1) !important; }
+  &#x60;]
+})
+export class MyBookingsComponent implements OnInit {
+  activeTab &#x3D; &#x27;bookings&#x27;;
+  editingProfile &#x3D; false;
+  profilePicture: string | null &#x3D; null;
+  passportPhotoUrl: string | null &#x3D; null;
+  profileForm: FormGroup;
+  profile: any &#x3D; { mobile: &#x27;&#x27;, nationality: &#x27;&#x27;, about: &#x27;&#x27; };
+ 
+  displayName &#x3D; &#x27;User&#x27;;
+  displayEmail &#x3D; &#x27;&#x27;;
+  initials &#x3D; &#x27;U&#x27;;
+  isAuth0User &#x3D; false;
+ 
+  myBookings: BookingRow[] &#x3D; [];
+  bookingsLoading &#x3D; false;
+  apiConnected &#x3D; false;
+ 
+  toast &#x3D; { visible: false, message: &#x27;&#x27; };
+ 
+  // CRITICAL: unique key per user — prevents data leaking between users
+  private userKey &#x3D; &#x27;&#x27;;
+  private currentUsername &#x3D; &#x27;&#x27;;
+ 
+  constructor(
+    private authService: AuthService,
+    private auth0: Auth0Service,
+    private flightsService: FlightsService,
+    private passengersService: PassengersService,
+    private fb: FormBuilder
+  ) {
+    this.profileForm &#x3D; this.fb.group({
+      fullName:    [&#x27;&#x27;],
+      mobile:      [&#x27;&#x27;],
+      nationality: [&#x27;&#x27;],
+      about:       [&#x27;&#x27;]
+    });
+  }
+ 
+  ngOnInit(): void {
+    this.authService.currentUser$.subscribe(user &#x3D;&gt; {
+      if (user &amp;&amp; user.username !&#x3D;&#x3D; this.currentUsername) {
+        this.currentUsername &#x3D; user.username;
+        this.displayName &#x3D; user.username;
+        this.initials &#x3D; user.username.charAt(0).toUpperCase();
+        this.isAuth0User &#x3D; user.isAuth0 ?? false;
+        if (!this.isAuth0User &amp;&amp; user.picture) {
+          this.profilePicture &#x3D; user.picture;
+        }
+        // Each user gets their own isolated storage key
+        this.userKey &#x3D; &#x60;skybook_${user.username}&#x60;;
+        this.loadProfileFromStorage();
+        this.loadMyBookings();
+      }
+    });
+ 
+    this.auth0.user$.subscribe(u &#x3D;&gt; {
+      if (u) {
+        this.displayName &#x3D; u.name ?? u.email ?? &#x27;User&#x27;;
+        this.displayEmail &#x3D; u.email ?? &#x27;&#x27;;
+        this.profilePicture &#x3D; u.picture ?? null;
+        this.initials &#x3D; (u.name ?? &#x27;U&#x27;).charAt(0).toUpperCase();
+        this.isAuth0User &#x3D; true;
+        const emailKey &#x3D; (u.email ?? &#x27;auth0user&#x27;).replace(/[@.]/g, &#x27;_&#x27;);
+        this.userKey &#x3D; &#x60;skybook_auth0_${emailKey}&#x60;;
+        this.loadProfileFromStorage();
+        this.loadMyBookings();
+      }
+    });
+  }
+ 
+  loadProfileFromStorage(): void {
+    if (!this.userKey) return;
+    const saved &#x3D; localStorage.getItem(this.userKey);
+    if (saved) {
+      try {
+        const p &#x3D; JSON.parse(saved);
+        this.profile &#x3D; { mobile: p.mobile||&#x27;&#x27;, nationality: p.nationality||&#x27;&#x27;, about: p.about||&#x27;&#x27; };
+        this.profileForm.patchValue({ fullName: p.fullName||this.displayName, ...this.profile });
+        if (!this.isAuth0User) this.profilePicture &#x3D; p.picture ?? this.profilePicture;
+        this.passportPhotoUrl &#x3D; p.passportPhoto ?? null;
+      } catch {}
+    }
+  }
+ 
+  loadMyBookings(): void {
+    this.bookingsLoading &#x3D; true;
+    this.myBookings &#x3D; [];
+ 
+    this.flightsService.getFlights(1, 200).subscribe({
+      next: (res) &#x3D;&gt; {
+        this.apiConnected &#x3D; true;
+        const flights: Flight[] &#x3D; res.flights ?? (res as any);
+ 
+        // Get saved passports for this user
+        const passportKey &#x3D; &#x60;${this.userKey}_passports&#x60;;
+        const myPassports: string[] &#x3D; JSON.parse(localStorage.getItem(passportKey) ?? &#x27;[]&#x27;);
+ 
+        const requests &#x3D; flights.map(f &#x3D;&gt;
+          this.passengersService.getPassengers(f._id).pipe(catchError(() &#x3D;&gt; of([])))
+        );
+ 
+        forkJoin(requests).subscribe({
+          next: (allPassengers) &#x3D;&gt; {
+            flights.forEach((flight, idx) &#x3D;&gt; {
+              const passengers: Passenger[] &#x3D; allPassengers[idx] as Passenger[];
+              passengers.forEach(p &#x3D;&gt; {
+                // Only show if passport number matches what this user booked
+                if (myPassports.includes(p.passport_number)) {
+                  this.myBookings.push({ flight, passenger: p });
+                }
+              });
+            });
+            this.bookingsLoading &#x3D; false;
+          },
+          error: () &#x3D;&gt; { this.bookingsLoading &#x3D; false; }
+        });
+      },
+      error: () &#x3D;&gt; {
+        this.apiConnected &#x3D; false;
+        this.bookingsLoading &#x3D; false;
+      }
+    });
+  }
+ 
+  onPhotoChange(event: Event): void {
+    const file &#x3D; (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    const reader &#x3D; new FileReader();
+    reader.onload &#x3D; (e) &#x3D;&gt; {
+      this.profilePicture &#x3D; e.target?.result as string;
+      this.saveToStorage();
+    };
+    reader.readAsDataURL(file);
+  }
+ 
+  onPassportPhotoChange(event: Event): void {
+    const file &#x3D; (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    const reader &#x3D; new FileReader();
+    reader.onload &#x3D; (e) &#x3D;&gt; { this.passportPhotoUrl &#x3D; e.target?.result as string; };
+    reader.readAsDataURL(file);
+  }
+ 
+  saveProfile(): void {
+    const val &#x3D; this.profileForm.value;
+    this.profile &#x3D; { mobile: val.mobile, nationality: val.nationality, about: val.about };
+    this.saveToStorage();
+    this.editingProfile &#x3D; false;
+    this.toast &#x3D; { visible: true, message: &#x27;Profile saved successfully!&#x27; };
+    setTimeout(() &#x3D;&gt; this.toast.visible &#x3D; false, 3000);
+  }
+ 
+  saveToStorage(): void {
+    if (!this.userKey) return;
+    localStorage.setItem(this.userKey, JSON.stringify({
+      fullName: this.profileForm.value.fullName,
+      ...this.profile,
+      picture: this.isAuth0User ? null : this.profilePicture,
+      passportPhoto: this.passportPhotoUrl
+    }));
+  }
+ 
+  flightStatusBadge(status: string): string {
+    const m: Record&lt;string,string&gt; &#x3D; {
+      scheduled:&#x27;bg-secondary&#x27;, boarding:&#x27;bg-success&#x27;,
+      departed:&#x27;bg-info text-dark&#x27;, arrived:&#x27;bg-dark&#x27;,
+      delayed:&#x27;bg-warning text-dark&#x27;, cancelled:&#x27;bg-danger&#x27;
+    };
+    return m[status] ?? &#x27;bg-secondary&#x27;;
+  }
+ 
+  flightHeaderClass(status: string): string {
+    const m: Record&lt;string,string&gt; &#x3D; {
+      scheduled:&#x27;bg-light text-dark&#x27;, boarding:&#x27;bg-success bg-opacity-10&#x27;,
+      departed:&#x27;bg-info bg-opacity-10&#x27;, arrived:&#x27;bg-dark bg-opacity-10&#x27;,
+      delayed:&#x27;bg-warning bg-opacity-10&#x27;, cancelled:&#x27;bg-danger bg-opacity-10&#x27;
+    };
+    return m[status] ?? &#x27;bg-light text-dark&#x27;;
+  }
+ 
+  bookingStatusBadge(status: string): string {
+    const m: Record&lt;string,string&gt; &#x3D; {
+      confirmed:&#x27;bg-success&#x27;, cancelled:&#x27;bg-danger&#x27;,
+      checked_in:&#x27;bg-info text-dark&#x27;, booked:&#x27;bg-primary&#x27;
+    };
+    return m[status] ?? &#x27;bg-secondary&#x27;;
+  }
+}</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'BookingRow.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

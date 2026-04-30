@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { AuthService as Auth0Service } from '@auth0/auth0-angular';
 import { environment } from '../../environments/environment';
 
 export interface AuthUser {
   username: string;
   admin: boolean;
+  picture?: string;
+  isAuth0?: boolean;
 }
 
 export interface LoginResponse {
@@ -29,12 +32,33 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<AuthUser | null>(this.loadUserFromToken());
   public currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private auth0: Auth0Service
+  ) {
+    // Sync Auth0 social login into currentUser$
+    this.auth0.user$.subscribe(auth0User => {
+      if (auth0User && !this.getToken()) {
+        this.currentUserSubject.next({
+          username: auth0User.name ?? auth0User.email ?? 'User',
+          admin: false,
+          picture: auth0User.picture ?? undefined,
+          isAuth0: true
+        });
 
-  /**
-   * Decode the JWT payload without a library.
-   * Returns null if the token is missing or malformed.
-   */
+        // After Auth0 redirect, check if there's a saved returnUrl
+        const returnUrl = localStorage.getItem('auth0_return_url');
+        if (returnUrl) {
+          localStorage.removeItem('auth0_return_url');
+          this.router.navigateByUrl(returnUrl);
+        }
+      } else if (!auth0User && !this.getToken()) {
+        this.currentUserSubject.next(null);
+      }
+    });
+  }
+
   private decodeToken(token: string): any | null {
     try {
       const payload = token.split('.')[1];
@@ -48,42 +72,29 @@ export class AuthService {
   private loadUserFromToken(): AuthUser | null {
     const token = localStorage.getItem(this.TOKEN_KEY);
     if (!token) return null;
-
     const payload = this.decodeToken(token);
     if (!payload) return null;
-
-    // Check expiry (JWT exp is in seconds)
     if (payload.exp && Date.now() / 1000 > payload.exp) {
       localStorage.removeItem(this.TOKEN_KEY);
       return null;
     }
-
     return {
       username: payload.user ?? payload.sub ?? '',
-      admin: payload.admin ?? false
+      admin: payload.admin ?? false,
+      isAuth0: false
     };
   }
 
-  /**
-   * Register — POST /auth/register with form-data
-   */
   register(username: string, password: string): Observable<RegisterResponse> {
     const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
-
     return this.http.post<RegisterResponse>(`${this.apiUrl}/auth/register`, formData);
   }
 
-  /**
-   * Login — GET /auth/login with HTTP Basic Auth
-   */
   login(username: string, password: string): Observable<LoginResponse> {
     const credentials = btoa(`${username}:${password}`);
-    const headers = new HttpHeaders({
-      Authorization: `Basic ${credentials}`
-    });
-
+    const headers = new HttpHeaders({ Authorization: `Basic ${credentials}` });
     return this.http.get<LoginResponse>(`${this.apiUrl}/auth/login`, { headers }).pipe(
       tap((response: LoginResponse) => {
         if (response.token) {
@@ -95,13 +106,9 @@ export class AuthService {
     );
   }
 
-  /**
-   * Logout — GET /auth/logout (token attached by interceptor)
-   */
   logout(): void {
     const token = this.getToken();
     if (token) {
-      // Fire-and-forget: notify backend, then clean up locally regardless
       this.http.get(`${this.apiUrl}/auth/logout`).subscribe({
         complete: () => this.clearSession(),
         error: () => this.clearSession()
@@ -122,7 +129,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return this.loadUserFromToken() !== null;
+    return this.currentUserSubject.value !== null;
   }
 
   isAdmin(): boolean {
@@ -133,7 +140,6 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  /** Called by the interceptor when a 401 is received */
   handleUnauthorized(): void {
     this.clearSession();
   }

@@ -1,0 +1,2287 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>flight-frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">flight-frontend documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MyBookingsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/my-bookings/my-bookings.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-my-bookings</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/router/RouterLink" target="_blank" >RouterLink</a></code>
+                                <code><a href="https://angular.io/api/forms/ReactiveFormsModule" target="_blank" >ReactiveFormsModule</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+    .booking-card { transition: box-shadow 0.2s; }
+    .booking-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1) !important; }
+  </code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;!-- Toast --&gt;
+&lt;div class&#x3D;&quot;position-fixed top-0 end-0 p-3&quot; style&#x3D;&quot;z-index:9999&quot;&gt;
+  &lt;div class&#x3D;&quot;toast show align-items-center text-white border-0 bg-success&quot;
+       *ngIf&#x3D;&quot;toast.visible&quot; style&#x3D;&quot;min-width:280px&quot;&gt;
+    &lt;div class&#x3D;&quot;d-flex&quot;&gt;
+      &lt;div class&#x3D;&quot;toast-body fw-semibold&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-check-circle-fill me-2&quot;&gt;&lt;/i&gt;{{ toast.message }}
+      &lt;/div&gt;
+      &lt;button class&#x3D;&quot;btn-close btn-close-white me-2 m-auto&quot;
+              (click)&#x3D;&quot;toast.visible&#x3D;false&quot;&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;bg-primary text-white py-4 mb-4&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;h2 class&#x3D;&quot;fw-bold mb-0&quot;&gt;
+      &lt;i class&#x3D;&quot;bi bi-person-circle me-2&quot;&gt;&lt;/i&gt;My Profile &amp; Bookings
+    &lt;/h2&gt;
+    &lt;p class&#x3D;&quot;mb-0 text-white-50&quot;&gt;Welcome, {{ displayName }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;container pb-5&quot;&gt;
+  &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+
+    &lt;!-- Profile Panel --&gt;
+    &lt;div class&#x3D;&quot;col-lg-4&quot;&gt;
+      &lt;div class&#x3D;&quot;card border-0 shadow-sm rounded-4 sticky-top&quot; style&#x3D;&quot;top:20px&quot;&gt;
+        &lt;div class&#x3D;&quot;card-body text-center p-4&quot;&gt;
+
+          &lt;!-- Avatar --&gt;
+          &lt;div class&#x3D;&quot;position-relative d-inline-block mb-3&quot;&gt;
+            &lt;img *ngIf&#x3D;&quot;profilePicture&quot; [src]&#x3D;&quot;profilePicture&quot;
+                 class&#x3D;&quot;rounded-circle border border-3 border-primary&quot;
+                 width&#x3D;&quot;90&quot; height&#x3D;&quot;90&quot; style&#x3D;&quot;object-fit:cover&quot;&gt;
+            &lt;div *ngIf&#x3D;&quot;!profilePicture&quot;
+                 class&#x3D;&quot;rounded-circle bg-primary d-flex align-items-center justify-content-center mx-auto&quot;
+                 style&#x3D;&quot;width:90px;height:90px&quot;&gt;
+              &lt;span class&#x3D;&quot;text-white fw-bold fs-2&quot;&gt;{{ initials }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;label class&#x3D;&quot;position-absolute bottom-0 end-0 btn btn-sm btn-primary rounded-circle p-1&quot;
+                   style&#x3D;&quot;width:28px;height:28px;cursor:pointer&quot; title&#x3D;&quot;Change photo&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-camera-fill&quot; style&#x3D;&quot;font-size:0.7rem&quot;&gt;&lt;/i&gt;
+              &lt;input type&#x3D;&quot;file&quot; accept&#x3D;&quot;image/*&quot; class&#x3D;&quot;d-none&quot; (change)&#x3D;&quot;onPhotoChange($event)&quot;&gt;
+            &lt;/label&gt;
+          &lt;/div&gt;
+
+          &lt;h5 class&#x3D;&quot;fw-bold mb-0&quot;&gt;{{ displayName }}&lt;/h5&gt;
+          &lt;p class&#x3D;&quot;text-muted small mb-1&quot;&gt;{{ displayEmail }}&lt;/p&gt;
+          &lt;span class&#x3D;&quot;badge mb-3&quot;
+                [class.bg-primary]&#x3D;&quot;!isAuth0User&quot;
+                [class.bg-success]&#x3D;&quot;isAuth0User&quot;&gt;
+            {{ isAuth0User ? &#x27;🔐 Social Account&#x27; : &#x27;✈ SkyBook Account&#x27; }}
+          &lt;/span&gt;
+
+          &lt;!-- Edit toggle --&gt;
+          &lt;button class&#x3D;&quot;btn btn-outline-primary btn-sm w-100 mb-2&quot;
+                  (click)&#x3D;&quot;editingProfile &#x3D; !editingProfile&quot;&gt;
+            &lt;i class&#x3D;&quot;bi&quot; [class.bi-pencil]&#x3D;&quot;!editingProfile&quot;
+                          [class.bi-x-lg]&#x3D;&quot;editingProfile&quot; class&#x3D;&quot;me-1&quot;&gt;&lt;/i&gt;
+            {{ editingProfile ? &#x27;Cancel&#x27; : &#x27;Edit Profile&#x27; }}
+          &lt;/button&gt;
+
+          &lt;!-- Edit form --&gt;
+          &lt;div *ngIf&#x3D;&quot;editingProfile&quot; class&#x3D;&quot;text-start mt-3 border-top pt-3&quot;&gt;
+            &lt;form [formGroup]&#x3D;&quot;profileForm&quot; (ngSubmit)&#x3D;&quot;saveProfile()&quot;&gt;
+              &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Full Name&lt;/label&gt;
+                &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                       formControlName&#x3D;&quot;fullName&quot; placeholder&#x3D;&quot;Your full name&quot;&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Mobile Number&lt;/label&gt;
+                &lt;input type&#x3D;&quot;tel&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                       formControlName&#x3D;&quot;mobile&quot; placeholder&#x3D;&quot;+44 7000 000000&quot;&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Nationality&lt;/label&gt;
+                &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                       formControlName&#x3D;&quot;nationality&quot; placeholder&#x3D;&quot;e.g. British&quot;&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;About&lt;/label&gt;
+                &lt;textarea class&#x3D;&quot;form-control form-control-sm&quot; rows&#x3D;&quot;2&quot;
+                          formControlName&#x3D;&quot;about&quot; placeholder&#x3D;&quot;Short bio...&quot;&gt;&lt;/textarea&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+                &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Passport Photo&lt;/label&gt;
+                &lt;input type&#x3D;&quot;file&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                       accept&#x3D;&quot;image/*&quot; (change)&#x3D;&quot;onPassportPhotoChange($event)&quot;&gt;
+                &lt;div class&#x3D;&quot;form-text text-danger small&quot;&gt;
+                  ⚠ Passport number cannot be changed after booking.
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary btn-sm w-100&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-check me-1&quot;&gt;&lt;/i&gt;Save Changes
+              &lt;/button&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Profile summary --&gt;
+          &lt;div class&#x3D;&quot;text-start mt-2 border-top pt-2 small&quot; *ngIf&#x3D;&quot;!editingProfile&quot;&gt;
+            &lt;div class&#x3D;&quot;text-muted mb-1 fw-semibold small&quot;&gt;PROFILE INFO&lt;/div&gt;
+            &lt;div class&#x3D;&quot;mb-1&quot; *ngIf&#x3D;&quot;profile.mobile&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-phone text-muted me-2&quot;&gt;&lt;/i&gt;{{ profile.mobile }}
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;mb-1&quot; *ngIf&#x3D;&quot;profile.nationality&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-flag text-muted me-2&quot;&gt;&lt;/i&gt;{{ profile.nationality }}
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;mb-1&quot; *ngIf&#x3D;&quot;profile.about&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-info-circle text-muted me-2&quot;&gt;&lt;/i&gt;{{ profile.about }}
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;text-muted small&quot; *ngIf&#x3D;&quot;!profile.mobile &amp;&amp; !profile.nationality &amp;&amp; !profile.about&quot;&gt;
+              Click &quot;Edit Profile&quot; to add your details.
+            &lt;/div&gt;
+            &lt;div *ngIf&#x3D;&quot;passportPhotoUrl&quot; class&#x3D;&quot;mt-2&quot;&gt;
+              &lt;div class&#x3D;&quot;text-muted mb-1 fw-semibold small&quot;&gt;PASSPORT PHOTO&lt;/div&gt;
+              &lt;img [src]&#x3D;&quot;passportPhotoUrl&quot; class&#x3D;&quot;img-thumbnail rounded&quot; style&#x3D;&quot;max-height:80px&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Bookings Panel --&gt;
+    &lt;div class&#x3D;&quot;col-lg-8&quot;&gt;
+
+      &lt;ul class&#x3D;&quot;nav nav-pills mb-4&quot;&gt;
+        &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+          &lt;button class&#x3D;&quot;nav-link&quot; [class.active]&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;bookings&#x27;&quot;
+                  (click)&#x3D;&quot;activeTab&#x3D;&#x27;bookings&#x27;&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-ticket-perforated me-1&quot;&gt;&lt;/i&gt;My Bookings
+            &lt;span class&#x3D;&quot;badge bg-white text-primary ms-1&quot; *ngIf&#x3D;&quot;myBookings.length&gt;0&quot;&gt;
+              {{ myBookings.length }}
+            &lt;/span&gt;
+          &lt;/button&gt;
+        &lt;/li&gt;
+        &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+          &lt;button class&#x3D;&quot;nav-link&quot; [class.active]&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;saved&#x27;&quot;
+                  (click)&#x3D;&quot;activeTab&#x3D;&#x27;saved&#x27;&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-bookmark me-1&quot;&gt;&lt;/i&gt;Saved Flights
+          &lt;/button&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;!-- Bookings Tab --&gt;
+      &lt;div *ngIf&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;bookings&#x27;&quot;&gt;
+
+        &lt;!-- Loading --&gt;
+        &lt;div class&#x3D;&quot;text-center py-4&quot; *ngIf&#x3D;&quot;bookingsLoading&quot;&gt;
+          &lt;div class&#x3D;&quot;spinner-border text-primary&quot;&gt;&lt;/div&gt;
+          &lt;p class&#x3D;&quot;mt-2 text-muted small&quot;&gt;Loading your bookings...&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- API not running --&gt;
+        &lt;div class&#x3D;&quot;alert alert-warning rounded-4&quot; *ngIf&#x3D;&quot;!bookingsLoading &amp;&amp; !apiConnected&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-exclamation-triangle-fill me-2&quot;&gt;&lt;/i&gt;
+          &lt;strong&gt;Flask API not running.&lt;/strong&gt;
+          Start it with: &lt;code&gt;python app.py&lt;/code&gt;
+        &lt;/div&gt;
+
+        &lt;!-- No bookings --&gt;
+        &lt;div class&#x3D;&quot;text-center py-5&quot;
+             *ngIf&#x3D;&quot;!bookingsLoading &amp;&amp; apiConnected &amp;&amp; myBookings.length&#x3D;&#x3D;&#x3D;0&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-ticket text-muted&quot; style&#x3D;&quot;font-size:3.5rem&quot;&gt;&lt;/i&gt;
+          &lt;h5 class&#x3D;&quot;mt-3 fw-semibold&quot;&gt;No bookings yet&lt;/h5&gt;
+          &lt;p class&#x3D;&quot;text-muted small&quot;&gt;Book a flight to see it here&lt;/p&gt;
+          &lt;a routerLink&#x3D;&quot;/flights&quot; class&#x3D;&quot;btn btn-primary btn-sm px-4&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-search me-1&quot;&gt;&lt;/i&gt;Browse Flights
+          &lt;/a&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Bookings list --&gt;
+        &lt;div *ngFor&#x3D;&quot;let b of myBookings&quot;
+             class&#x3D;&quot;card border-0 shadow-sm rounded-4 mb-3 booking-card&quot;&gt;
+          &lt;div class&#x3D;&quot;card-header d-flex justify-content-between align-items-center py-2 px-3&quot;
+               [ngClass]&#x3D;&quot;flightHeaderClass(b.flight.status)&quot;&gt;
+            &lt;div&gt;
+              &lt;span class&#x3D;&quot;badge bg-primary me-2&quot;&gt;{{ b.flight.flight_number }}&lt;/span&gt;
+              &lt;span class&#x3D;&quot;fw-semibold&quot;&gt;{{ b.flight.airline }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;span class&#x3D;&quot;badge&quot; [ngClass]&#x3D;&quot;flightStatusBadge(b.flight.status)&quot;&gt;
+              {{ b.flight.status | titlecase }}
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;card-body p-3&quot;&gt;
+            &lt;div class&#x3D;&quot;row align-items-center g-3&quot;&gt;
+              &lt;div class&#x3D;&quot;col-md-7&quot;&gt;
+                &lt;div class&#x3D;&quot;d-flex align-items-center gap-3&quot;&gt;
+                  &lt;div class&#x3D;&quot;text-center&quot;&gt;
+                    &lt;div class&#x3D;&quot;fs-5 fw-bold text-primary&quot;&gt;{{ b.flight.origin.code }}&lt;/div&gt;
+                    &lt;div class&#x3D;&quot;small text-muted&quot;&gt;{{ b.flight.origin.city }}&lt;/div&gt;
+                    &lt;div class&#x3D;&quot;small fw-semibold&quot;&gt;{{ b.flight.departure_time | date:&#x27;dd MMM, HH:mm&#x27; }}&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;flex-grow-1 text-center&quot;&gt;
+                    &lt;i class&#x3D;&quot;bi bi-airplane-fill text-primary&quot;&gt;&lt;/i&gt;
+                    &lt;div class&#x3D;&quot;small text-muted&quot;&gt;{{ b.flight.aircraft_type }}&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;text-center&quot;&gt;
+                    &lt;div class&#x3D;&quot;fs-5 fw-bold text-primary&quot;&gt;{{ b.flight.destination.code }}&lt;/div&gt;
+                    &lt;div class&#x3D;&quot;small text-muted&quot;&gt;{{ b.flight.destination.city }}&lt;/div&gt;
+                    &lt;div class&#x3D;&quot;small fw-semibold&quot;&gt;{{ b.flight.arrival_time | date:&#x27;dd MMM, HH:mm&#x27; }}&lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-md-5&quot;&gt;
+                &lt;div class&#x3D;&quot;d-flex flex-column gap-1&quot;&gt;
+                  &lt;span class&#x3D;&quot;badge bg-light text-dark border text-start px-2 py-1&quot;&gt;
+                    &lt;i class&#x3D;&quot;bi bi-person me-1&quot;&gt;&lt;/i&gt;{{ b.passenger.full_name }}
+                  &lt;/span&gt;
+                  &lt;span class&#x3D;&quot;badge bg-light text-dark border text-start px-2 py-1&quot;&gt;
+                    &lt;i class&#x3D;&quot;bi bi-credit-card me-1&quot;&gt;&lt;/i&gt;{{ b.passenger.passport_number }}
+                  &lt;/span&gt;
+                  &lt;div class&#x3D;&quot;d-flex gap-1&quot;&gt;
+                    &lt;span class&#x3D;&quot;badge bg-secondary&quot;&gt;Seat {{ b.passenger.seat_number }}&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;badge bg-info text-dark&quot;&gt;{{ b.passenger.seat_class | titlecase }}&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;badge&quot; [ngClass]&#x3D;&quot;bookingStatusBadge(b.passenger.booking_status)&quot;&gt;
+                      {{ b.passenger.booking_status | titlecase }}
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+      &lt;!-- Saved Tab --&gt;
+      &lt;div *ngIf&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;saved&#x27;&quot;&gt;
+        &lt;div class&#x3D;&quot;text-center py-5&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-bookmark text-muted&quot; style&#x3D;&quot;font-size:3rem&quot;&gt;&lt;/i&gt;
+          &lt;p class&#x3D;&quot;mt-2 text-muted&quot;&gt;No saved flights yet&lt;/p&gt;
+          &lt;a routerLink&#x3D;&quot;/flights&quot; class&#x3D;&quot;btn btn-outline-primary btn-sm&quot;&gt;Browse Flights&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activeTab" >activeTab</a>
+                            </li>
+                            <li>
+                                <a href="#apiConnected" >apiConnected</a>
+                            </li>
+                            <li>
+                                <a href="#bookingsLoading" >bookingsLoading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#currentUsername" >currentUsername</a>
+                            </li>
+                            <li>
+                                <a href="#displayEmail" >displayEmail</a>
+                            </li>
+                            <li>
+                                <a href="#displayName" >displayName</a>
+                            </li>
+                            <li>
+                                <a href="#editingProfile" >editingProfile</a>
+                            </li>
+                            <li>
+                                <a href="#initials" >initials</a>
+                            </li>
+                            <li>
+                                <a href="#isAuth0User" >isAuth0User</a>
+                            </li>
+                            <li>
+                                <a href="#myBookings" >myBookings</a>
+                            </li>
+                            <li>
+                                <a href="#passportPhotoUrl" >passportPhotoUrl</a>
+                            </li>
+                            <li>
+                                <a href="#profile" >profile</a>
+                            </li>
+                            <li>
+                                <a href="#profileForm" >profileForm</a>
+                            </li>
+                            <li>
+                                <a href="#profilePicture" >profilePicture</a>
+                            </li>
+                            <li>
+                                <a href="#toast" >toast</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#userKey" >userKey</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#bookingStatusBadge" >bookingStatusBadge</a>
+                            </li>
+                            <li>
+                                <a href="#flightHeaderClass" >flightHeaderClass</a>
+                            </li>
+                            <li>
+                                <a href="#flightStatusBadge" >flightStatusBadge</a>
+                            </li>
+                            <li>
+                                <a href="#loadMyBookings" >loadMyBookings</a>
+                            </li>
+                            <li>
+                                <a href="#loadProfileFromStorage" >loadProfileFromStorage</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onPassportPhotoChange" >onPassportPhotoChange</a>
+                            </li>
+                            <li>
+                                <a href="#onPhotoChange" >onPhotoChange</a>
+                            </li>
+                            <li>
+                                <a href="#saveProfile" >saveProfile</a>
+                            </li>
+                            <li>
+                                <a href="#saveToStorage" >saveToStorage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, auth0: Auth0Service, flightsService: <a href="../injectables/FlightsService.html" target="_self">FlightsService</a>, passengersService: <a href="../injectables/PassengersService.html" target="_self">PassengersService</a>, fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="290" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:290</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth0</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >Auth0Service</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>flightsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FlightsService.html" target="_self" >FlightsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>passengersService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PassengersService.html" target="_self" >PassengersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bookingStatusBadge"></a>
+                    <span class="name">
+                        <span ><b>bookingStatusBadge</b></span>
+                        <a href="#bookingStatusBadge"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>bookingStatusBadge(status: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="449"
+                                    class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:449</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>status</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="flightHeaderClass"></a>
+                    <span class="name">
+                        <span ><b>flightHeaderClass</b></span>
+                        <a href="#flightHeaderClass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>flightHeaderClass(status: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="440"
+                                    class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:440</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>status</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="flightStatusBadge"></a>
+                    <span class="name">
+                        <span ><b>flightStatusBadge</b></span>
+                        <a href="#flightStatusBadge"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>flightStatusBadge(status: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="431"
+                                    class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:431</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>status</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadMyBookings"></a>
+                    <span class="name">
+                        <span ><b>loadMyBookings</b></span>
+                        <a href="#loadMyBookings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadMyBookings()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="353"
+                                    class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:353</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadProfileFromStorage"></a>
+                    <span class="name">
+                        <span ><b>loadProfileFromStorage</b></span>
+                        <a href="#loadProfileFromStorage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadProfileFromStorage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="339"
+                                    class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:339</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="307"
+                                    class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:307</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPassportPhotoChange"></a>
+                    <span class="name">
+                        <span ><b>onPassportPhotoChange</b></span>
+                        <a href="#onPassportPhotoChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPassportPhotoChange(event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="404"
+                                    class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:404</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPhotoChange"></a>
+                    <span class="name">
+                        <span ><b>onPhotoChange</b></span>
+                        <a href="#onPhotoChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPhotoChange(event: <a href="https://angular.io/api/router/Event" target="_blank">Event</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="393"
+                                    class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:393</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://angular.io/api/router/Event" target="_blank" >Event</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveProfile"></a>
+                    <span class="name">
+                        <span ><b>saveProfile</b></span>
+                        <a href="#saveProfile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveProfile()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="412"
+                                    class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:412</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveToStorage"></a>
+                    <span class="name">
+                        <span ><b>saveToStorage</b></span>
+                        <a href="#saveToStorage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveToStorage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="421"
+                                    class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:421</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeTab"></a>
+                    <span class="name">
+                        <span ><b>activeTab</b></span>
+                        <a href="#activeTab"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;bookings&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:270</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="apiConnected"></a>
+                    <span class="name">
+                        <span ><b>apiConnected</b></span>
+                        <a href="#apiConnected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="284" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:284</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bookingsLoading"></a>
+                    <span class="name">
+                        <span ><b>bookingsLoading</b></span>
+                        <a href="#bookingsLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="283" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:283</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentUsername"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>currentUsername</b></span>
+                        <a href="#currentUsername"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="290" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:290</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayEmail"></a>
+                    <span class="name">
+                        <span ><b>displayEmail</b></span>
+                        <a href="#displayEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="278" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:278</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayName"></a>
+                    <span class="name">
+                        <span ><b>displayName</b></span>
+                        <a href="#displayName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;User&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="277" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:277</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editingProfile"></a>
+                    <span class="name">
+                        <span ><b>editingProfile</b></span>
+                        <a href="#editingProfile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:271</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initials"></a>
+                    <span class="name">
+                        <span ><b>initials</b></span>
+                        <a href="#initials"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;U&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="279" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:279</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isAuth0User"></a>
+                    <span class="name">
+                        <span ><b>isAuth0User</b></span>
+                        <a href="#isAuth0User"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="280" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:280</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="myBookings"></a>
+                    <span class="name">
+                        <span ><b>myBookings</b></span>
+                        <a href="#myBookings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/BookingRow.html" target="_self" >BookingRow[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="282" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:282</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passportPhotoUrl"></a>
+                    <span class="name">
+                        <span ><b>passportPhotoUrl</b></span>
+                        <a href="#passportPhotoUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="273" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:273</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="profile"></a>
+                    <span class="name">
+                        <span ><b>profile</b></span>
+                        <a href="#profile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ mobile: &#x27;&#x27;, nationality: &#x27;&#x27;, about: &#x27;&#x27; }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="275" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:275</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="profileForm"></a>
+                    <span class="name">
+                        <span ><b>profileForm</b></span>
+                        <a href="#profileForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="274" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:274</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="profilePicture"></a>
+                    <span class="name">
+                        <span ><b>profilePicture</b></span>
+                        <a href="#profilePicture"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="272" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:272</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toast"></a>
+                    <span class="name">
+                        <span ><b>toast</b></span>
+                        <a href="#toast"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ visible: false, message: &#x27;&#x27; }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="286" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:286</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userKey"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>userKey</b></span>
+                        <a href="#userKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="289" class="link-to-prism">src/app/pages/my-bookings/my-bookings.component.ts:289</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
+import { AuthService, AuthUser } from &#x27;../../services/auth.service&#x27;;
+import { AuthService as Auth0Service } from &#x27;@auth0/auth0-angular&#x27;;
+import { FlightsService } from &#x27;../../services/flights.service&#x27;;
+import { PassengersService } from &#x27;../../services/passengers.service&#x27;;
+import { Flight } from &#x27;../../models/flight.model&#x27;;
+import { Passenger } from &#x27;../../models/passenger.model&#x27;;
+import { forkJoin, of } from &#x27;rxjs&#x27;;
+import { catchError } from &#x27;rxjs/operators&#x27;;
+ 
+interface BookingRow { flight: Flight; passenger: Passenger; }
+ 
+@Component({
+  selector: &#x27;app-my-bookings&#x27;,
+  standalone: true,
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule],
+  template: &#x60;
+    &lt;!-- Toast --&gt;
+    &lt;div class&#x3D;&quot;position-fixed top-0 end-0 p-3&quot; style&#x3D;&quot;z-index:9999&quot;&gt;
+      &lt;div class&#x3D;&quot;toast show align-items-center text-white border-0 bg-success&quot;
+           *ngIf&#x3D;&quot;toast.visible&quot; style&#x3D;&quot;min-width:280px&quot;&gt;
+        &lt;div class&#x3D;&quot;d-flex&quot;&gt;
+          &lt;div class&#x3D;&quot;toast-body fw-semibold&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-check-circle-fill me-2&quot;&gt;&lt;/i&gt;{{ toast.message }}
+          &lt;/div&gt;
+          &lt;button class&#x3D;&quot;btn-close btn-close-white me-2 m-auto&quot;
+                  (click)&#x3D;&quot;toast.visible&#x3D;false&quot;&gt;&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+ 
+    &lt;div class&#x3D;&quot;bg-primary text-white py-4 mb-4&quot;&gt;
+      &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;h2 class&#x3D;&quot;fw-bold mb-0&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-person-circle me-2&quot;&gt;&lt;/i&gt;My Profile &amp; Bookings
+        &lt;/h2&gt;
+        &lt;p class&#x3D;&quot;mb-0 text-white-50&quot;&gt;Welcome, {{ displayName }}&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+ 
+    &lt;div class&#x3D;&quot;container pb-5&quot;&gt;
+      &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+ 
+        &lt;!-- Profile Panel --&gt;
+        &lt;div class&#x3D;&quot;col-lg-4&quot;&gt;
+          &lt;div class&#x3D;&quot;card border-0 shadow-sm rounded-4 sticky-top&quot; style&#x3D;&quot;top:20px&quot;&gt;
+            &lt;div class&#x3D;&quot;card-body text-center p-4&quot;&gt;
+ 
+              &lt;!-- Avatar --&gt;
+              &lt;div class&#x3D;&quot;position-relative d-inline-block mb-3&quot;&gt;
+                &lt;img *ngIf&#x3D;&quot;profilePicture&quot; [src]&#x3D;&quot;profilePicture&quot;
+                     class&#x3D;&quot;rounded-circle border border-3 border-primary&quot;
+                     width&#x3D;&quot;90&quot; height&#x3D;&quot;90&quot; style&#x3D;&quot;object-fit:cover&quot;&gt;
+                &lt;div *ngIf&#x3D;&quot;!profilePicture&quot;
+                     class&#x3D;&quot;rounded-circle bg-primary d-flex align-items-center justify-content-center mx-auto&quot;
+                     style&#x3D;&quot;width:90px;height:90px&quot;&gt;
+                  &lt;span class&#x3D;&quot;text-white fw-bold fs-2&quot;&gt;{{ initials }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;label class&#x3D;&quot;position-absolute bottom-0 end-0 btn btn-sm btn-primary rounded-circle p-1&quot;
+                       style&#x3D;&quot;width:28px;height:28px;cursor:pointer&quot; title&#x3D;&quot;Change photo&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-camera-fill&quot; style&#x3D;&quot;font-size:0.7rem&quot;&gt;&lt;/i&gt;
+                  &lt;input type&#x3D;&quot;file&quot; accept&#x3D;&quot;image/*&quot; class&#x3D;&quot;d-none&quot; (change)&#x3D;&quot;onPhotoChange($event)&quot;&gt;
+                &lt;/label&gt;
+              &lt;/div&gt;
+ 
+              &lt;h5 class&#x3D;&quot;fw-bold mb-0&quot;&gt;{{ displayName }}&lt;/h5&gt;
+              &lt;p class&#x3D;&quot;text-muted small mb-1&quot;&gt;{{ displayEmail }}&lt;/p&gt;
+              &lt;span class&#x3D;&quot;badge mb-3&quot;
+                    [class.bg-primary]&#x3D;&quot;!isAuth0User&quot;
+                    [class.bg-success]&#x3D;&quot;isAuth0User&quot;&gt;
+                {{ isAuth0User ? &#x27;🔐 Social Account&#x27; : &#x27;✈ SkyBook Account&#x27; }}
+              &lt;/span&gt;
+ 
+              &lt;!-- Edit toggle --&gt;
+              &lt;button class&#x3D;&quot;btn btn-outline-primary btn-sm w-100 mb-2&quot;
+                      (click)&#x3D;&quot;editingProfile &#x3D; !editingProfile&quot;&gt;
+                &lt;i class&#x3D;&quot;bi&quot; [class.bi-pencil]&#x3D;&quot;!editingProfile&quot;
+                              [class.bi-x-lg]&#x3D;&quot;editingProfile&quot; class&#x3D;&quot;me-1&quot;&gt;&lt;/i&gt;
+                {{ editingProfile ? &#x27;Cancel&#x27; : &#x27;Edit Profile&#x27; }}
+              &lt;/button&gt;
+ 
+              &lt;!-- Edit form --&gt;
+              &lt;div *ngIf&#x3D;&quot;editingProfile&quot; class&#x3D;&quot;text-start mt-3 border-top pt-3&quot;&gt;
+                &lt;form [formGroup]&#x3D;&quot;profileForm&quot; (ngSubmit)&#x3D;&quot;saveProfile()&quot;&gt;
+                  &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Full Name&lt;/label&gt;
+                    &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                           formControlName&#x3D;&quot;fullName&quot; placeholder&#x3D;&quot;Your full name&quot;&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Mobile Number&lt;/label&gt;
+                    &lt;input type&#x3D;&quot;tel&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                           formControlName&#x3D;&quot;mobile&quot; placeholder&#x3D;&quot;+44 7000 000000&quot;&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Nationality&lt;/label&gt;
+                    &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                           formControlName&#x3D;&quot;nationality&quot; placeholder&#x3D;&quot;e.g. British&quot;&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;About&lt;/label&gt;
+                    &lt;textarea class&#x3D;&quot;form-control form-control-sm&quot; rows&#x3D;&quot;2&quot;
+                              formControlName&#x3D;&quot;about&quot; placeholder&#x3D;&quot;Short bio...&quot;&gt;&lt;/textarea&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label small fw-semibold&quot;&gt;Passport Photo&lt;/label&gt;
+                    &lt;input type&#x3D;&quot;file&quot; class&#x3D;&quot;form-control form-control-sm&quot;
+                           accept&#x3D;&quot;image/*&quot; (change)&#x3D;&quot;onPassportPhotoChange($event)&quot;&gt;
+                    &lt;div class&#x3D;&quot;form-text text-danger small&quot;&gt;
+                      ⚠ Passport number cannot be changed after booking.
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary btn-sm w-100&quot;&gt;
+                    &lt;i class&#x3D;&quot;bi bi-check me-1&quot;&gt;&lt;/i&gt;Save Changes
+                  &lt;/button&gt;
+                &lt;/form&gt;
+              &lt;/div&gt;
+ 
+              &lt;!-- Profile summary --&gt;
+              &lt;div class&#x3D;&quot;text-start mt-2 border-top pt-2 small&quot; *ngIf&#x3D;&quot;!editingProfile&quot;&gt;
+                &lt;div class&#x3D;&quot;text-muted mb-1 fw-semibold small&quot;&gt;PROFILE INFO&lt;/div&gt;
+                &lt;div class&#x3D;&quot;mb-1&quot; *ngIf&#x3D;&quot;profile.mobile&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-phone text-muted me-2&quot;&gt;&lt;/i&gt;{{ profile.mobile }}
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;mb-1&quot; *ngIf&#x3D;&quot;profile.nationality&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-flag text-muted me-2&quot;&gt;&lt;/i&gt;{{ profile.nationality }}
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;mb-1&quot; *ngIf&#x3D;&quot;profile.about&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-info-circle text-muted me-2&quot;&gt;&lt;/i&gt;{{ profile.about }}
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;text-muted small&quot; *ngIf&#x3D;&quot;!profile.mobile &amp;&amp; !profile.nationality &amp;&amp; !profile.about&quot;&gt;
+                  Click &quot;Edit Profile&quot; to add your details.
+                &lt;/div&gt;
+                &lt;div *ngIf&#x3D;&quot;passportPhotoUrl&quot; class&#x3D;&quot;mt-2&quot;&gt;
+                  &lt;div class&#x3D;&quot;text-muted mb-1 fw-semibold small&quot;&gt;PASSPORT PHOTO&lt;/div&gt;
+                  &lt;img [src]&#x3D;&quot;passportPhotoUrl&quot; class&#x3D;&quot;img-thumbnail rounded&quot; style&#x3D;&quot;max-height:80px&quot;&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+ 
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+ 
+        &lt;!-- Bookings Panel --&gt;
+        &lt;div class&#x3D;&quot;col-lg-8&quot;&gt;
+ 
+          &lt;ul class&#x3D;&quot;nav nav-pills mb-4&quot;&gt;
+            &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+              &lt;button class&#x3D;&quot;nav-link&quot; [class.active]&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;bookings&#x27;&quot;
+                      (click)&#x3D;&quot;activeTab&#x3D;&#x27;bookings&#x27;&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-ticket-perforated me-1&quot;&gt;&lt;/i&gt;My Bookings
+                &lt;span class&#x3D;&quot;badge bg-white text-primary ms-1&quot; *ngIf&#x3D;&quot;myBookings.length&gt;0&quot;&gt;
+                  {{ myBookings.length }}
+                &lt;/span&gt;
+              &lt;/button&gt;
+            &lt;/li&gt;
+            &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+              &lt;button class&#x3D;&quot;nav-link&quot; [class.active]&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;saved&#x27;&quot;
+                      (click)&#x3D;&quot;activeTab&#x3D;&#x27;saved&#x27;&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-bookmark me-1&quot;&gt;&lt;/i&gt;Saved Flights
+              &lt;/button&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+ 
+          &lt;!-- Bookings Tab --&gt;
+          &lt;div *ngIf&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;bookings&#x27;&quot;&gt;
+ 
+            &lt;!-- Loading --&gt;
+            &lt;div class&#x3D;&quot;text-center py-4&quot; *ngIf&#x3D;&quot;bookingsLoading&quot;&gt;
+              &lt;div class&#x3D;&quot;spinner-border text-primary&quot;&gt;&lt;/div&gt;
+              &lt;p class&#x3D;&quot;mt-2 text-muted small&quot;&gt;Loading your bookings...&lt;/p&gt;
+            &lt;/div&gt;
+ 
+            &lt;!-- API not running --&gt;
+            &lt;div class&#x3D;&quot;alert alert-warning rounded-4&quot; *ngIf&#x3D;&quot;!bookingsLoading &amp;&amp; !apiConnected&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-exclamation-triangle-fill me-2&quot;&gt;&lt;/i&gt;
+              &lt;strong&gt;Flask API not running.&lt;/strong&gt;
+              Start it with: &lt;code&gt;python app.py&lt;/code&gt;
+            &lt;/div&gt;
+ 
+            &lt;!-- No bookings --&gt;
+            &lt;div class&#x3D;&quot;text-center py-5&quot;
+                 *ngIf&#x3D;&quot;!bookingsLoading &amp;&amp; apiConnected &amp;&amp; myBookings.length&#x3D;&#x3D;&#x3D;0&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-ticket text-muted&quot; style&#x3D;&quot;font-size:3.5rem&quot;&gt;&lt;/i&gt;
+              &lt;h5 class&#x3D;&quot;mt-3 fw-semibold&quot;&gt;No bookings yet&lt;/h5&gt;
+              &lt;p class&#x3D;&quot;text-muted small&quot;&gt;Book a flight to see it here&lt;/p&gt;
+              &lt;a routerLink&#x3D;&quot;/flights&quot; class&#x3D;&quot;btn btn-primary btn-sm px-4&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-search me-1&quot;&gt;&lt;/i&gt;Browse Flights
+              &lt;/a&gt;
+            &lt;/div&gt;
+ 
+            &lt;!-- Bookings list --&gt;
+            &lt;div *ngFor&#x3D;&quot;let b of myBookings&quot;
+                 class&#x3D;&quot;card border-0 shadow-sm rounded-4 mb-3 booking-card&quot;&gt;
+              &lt;div class&#x3D;&quot;card-header d-flex justify-content-between align-items-center py-2 px-3&quot;
+                   [ngClass]&#x3D;&quot;flightHeaderClass(b.flight.status)&quot;&gt;
+                &lt;div&gt;
+                  &lt;span class&#x3D;&quot;badge bg-primary me-2&quot;&gt;{{ b.flight.flight_number }}&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;fw-semibold&quot;&gt;{{ b.flight.airline }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;span class&#x3D;&quot;badge&quot; [ngClass]&#x3D;&quot;flightStatusBadge(b.flight.status)&quot;&gt;
+                  {{ b.flight.status | titlecase }}
+                &lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;card-body p-3&quot;&gt;
+                &lt;div class&#x3D;&quot;row align-items-center g-3&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-md-7&quot;&gt;
+                    &lt;div class&#x3D;&quot;d-flex align-items-center gap-3&quot;&gt;
+                      &lt;div class&#x3D;&quot;text-center&quot;&gt;
+                        &lt;div class&#x3D;&quot;fs-5 fw-bold text-primary&quot;&gt;{{ b.flight.origin.code }}&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;small text-muted&quot;&gt;{{ b.flight.origin.city }}&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;small fw-semibold&quot;&gt;{{ b.flight.departure_time | date:&#x27;dd MMM, HH:mm&#x27; }}&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class&#x3D;&quot;flex-grow-1 text-center&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-airplane-fill text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class&#x3D;&quot;small text-muted&quot;&gt;{{ b.flight.aircraft_type }}&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class&#x3D;&quot;text-center&quot;&gt;
+                        &lt;div class&#x3D;&quot;fs-5 fw-bold text-primary&quot;&gt;{{ b.flight.destination.code }}&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;small text-muted&quot;&gt;{{ b.flight.destination.city }}&lt;/div&gt;
+                        &lt;div class&#x3D;&quot;small fw-semibold&quot;&gt;{{ b.flight.arrival_time | date:&#x27;dd MMM, HH:mm&#x27; }}&lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col-md-5&quot;&gt;
+                    &lt;div class&#x3D;&quot;d-flex flex-column gap-1&quot;&gt;
+                      &lt;span class&#x3D;&quot;badge bg-light text-dark border text-start px-2 py-1&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-person me-1&quot;&gt;&lt;/i&gt;{{ b.passenger.full_name }}
+                      &lt;/span&gt;
+                      &lt;span class&#x3D;&quot;badge bg-light text-dark border text-start px-2 py-1&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-credit-card me-1&quot;&gt;&lt;/i&gt;{{ b.passenger.passport_number }}
+                      &lt;/span&gt;
+                      &lt;div class&#x3D;&quot;d-flex gap-1&quot;&gt;
+                        &lt;span class&#x3D;&quot;badge bg-secondary&quot;&gt;Seat {{ b.passenger.seat_number }}&lt;/span&gt;
+                        &lt;span class&#x3D;&quot;badge bg-info text-dark&quot;&gt;{{ b.passenger.seat_class | titlecase }}&lt;/span&gt;
+                        &lt;span class&#x3D;&quot;badge&quot; [ngClass]&#x3D;&quot;bookingStatusBadge(b.passenger.booking_status)&quot;&gt;
+                          {{ b.passenger.booking_status | titlecase }}
+                        &lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+ 
+          &lt;/div&gt;
+ 
+          &lt;!-- Saved Tab --&gt;
+          &lt;div *ngIf&#x3D;&quot;activeTab&#x3D;&#x3D;&#x3D;&#x27;saved&#x27;&quot;&gt;
+            &lt;div class&#x3D;&quot;text-center py-5&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-bookmark text-muted&quot; style&#x3D;&quot;font-size:3rem&quot;&gt;&lt;/i&gt;
+              &lt;p class&#x3D;&quot;mt-2 text-muted&quot;&gt;No saved flights yet&lt;/p&gt;
+              &lt;a routerLink&#x3D;&quot;/flights&quot; class&#x3D;&quot;btn btn-outline-primary btn-sm&quot;&gt;Browse Flights&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+ 
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &#x60;,
+  styles: [&#x60;
+    .booking-card { transition: box-shadow 0.2s; }
+    .booking-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1) !important; }
+  &#x60;]
+})
+export class MyBookingsComponent implements OnInit {
+  activeTab &#x3D; &#x27;bookings&#x27;;
+  editingProfile &#x3D; false;
+  profilePicture: string | null &#x3D; null;
+  passportPhotoUrl: string | null &#x3D; null;
+  profileForm: FormGroup;
+  profile: any &#x3D; { mobile: &#x27;&#x27;, nationality: &#x27;&#x27;, about: &#x27;&#x27; };
+ 
+  displayName &#x3D; &#x27;User&#x27;;
+  displayEmail &#x3D; &#x27;&#x27;;
+  initials &#x3D; &#x27;U&#x27;;
+  isAuth0User &#x3D; false;
+ 
+  myBookings: BookingRow[] &#x3D; [];
+  bookingsLoading &#x3D; false;
+  apiConnected &#x3D; false;
+ 
+  toast &#x3D; { visible: false, message: &#x27;&#x27; };
+ 
+  // CRITICAL: unique key per user — prevents data leaking between users
+  private userKey &#x3D; &#x27;&#x27;;
+  private currentUsername &#x3D; &#x27;&#x27;;
+ 
+  constructor(
+    private authService: AuthService,
+    private auth0: Auth0Service,
+    private flightsService: FlightsService,
+    private passengersService: PassengersService,
+    private fb: FormBuilder
+  ) {
+    this.profileForm &#x3D; this.fb.group({
+      fullName:    [&#x27;&#x27;],
+      mobile:      [&#x27;&#x27;],
+      nationality: [&#x27;&#x27;],
+      about:       [&#x27;&#x27;]
+    });
+  }
+ 
+  ngOnInit(): void {
+    this.authService.currentUser$.subscribe(user &#x3D;&gt; {
+      if (user &amp;&amp; user.username !&#x3D;&#x3D; this.currentUsername) {
+        this.currentUsername &#x3D; user.username;
+        this.displayName &#x3D; user.username;
+        this.initials &#x3D; user.username.charAt(0).toUpperCase();
+        this.isAuth0User &#x3D; user.isAuth0 ?? false;
+        if (!this.isAuth0User &amp;&amp; user.picture) {
+          this.profilePicture &#x3D; user.picture;
+        }
+        // Each user gets their own isolated storage key
+        this.userKey &#x3D; &#x60;skybook_${user.username}&#x60;;
+        this.loadProfileFromStorage();
+        this.loadMyBookings();
+      }
+    });
+ 
+    this.auth0.user$.subscribe(u &#x3D;&gt; {
+      if (u) {
+        this.displayName &#x3D; u.name ?? u.email ?? &#x27;User&#x27;;
+        this.displayEmail &#x3D; u.email ?? &#x27;&#x27;;
+        this.profilePicture &#x3D; u.picture ?? null;
+        this.initials &#x3D; (u.name ?? &#x27;U&#x27;).charAt(0).toUpperCase();
+        this.isAuth0User &#x3D; true;
+        const emailKey &#x3D; (u.email ?? &#x27;auth0user&#x27;).replace(/[@.]/g, &#x27;_&#x27;);
+        this.userKey &#x3D; &#x60;skybook_auth0_${emailKey}&#x60;;
+        this.loadProfileFromStorage();
+        this.loadMyBookings();
+      }
+    });
+  }
+ 
+  loadProfileFromStorage(): void {
+    if (!this.userKey) return;
+    const saved &#x3D; localStorage.getItem(this.userKey);
+    if (saved) {
+      try {
+        const p &#x3D; JSON.parse(saved);
+        this.profile &#x3D; { mobile: p.mobile||&#x27;&#x27;, nationality: p.nationality||&#x27;&#x27;, about: p.about||&#x27;&#x27; };
+        this.profileForm.patchValue({ fullName: p.fullName||this.displayName, ...this.profile });
+        if (!this.isAuth0User) this.profilePicture &#x3D; p.picture ?? this.profilePicture;
+        this.passportPhotoUrl &#x3D; p.passportPhoto ?? null;
+      } catch {}
+    }
+  }
+ 
+  loadMyBookings(): void {
+    this.bookingsLoading &#x3D; true;
+    this.myBookings &#x3D; [];
+ 
+    this.flightsService.getFlights(1, 200).subscribe({
+      next: (res) &#x3D;&gt; {
+        this.apiConnected &#x3D; true;
+        const flights: Flight[] &#x3D; res.flights ?? (res as any);
+ 
+        // Get saved passports for this user
+        const passportKey &#x3D; &#x60;${this.userKey}_passports&#x60;;
+        const myPassports: string[] &#x3D; JSON.parse(localStorage.getItem(passportKey) ?? &#x27;[]&#x27;);
+ 
+        const requests &#x3D; flights.map(f &#x3D;&gt;
+          this.passengersService.getPassengers(f._id).pipe(catchError(() &#x3D;&gt; of([])))
+        );
+ 
+        forkJoin(requests).subscribe({
+          next: (allPassengers) &#x3D;&gt; {
+            flights.forEach((flight, idx) &#x3D;&gt; {
+              const passengers: Passenger[] &#x3D; allPassengers[idx] as Passenger[];
+              passengers.forEach(p &#x3D;&gt; {
+                // Only show if passport number matches what this user booked
+                if (myPassports.includes(p.passport_number)) {
+                  this.myBookings.push({ flight, passenger: p });
+                }
+              });
+            });
+            this.bookingsLoading &#x3D; false;
+          },
+          error: () &#x3D;&gt; { this.bookingsLoading &#x3D; false; }
+        });
+      },
+      error: () &#x3D;&gt; {
+        this.apiConnected &#x3D; false;
+        this.bookingsLoading &#x3D; false;
+      }
+    });
+  }
+ 
+  onPhotoChange(event: Event): void {
+    const file &#x3D; (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    const reader &#x3D; new FileReader();
+    reader.onload &#x3D; (e) &#x3D;&gt; {
+      this.profilePicture &#x3D; e.target?.result as string;
+      this.saveToStorage();
+    };
+    reader.readAsDataURL(file);
+  }
+ 
+  onPassportPhotoChange(event: Event): void {
+    const file &#x3D; (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    const reader &#x3D; new FileReader();
+    reader.onload &#x3D; (e) &#x3D;&gt; { this.passportPhotoUrl &#x3D; e.target?.result as string; };
+    reader.readAsDataURL(file);
+  }
+ 
+  saveProfile(): void {
+    const val &#x3D; this.profileForm.value;
+    this.profile &#x3D; { mobile: val.mobile, nationality: val.nationality, about: val.about };
+    this.saveToStorage();
+    this.editingProfile &#x3D; false;
+    this.toast &#x3D; { visible: true, message: &#x27;Profile saved successfully!&#x27; };
+    setTimeout(() &#x3D;&gt; this.toast.visible &#x3D; false, 3000);
+  }
+ 
+  saveToStorage(): void {
+    if (!this.userKey) return;
+    localStorage.setItem(this.userKey, JSON.stringify({
+      fullName: this.profileForm.value.fullName,
+      ...this.profile,
+      picture: this.isAuth0User ? null : this.profilePicture,
+      passportPhoto: this.passportPhotoUrl
+    }));
+  }
+ 
+  flightStatusBadge(status: string): string {
+    const m: Record&lt;string,string&gt; &#x3D; {
+      scheduled:&#x27;bg-secondary&#x27;, boarding:&#x27;bg-success&#x27;,
+      departed:&#x27;bg-info text-dark&#x27;, arrived:&#x27;bg-dark&#x27;,
+      delayed:&#x27;bg-warning text-dark&#x27;, cancelled:&#x27;bg-danger&#x27;
+    };
+    return m[status] ?? &#x27;bg-secondary&#x27;;
+  }
+ 
+  flightHeaderClass(status: string): string {
+    const m: Record&lt;string,string&gt; &#x3D; {
+      scheduled:&#x27;bg-light text-dark&#x27;, boarding:&#x27;bg-success bg-opacity-10&#x27;,
+      departed:&#x27;bg-info bg-opacity-10&#x27;, arrived:&#x27;bg-dark bg-opacity-10&#x27;,
+      delayed:&#x27;bg-warning bg-opacity-10&#x27;, cancelled:&#x27;bg-danger bg-opacity-10&#x27;
+    };
+    return m[status] ?? &#x27;bg-light text-dark&#x27;;
+  }
+ 
+  bookingStatusBadge(status: string): string {
+    const m: Record&lt;string,string&gt; &#x3D; {
+      confirmed:&#x27;bg-success&#x27;, cancelled:&#x27;bg-danger&#x27;,
+      checked_in:&#x27;bg-info text-dark&#x27;, booked:&#x27;bg-primary&#x27;
+    };
+    return m[status] ?? &#x27;bg-secondary&#x27;;
+  }
+}</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="styleData">
+            <pre class="line-numbers"><code class="language-scss">
+    .booking-card { transition: box-shadow 0.2s; }
+    .booking-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1) !important; }
+  
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Toast --><div class="position-fixed top-0 end-0 p-3" style="z-index:9999">  <div class="toast show align-items-center text-white border-0 bg-success"       *ngIf="toast.visible" style="min-width:280px">    <div class="d-flex">      <div class="toast-body fw-semibold">        <i class="bi bi-check-circle-fill me-2"></i>{{ toast.message }}      </div>      <button class="btn-close btn-close-white me-2 m-auto"              (click)="toast.visible=false"></button>    </div>  </div></div><div class="bg-primary text-white py-4 mb-4">  <div class="container">    <h2 class="fw-bold mb-0">      <i class="bi bi-person-circle me-2"></i>My Profile & Bookings    </h2>    <p class="mb-0 text-white-50">Welcome, {{ displayName }}</p>  </div></div><div class="container pb-5">  <div class="row g-4">    <!-- Profile Panel -->    <div class="col-lg-4">      <div class="card border-0 shadow-sm rounded-4 sticky-top" style="top:20px">        <div class="card-body text-center p-4">          <!-- Avatar -->          <div class="position-relative d-inline-block mb-3">            <img *ngIf="profilePicture" [src]="profilePicture"                 class="rounded-circle border border-3 border-primary"                 width="90" height="90" style="object-fit:cover">            <div *ngIf="!profilePicture"                 class="rounded-circle bg-primary d-flex align-items-center justify-content-center mx-auto"                 style="width:90px;height:90px">              <span class="text-white fw-bold fs-2">{{ initials }}</span>            </div>            <label class="position-absolute bottom-0 end-0 btn btn-sm btn-primary rounded-circle p-1"                   style="width:28px;height:28px;cursor:pointer" title="Change photo">              <i class="bi bi-camera-fill" style="font-size:0.7rem"></i>              <input type="file" accept="image/*" class="d-none" (change)="onPhotoChange($event)">            </label>          </div>          <h5 class="fw-bold mb-0">{{ displayName }}</h5>          <p class="text-muted small mb-1">{{ displayEmail }}</p>          <span class="badge mb-3"                [class.bg-primary]="!isAuth0User"                [class.bg-success]="isAuth0User">            {{ isAuth0User ? \'🔐 Social Account\' : \'✈ SkyBook Account\' }}          </span>          <!-- Edit toggle -->          <button class="btn btn-outline-primary btn-sm w-100 mb-2"                  (click)="editingProfile = !editingProfile">            <i class="bi" [class.bi-pencil]="!editingProfile"                          [class.bi-x-lg]="editingProfile" class="me-1"></i>            {{ editingProfile ? \'Cancel\' : \'Edit Profile\' }}          </button>          <!-- Edit form -->          <div *ngIf="editingProfile" class="text-start mt-3 border-top pt-3">            <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">              <div class="mb-2">                <label class="form-label small fw-semibold">Full Name</label>                <input type="text" class="form-control form-control-sm"                       formControlName="fullName" placeholder="Your full name">              </div>              <div class="mb-2">                <label class="form-label small fw-semibold">Mobile Number</label>                <input type="tel" class="form-control form-control-sm"                       formControlName="mobile" placeholder="+44 7000 000000">              </div>              <div class="mb-2">                <label class="form-label small fw-semibold">Nationality</label>                <input type="text" class="form-control form-control-sm"                       formControlName="nationality" placeholder="e.g. British">              </div>              <div class="mb-2">                <label class="form-label small fw-semibold">About</label>                <textarea class="form-control form-control-sm" rows="2"                          formControlName="about" placeholder="Short bio..."></textarea>              </div>              <div class="mb-3">                <label class="form-label small fw-semibold">Passport Photo</label>                <input type="file" class="form-control form-control-sm"                       accept="image/*" (change)="onPassportPhotoChange($event)">                <div class="form-text text-danger small">                  ⚠ Passport number cannot be changed after booking.                </div>              </div>              <button type="submit" class="btn btn-primary btn-sm w-100">                <i class="bi bi-check me-1"></i>Save Changes              </button>            </form>          </div>          <!-- Profile summary -->          <div class="text-start mt-2 border-top pt-2 small" *ngIf="!editingProfile">            <div class="text-muted mb-1 fw-semibold small">PROFILE INFO</div>            <div class="mb-1" *ngIf="profile.mobile">              <i class="bi bi-phone text-muted me-2"></i>{{ profile.mobile }}            </div>            <div class="mb-1" *ngIf="profile.nationality">              <i class="bi bi-flag text-muted me-2"></i>{{ profile.nationality }}            </div>            <div class="mb-1" *ngIf="profile.about">              <i class="bi bi-info-circle text-muted me-2"></i>{{ profile.about }}            </div>            <div class="text-muted small" *ngIf="!profile.mobile && !profile.nationality && !profile.about">              Click "Edit Profile" to add your details.            </div>            <div *ngIf="passportPhotoUrl" class="mt-2">              <div class="text-muted mb-1 fw-semibold small">PASSPORT PHOTO</div>              <img [src]="passportPhotoUrl" class="img-thumbnail rounded" style="max-height:80px">            </div>          </div>        </div>      </div>    </div>    <!-- Bookings Panel -->    <div class="col-lg-8">      <ul class="nav nav-pills mb-4">        <li class="nav-item">          <button class="nav-link" [class.active]="activeTab===\'bookings\'"                  (click)="activeTab=\'bookings\'">            <i class="bi bi-ticket-perforated me-1"></i>My Bookings            <span class="badge bg-white text-primary ms-1" *ngIf="myBookings.length>0">              {{ myBookings.length }}            </span>          </button>        </li>        <li class="nav-item">          <button class="nav-link" [class.active]="activeTab===\'saved\'"                  (click)="activeTab=\'saved\'">            <i class="bi bi-bookmark me-1"></i>Saved Flights          </button>        </li>      </ul>      <!-- Bookings Tab -->      <div *ngIf="activeTab===\'bookings\'">        <!-- Loading -->        <div class="text-center py-4" *ngIf="bookingsLoading">          <div class="spinner-border text-primary"></div>          <p class="mt-2 text-muted small">Loading your bookings...</p>        </div>        <!-- API not running -->        <div class="alert alert-warning rounded-4" *ngIf="!bookingsLoading && !apiConnected">          <i class="bi bi-exclamation-triangle-fill me-2"></i>          <strong>Flask API not running.</strong>          Start it with: <code>python app.py</code>        </div>        <!-- No bookings -->        <div class="text-center py-5"             *ngIf="!bookingsLoading && apiConnected && myBookings.length===0">          <i class="bi bi-ticket text-muted" style="font-size:3.5rem"></i>          <h5 class="mt-3 fw-semibold">No bookings yet</h5>          <p class="text-muted small">Book a flight to see it here</p>          <a routerLink="/flights" class="btn btn-primary btn-sm px-4">            <i class="bi bi-search me-1"></i>Browse Flights          </a>        </div>        <!-- Bookings list -->        <div *ngFor="let b of myBookings"             class="card border-0 shadow-sm rounded-4 mb-3 booking-card">          <div class="card-header d-flex justify-content-between align-items-center py-2 px-3"               [ngClass]="flightHeaderClass(b.flight.status)">            <div>              <span class="badge bg-primary me-2">{{ b.flight.flight_number }}</span>              <span class="fw-semibold">{{ b.flight.airline }}</span>            </div>            <span class="badge" [ngClass]="flightStatusBadge(b.flight.status)">              {{ b.flight.status | titlecase }}            </span>          </div>          <div class="card-body p-3">            <div class="row align-items-center g-3">              <div class="col-md-7">                <div class="d-flex align-items-center gap-3">                  <div class="text-center">                    <div class="fs-5 fw-bold text-primary">{{ b.flight.origin.code }}</div>                    <div class="small text-muted">{{ b.flight.origin.city }}</div>                    <div class="small fw-semibold">{{ b.flight.departure_time | date:\'dd MMM, HH:mm\' }}</div>                  </div>                  <div class="flex-grow-1 text-center">                    <i class="bi bi-airplane-fill text-primary"></i>                    <div class="small text-muted">{{ b.flight.aircraft_type }}</div>                  </div>                  <div class="text-center">                    <div class="fs-5 fw-bold text-primary">{{ b.flight.destination.code }}</div>                    <div class="small text-muted">{{ b.flight.destination.city }}</div>                    <div class="small fw-semibold">{{ b.flight.arrival_time | date:\'dd MMM, HH:mm\' }}</div>                  </div>                </div>              </div>              <div class="col-md-5">                <div class="d-flex flex-column gap-1">                  <span class="badge bg-light text-dark border text-start px-2 py-1">                    <i class="bi bi-person me-1"></i>{{ b.passenger.full_name }}                  </span>                  <span class="badge bg-light text-dark border text-start px-2 py-1">                    <i class="bi bi-credit-card me-1"></i>{{ b.passenger.passport_number }}                  </span>                  <div class="d-flex gap-1">                    <span class="badge bg-secondary">Seat {{ b.passenger.seat_number }}</span>                    <span class="badge bg-info text-dark">{{ b.passenger.seat_class | titlecase }}</span>                    <span class="badge" [ngClass]="bookingStatusBadge(b.passenger.booking_status)">                      {{ b.passenger.booking_status | titlecase }}                    </span>                  </div>                </div>              </div>            </div>          </div>        </div>      </div>      <!-- Saved Tab -->      <div *ngIf="activeTab===\'saved\'">        <div class="text-center py-5">          <i class="bi bi-bookmark text-muted" style="font-size:3rem"></i>          <p class="mt-2 text-muted">No saved flights yet</p>          <a routerLink="/flights" class="btn btn-outline-primary btn-sm">Browse Flights</a>        </div>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookingComponent', 'selector': 'app-booking'},{'name': 'FlightCardComponent', 'selector': 'app-flight-card'},{'name': 'FlightDetailComponent', 'selector': 'app-flight-detail'},{'name': 'FlightsComponent', 'selector': 'app-flights'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'Login', 'selector': 'app-login'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyBookings', 'selector': 'app-my-bookings'},{'name': 'MyBookingsComponent', 'selector': 'app-my-bookings'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PassengerFormComponent', 'selector': 'app-passenger-form'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'MyBookingsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MyBookingsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

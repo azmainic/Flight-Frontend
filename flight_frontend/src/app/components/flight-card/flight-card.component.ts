@@ -8,33 +8,35 @@ import { Flight } from '../../models/flight.model';
   standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
-    <div class="card h-100 shadow-sm border-0 flight-card">
-      <div class="card-header d-flex justify-content-between align-items-center"
+    <div class="card h-100 shadow-sm border-0 flight-card rounded-4 overflow-hidden">
+
+      <div class="card-header d-flex justify-content-between align-items-center py-2 px-3"
            [ngClass]="headerClass">
-        <span class="fw-bold">{{ flight.airline }}</span>
+        <div>
+          <span class="fw-bold">{{ flight.airline }}</span>
+          <span class="ms-2 text-muted small">{{ flight.flight_number }}</span>
+        </div>
         <span class="badge" [ngClass]="statusBadgeClass">{{ flight.status | titlecase }}</span>
       </div>
 
-      <div class="card-body">
+      <div class="card-body px-3 py-3">
+
         <!-- Route -->
         <div class="d-flex align-items-center justify-content-between mb-3">
           <div class="text-center">
-            <div class="fs-4 fw-bold text-primary">{{ flight.origin.code }}</div>
+            <div class="fs-3 fw-bold text-primary">{{ flight.origin.code }}</div>
             <div class="small text-muted">{{ flight.origin.city }}</div>
           </div>
-
           <div class="text-center flex-grow-1 px-2">
-            <div class="text-muted small">{{ flight.flight_number }}</div>
             <div class="d-flex align-items-center">
               <hr class="flex-grow-1 m-0">
-              <i class="bi bi-airplane-fill text-primary mx-1"></i>
+              <i class="bi bi-airplane-fill text-primary mx-2"></i>
               <hr class="flex-grow-1 m-0">
             </div>
             <div class="text-muted small">{{ flight.aircraft_type }}</div>
           </div>
-
           <div class="text-center">
-            <div class="fs-4 fw-bold text-primary">{{ flight.destination.code }}</div>
+            <div class="fs-3 fw-bold text-primary">{{ flight.destination.code }}</div>
             <div class="small text-muted">{{ flight.destination.city }}</div>
           </div>
         </div>
@@ -43,16 +45,35 @@ import { Flight } from '../../models/flight.model';
         <div class="row text-center g-2 mb-3">
           <div class="col-6">
             <div class="small text-muted">Departure</div>
-            <div class="fw-semibold">{{ flight.departure_time | date:'dd MMM, HH:mm' }}</div>
+            <div class="fw-semibold small">{{ flight.departure_time | date:'dd MMM, HH:mm' }}</div>
           </div>
           <div class="col-6">
             <div class="small text-muted">Arrival</div>
-            <div class="fw-semibold">{{ flight.arrival_time | date:'dd MMM, HH:mm' }}</div>
+            <div class="fw-semibold small">{{ flight.arrival_time | date:'dd MMM, HH:mm' }}</div>
           </div>
         </div>
+
+        <!-- Prices -->
+        <div class="rounded-3 p-2 mb-2" style="background:#f8f9fa">
+          <div class="row text-center g-1">
+            <div class="col-4">
+              <div class="small text-muted">Economy</div>
+              <div class="fw-bold text-success small">£199</div>
+            </div>
+            <div class="col-4 border-start border-end">
+              <div class="small text-muted">Business</div>
+              <div class="fw-bold text-primary small">£599</div>
+            </div>
+            <div class="col-4">
+              <div class="small text-muted">First</div>
+              <div class="fw-bold text-warning small">£1,299</div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="card-footer bg-transparent d-flex gap-2">
+      <div class="card-footer bg-transparent d-flex gap-2 px-3 pb-3 pt-0">
         <a [routerLink]="['/flights', flight._id]"
            class="btn btn-outline-primary btn-sm flex-grow-1">
           <i class="bi bi-info-circle me-1"></i>Details
@@ -74,12 +95,9 @@ export class FlightCardComponent {
 
   get statusBadgeClass(): string {
     const map: Record<string, string> = {
-      scheduled: 'bg-secondary',
-      boarding:  'bg-success',
-      departed:  'bg-info text-dark',
-      arrived:   'bg-dark',
-      delayed:   'bg-warning text-dark',
-      cancelled: 'bg-danger'
+      scheduled: 'bg-secondary', boarding: 'bg-success',
+      departed: 'bg-info text-dark', arrived: 'bg-dark',
+      delayed: 'bg-warning text-dark', cancelled: 'bg-danger'
     };
     return map[this.flight.status] ?? 'bg-secondary';
   }

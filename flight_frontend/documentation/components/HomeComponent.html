@@ -1,0 +1,1285 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>flight-frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">flight-frontend documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HomeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/home/home.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-home</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/router/RouterLink" target="_blank" >RouterLink</a></code>
+                                <code><a href="https://angular.io/api/forms/ReactiveFormsModule" target="_blank" >ReactiveFormsModule</a></code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+    .destination-card:hover img { transform: scale(1.05); }
+    .text-white-75 { color: rgba(255,255,255,0.75) !important; }
+  </code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;!-- Hero with background image --&gt;
+&lt;section class&#x3D;&quot;hero-section text-white position-relative&quot;
+         style&#x3D;&quot;background: linear-gradient(135deg, rgba(13,110,253,0.92) 0%, rgba(0,30,90,0.95) 100%),
+                url(&#x27;https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w&#x3D;1600&amp;q&#x3D;80&#x27;) center/cover no-repeat;
+                min-height: 520px;&quot;&gt;
+  &lt;div class&#x3D;&quot;container py-5 position-relative&quot; style&#x3D;&quot;z-index:2&quot;&gt;
+    &lt;div class&#x3D;&quot;row align-items-center min-vh-50 py-4&quot;&gt;
+      &lt;div class&#x3D;&quot;col-lg-6&quot;&gt;
+        &lt;span class&#x3D;&quot;badge bg-white text-primary mb-3 px-3 py-2&quot;&gt;
+          ✈ Book flights worldwide
+        &lt;/span&gt;
+        &lt;h1 class&#x3D;&quot;display-4 fw-bold mb-3 lh-sm&quot;&gt;
+          Your Journey&lt;br&gt;Starts Here
+        &lt;/h1&gt;
+        &lt;p class&#x3D;&quot;lead mb-4 text-white-75&quot;&gt;
+          Search and book flights with Emirates, Qatar Airways,
+          British Airways, and Lufthansa — all in one place.
+        &lt;/p&gt;
+        &lt;div class&#x3D;&quot;d-flex gap-3 flex-wrap&quot;&gt;
+          &lt;a routerLink&#x3D;&quot;/flights&quot; class&#x3D;&quot;btn btn-light btn-lg px-4 fw-semibold&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-search me-2&quot;&gt;&lt;/i&gt;Browse Flights
+          &lt;/a&gt;
+          &lt;a *ngIf&#x3D;&quot;!isLoggedIn&quot; routerLink&#x3D;&quot;/register&quot;
+             class&#x3D;&quot;btn btn-outline-light btn-lg px-4&quot;&gt;
+            Get Started Free
+          &lt;/a&gt;
+          &lt;a *ngIf&#x3D;&quot;isLoggedIn&quot; routerLink&#x3D;&quot;/my-bookings&quot;
+             class&#x3D;&quot;btn btn-outline-light btn-lg px-4&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-ticket-perforated me-2&quot;&gt;&lt;/i&gt;My Bookings
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-lg-6 d-none d-lg-flex justify-content-center align-items-center&quot;&gt;
+        &lt;div class&#x3D;&quot;text-center&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-airplane text-white&quot; style&#x3D;&quot;font-size:9rem;opacity:0.15&quot;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Quick search bar overlapping hero --&gt;
+    &lt;div class&#x3D;&quot;row mt-4&quot;&gt;
+      &lt;div class&#x3D;&quot;col-12&quot;&gt;
+        &lt;div class&#x3D;&quot;card border-0 shadow-lg rounded-4 p-4&quot;&gt;
+          &lt;form [formGroup]&#x3D;&quot;searchForm&quot; (ngSubmit)&#x3D;&quot;onSearch()&quot;&gt;
+            &lt;div class&#x3D;&quot;row g-3 align-items-end&quot;&gt;
+              &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;label class&#x3D;&quot;form-label fw-semibold small text-dark&quot;&gt;From&lt;/label&gt;
+                &lt;div class&#x3D;&quot;input-group&quot;&gt;
+                  &lt;span class&#x3D;&quot;input-group-text bg-light border-end-0&quot;&gt;
+                    &lt;i class&#x3D;&quot;bi bi-geo-alt text-primary&quot;&gt;&lt;/i&gt;
+                  &lt;/span&gt;
+                  &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control border-start-0 ps-0&quot;
+                         formControlName&#x3D;&quot;origin&quot;
+                         placeholder&#x3D;&quot;City or airport code&quot;&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;label class&#x3D;&quot;form-label fw-semibold small text-dark&quot;&gt;To&lt;/label&gt;
+                &lt;div class&#x3D;&quot;input-group&quot;&gt;
+                  &lt;span class&#x3D;&quot;input-group-text bg-light border-end-0&quot;&gt;
+                    &lt;i class&#x3D;&quot;bi bi-geo text-primary&quot;&gt;&lt;/i&gt;
+                  &lt;/span&gt;
+                  &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control border-start-0 ps-0&quot;
+                         formControlName&#x3D;&quot;destination&quot;
+                         placeholder&#x3D;&quot;City or airport code&quot;&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary w-100 py-2 fw-semibold&quot;&gt;
+                  &lt;i class&#x3D;&quot;bi bi-search me-2&quot;&gt;&lt;/i&gt;Search Flights
+                &lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Stats bar --&gt;
+&lt;section class&#x3D;&quot;bg-primary text-white py-3&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div class&#x3D;&quot;row text-center g-3&quot;&gt;
+      &lt;div class&#x3D;&quot;col-6 col-md-3&quot; *ngFor&#x3D;&quot;let stat of stats&quot;&gt;
+        &lt;div class&#x3D;&quot;fw-bold fs-5&quot;&gt;{{ stat.value }}&lt;/div&gt;
+        &lt;div class&#x3D;&quot;small text-white-50&quot;&gt;{{ stat.label }}&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Popular destinations with real images --&gt;
+&lt;section class&#x3D;&quot;py-5&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div class&#x3D;&quot;text-center mb-5&quot;&gt;
+      &lt;h2 class&#x3D;&quot;fw-bold&quot;&gt;Popular Destinations&lt;/h2&gt;
+      &lt;p class&#x3D;&quot;text-muted&quot;&gt;Most booked routes on SkyBook&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+      &lt;div class&#x3D;&quot;col-md-4&quot; *ngFor&#x3D;&quot;let dest of destinations&quot;&gt;
+        &lt;div class&#x3D;&quot;card border-0 shadow-sm overflow-hidden rounded-4 destination-card&quot;
+             style&#x3D;&quot;cursor:pointer&quot; (click)&#x3D;&quot;searchDestination(dest.code)&quot;&gt;
+          &lt;div style&#x3D;&quot;height:200px; overflow:hidden; position:relative&quot;&gt;
+            &lt;img [src]&#x3D;&quot;dest.image&quot; [alt]&#x3D;&quot;dest.city&quot;
+                 style&#x3D;&quot;width:100%;height:100%;object-fit:cover;transition:transform 0.3s&quot;&gt;
+            &lt;div style&#x3D;&quot;position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent)&quot;&gt;
+            &lt;/div&gt;
+            &lt;div style&#x3D;&quot;position:absolute;bottom:16px;left:16px&quot; class&#x3D;&quot;text-white&quot;&gt;
+              &lt;div class&#x3D;&quot;fw-bold fs-5&quot;&gt;{{ dest.city }}&lt;/div&gt;
+              &lt;div class&#x3D;&quot;small&quot;&gt;{{ dest.country }}&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div style&#x3D;&quot;position:absolute;top:12px;right:12px&quot;&gt;
+              &lt;span class&#x3D;&quot;badge bg-white text-primary fw-semibold&quot;&gt;{{ dest.code }}&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;card-body d-flex justify-content-between align-items-center py-2&quot;&gt;
+            &lt;span class&#x3D;&quot;text-muted small&quot;&gt;From&lt;/span&gt;
+            &lt;span class&#x3D;&quot;fw-bold text-success&quot;&gt;{{ dest.price }}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Features --&gt;
+&lt;section class&#x3D;&quot;py-5 bg-light&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;h2 class&#x3D;&quot;text-center fw-bold mb-5&quot;&gt;Why Choose SkyBook?&lt;/h2&gt;
+    &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+      &lt;div class&#x3D;&quot;col-md-4&quot; *ngFor&#x3D;&quot;let feature of features&quot;&gt;
+        &lt;div class&#x3D;&quot;card border-0 shadow-sm h-100 text-center p-4 rounded-4&quot;&gt;
+          &lt;i [class]&#x3D;&quot;&#x27;bi &#x27; + feature.icon + &#x27; text-primary mb-3&#x27;&quot; style&#x3D;&quot;font-size:2.5rem;&quot;&gt;&lt;/i&gt;
+          &lt;h5 class&#x3D;&quot;fw-bold&quot;&gt;{{ feature.title }}&lt;/h5&gt;
+          &lt;p class&#x3D;&quot;text-muted mb-0 small&quot;&gt;{{ feature.desc }}&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- Airlines --&gt;
+&lt;section class&#x3D;&quot;py-5&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;h2 class&#x3D;&quot;text-center fw-bold mb-5&quot;&gt;Our Airline Partners&lt;/h2&gt;
+    &lt;div class&#x3D;&quot;row g-4 justify-content-center&quot;&gt;
+      &lt;div class&#x3D;&quot;col-6 col-md-3&quot; *ngFor&#x3D;&quot;let airline of airlines&quot;&gt;
+        &lt;div class&#x3D;&quot;card border-0 shadow-sm text-center p-4 h-100 rounded-4&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-airplane text-primary mb-2&quot; style&#x3D;&quot;font-size:2rem;&quot;&gt;&lt;/i&gt;
+          &lt;div class&#x3D;&quot;fw-semibold&quot;&gt;{{ airline }}&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- CTA --&gt;
+&lt;section class&#x3D;&quot;py-5 bg-primary text-white&quot; *ngIf&#x3D;&quot;!isLoggedIn&quot;&gt;
+  &lt;div class&#x3D;&quot;container text-center&quot;&gt;
+    &lt;h2 class&#x3D;&quot;fw-bold mb-3&quot;&gt;Ready to fly?&lt;/h2&gt;
+    &lt;p class&#x3D;&quot;lead mb-4 text-white-75&quot;&gt;Join thousands of travellers booking smarter with SkyBook.&lt;/p&gt;
+    &lt;a routerLink&#x3D;&quot;/register&quot; class&#x3D;&quot;btn btn-light btn-lg px-5 fw-semibold me-3&quot;&gt;
+      Create Free Account
+    &lt;/a&gt;
+    &lt;a routerLink&#x3D;&quot;/login&quot; class&#x3D;&quot;btn btn-outline-light btn-lg px-5&quot;&gt;Sign In&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#airlines" >airlines</a>
+                            </li>
+                            <li>
+                                <a href="#destinations" >destinations</a>
+                            </li>
+                            <li>
+                                <a href="#features" >features</a>
+                            </li>
+                            <li>
+                                <a href="#isLoggedIn" >isLoggedIn</a>
+                            </li>
+                            <li>
+                                <a href="#searchForm" >searchForm</a>
+                            </li>
+                            <li>
+                                <a href="#stats" >stats</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSearch" >onSearch</a>
+                            </li>
+                            <li>
+                                <a href="#searchDestination" >searchDestination</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="234" class="link-to-prism">src/app/pages/home/home.component.ts:234</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="244"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:244</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSearch"></a>
+                    <span class="name">
+                        <span ><b>onSearch</b></span>
+                        <a href="#onSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSearch()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="250"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:250</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchDestination"></a>
+                    <span class="name">
+                        <span ><b>searchDestination</b></span>
+                        <a href="#searchDestination"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>searchDestination(code: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="257"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:257</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>code</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="airlines"></a>
+                    <span class="name">
+                        <span ><b>airlines</b></span>
+                        <a href="#airlines"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;Emirates&#x27;, &#x27;Qatar Airways&#x27;, &#x27;British Airways&#x27;, &#x27;Lufthansa&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="234" class="link-to-prism">src/app/pages/home/home.component.ts:234</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destinations"></a>
+                    <span class="name">
+                        <span ><b>destinations</b></span>
+                        <a href="#destinations"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    {
+      city: &#x27;London&#x27;, country: &#x27;United Kingdom&#x27;, code: &#x27;LHR&#x27;, price: &#x27;£89&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w&#x3D;600&amp;q&#x3D;80&#x27;
+    },
+    {
+      city: &#x27;Paris&#x27;, country: &#x27;France&#x27;, code: &#x27;CDG&#x27;, price: &#x27;£109&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w&#x3D;600&amp;q&#x3D;80&#x27;
+    },
+    {
+      city: &#x27;Dubai&#x27;, country: &#x27;UAE&#x27;, code: &#x27;DXB&#x27;, price: &#x27;£299&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w&#x3D;600&amp;q&#x3D;80&#x27;
+    },
+    {
+      city: &#x27;New York&#x27;, country: &#x27;USA&#x27;, code: &#x27;JFK&#x27;, price: &#x27;£399&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w&#x3D;600&amp;q&#x3D;80&#x27;
+    },
+    {
+      city: &#x27;Frankfurt&#x27;, country: &#x27;Germany&#x27;, code: &#x27;FRA&#x27;, price: &#x27;£129&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w&#x3D;600&amp;q&#x3D;80&#x27;
+    },
+    {
+      city: &#x27;New York&#x27;, country: &#x27;USA&#x27;, code: &#x27;JFK&#x27;, price: &#x27;£379&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w&#x3D;600&amp;q&#x3D;80&#x27;
+    }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">src/app/pages/home/home.component.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="features"></a>
+                    <span class="name">
+                        <span ><b>features</b></span>
+                        <a href="#features"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { icon: &#x27;bi-lightning-charge-fill&#x27;, title: &#x27;Instant Booking&#x27;,
+      desc: &#x27;Book your seat in seconds with our streamlined booking flow.&#x27; },
+    { icon: &#x27;bi-shield-check-fill&#x27;, title: &#x27;Secure &amp; Private&#x27;,
+      desc: &#x27;Industry-standard JWT authentication plus Google/Apple sign-in.&#x27; },
+    { icon: &#x27;bi-phone-fill&#x27;, title: &#x27;Mobile Friendly&#x27;,
+      desc: &#x27;Fully responsive design works perfectly on any device.&#x27; }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="225" class="link-to-prism">src/app/pages/home/home.component.ts:225</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoggedIn"></a>
+                    <span class="name">
+                        <span ><b>isLoggedIn</b></span>
+                        <a href="#isLoggedIn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">src/app/pages/home/home.component.ts:188</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchForm"></a>
+                    <span class="name">
+                        <span ><b>searchForm</b></span>
+                        <a href="#searchForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="189" class="link-to-prism">src/app/pages/home/home.component.ts:189</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stats"></a>
+                    <span class="name">
+                        <span ><b>stats</b></span>
+                        <a href="#stats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { value: &#x27;50+&#x27;, label: &#x27;Destinations&#x27; },
+    { value: &#x27;4&#x27;,   label: &#x27;Airlines&#x27; },
+    { value: &#x27;100+&#x27;, label: &#x27;Daily Flights&#x27; },
+    { value: &#x27;24/7&#x27;, label: &#x27;Support&#x27; }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">src/app/pages/home/home.component.ts:191</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { ReactiveFormsModule, FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
+
+@Component({
+  selector: &#x27;app-home&#x27;,
+  standalone: true,
+  imports: [CommonModule, RouterLink, ReactiveFormsModule],
+  template: &#x60;
+    &lt;!-- Hero with background image --&gt;
+    &lt;section class&#x3D;&quot;hero-section text-white position-relative&quot;
+             style&#x3D;&quot;background: linear-gradient(135deg, rgba(13,110,253,0.92) 0%, rgba(0,30,90,0.95) 100%),
+                    url(&#x27;https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w&#x3D;1600&amp;q&#x3D;80&#x27;) center/cover no-repeat;
+                    min-height: 520px;&quot;&gt;
+      &lt;div class&#x3D;&quot;container py-5 position-relative&quot; style&#x3D;&quot;z-index:2&quot;&gt;
+        &lt;div class&#x3D;&quot;row align-items-center min-vh-50 py-4&quot;&gt;
+          &lt;div class&#x3D;&quot;col-lg-6&quot;&gt;
+            &lt;span class&#x3D;&quot;badge bg-white text-primary mb-3 px-3 py-2&quot;&gt;
+              ✈ Book flights worldwide
+            &lt;/span&gt;
+            &lt;h1 class&#x3D;&quot;display-4 fw-bold mb-3 lh-sm&quot;&gt;
+              Your Journey&lt;br&gt;Starts Here
+            &lt;/h1&gt;
+            &lt;p class&#x3D;&quot;lead mb-4 text-white-75&quot;&gt;
+              Search and book flights with Emirates, Qatar Airways,
+              British Airways, and Lufthansa — all in one place.
+            &lt;/p&gt;
+            &lt;div class&#x3D;&quot;d-flex gap-3 flex-wrap&quot;&gt;
+              &lt;a routerLink&#x3D;&quot;/flights&quot; class&#x3D;&quot;btn btn-light btn-lg px-4 fw-semibold&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-search me-2&quot;&gt;&lt;/i&gt;Browse Flights
+              &lt;/a&gt;
+              &lt;a *ngIf&#x3D;&quot;!isLoggedIn&quot; routerLink&#x3D;&quot;/register&quot;
+                 class&#x3D;&quot;btn btn-outline-light btn-lg px-4&quot;&gt;
+                Get Started Free
+              &lt;/a&gt;
+              &lt;a *ngIf&#x3D;&quot;isLoggedIn&quot; routerLink&#x3D;&quot;/my-bookings&quot;
+                 class&#x3D;&quot;btn btn-outline-light btn-lg px-4&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-ticket-perforated me-2&quot;&gt;&lt;/i&gt;My Bookings
+              &lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-lg-6 d-none d-lg-flex justify-content-center align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;text-center&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-airplane text-white&quot; style&#x3D;&quot;font-size:9rem;opacity:0.15&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Quick search bar overlapping hero --&gt;
+        &lt;div class&#x3D;&quot;row mt-4&quot;&gt;
+          &lt;div class&#x3D;&quot;col-12&quot;&gt;
+            &lt;div class&#x3D;&quot;card border-0 shadow-lg rounded-4 p-4&quot;&gt;
+              &lt;form [formGroup]&#x3D;&quot;searchForm&quot; (ngSubmit)&#x3D;&quot;onSearch()&quot;&gt;
+                &lt;div class&#x3D;&quot;row g-3 align-items-end&quot;&gt;
+                  &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label fw-semibold small text-dark&quot;&gt;From&lt;/label&gt;
+                    &lt;div class&#x3D;&quot;input-group&quot;&gt;
+                      &lt;span class&#x3D;&quot;input-group-text bg-light border-end-0&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-geo-alt text-primary&quot;&gt;&lt;/i&gt;
+                      &lt;/span&gt;
+                      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control border-start-0 ps-0&quot;
+                             formControlName&#x3D;&quot;origin&quot;
+                             placeholder&#x3D;&quot;City or airport code&quot;&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                    &lt;label class&#x3D;&quot;form-label fw-semibold small text-dark&quot;&gt;To&lt;/label&gt;
+                    &lt;div class&#x3D;&quot;input-group&quot;&gt;
+                      &lt;span class&#x3D;&quot;input-group-text bg-light border-end-0&quot;&gt;
+                        &lt;i class&#x3D;&quot;bi bi-geo text-primary&quot;&gt;&lt;/i&gt;
+                      &lt;/span&gt;
+                      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control border-start-0 ps-0&quot;
+                             formControlName&#x3D;&quot;destination&quot;
+                             placeholder&#x3D;&quot;City or airport code&quot;&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+                    &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary w-100 py-2 fw-semibold&quot;&gt;
+                      &lt;i class&#x3D;&quot;bi bi-search me-2&quot;&gt;&lt;/i&gt;Search Flights
+                    &lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/form&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Stats bar --&gt;
+    &lt;section class&#x3D;&quot;bg-primary text-white py-3&quot;&gt;
+      &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;row text-center g-3&quot;&gt;
+          &lt;div class&#x3D;&quot;col-6 col-md-3&quot; *ngFor&#x3D;&quot;let stat of stats&quot;&gt;
+            &lt;div class&#x3D;&quot;fw-bold fs-5&quot;&gt;{{ stat.value }}&lt;/div&gt;
+            &lt;div class&#x3D;&quot;small text-white-50&quot;&gt;{{ stat.label }}&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Popular destinations with real images --&gt;
+    &lt;section class&#x3D;&quot;py-5&quot;&gt;
+      &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;div class&#x3D;&quot;text-center mb-5&quot;&gt;
+          &lt;h2 class&#x3D;&quot;fw-bold&quot;&gt;Popular Destinations&lt;/h2&gt;
+          &lt;p class&#x3D;&quot;text-muted&quot;&gt;Most booked routes on SkyBook&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+          &lt;div class&#x3D;&quot;col-md-4&quot; *ngFor&#x3D;&quot;let dest of destinations&quot;&gt;
+            &lt;div class&#x3D;&quot;card border-0 shadow-sm overflow-hidden rounded-4 destination-card&quot;
+                 style&#x3D;&quot;cursor:pointer&quot; (click)&#x3D;&quot;searchDestination(dest.code)&quot;&gt;
+              &lt;div style&#x3D;&quot;height:200px; overflow:hidden; position:relative&quot;&gt;
+                &lt;img [src]&#x3D;&quot;dest.image&quot; [alt]&#x3D;&quot;dest.city&quot;
+                     style&#x3D;&quot;width:100%;height:100%;object-fit:cover;transition:transform 0.3s&quot;&gt;
+                &lt;div style&#x3D;&quot;position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent)&quot;&gt;
+                &lt;/div&gt;
+                &lt;div style&#x3D;&quot;position:absolute;bottom:16px;left:16px&quot; class&#x3D;&quot;text-white&quot;&gt;
+                  &lt;div class&#x3D;&quot;fw-bold fs-5&quot;&gt;{{ dest.city }}&lt;/div&gt;
+                  &lt;div class&#x3D;&quot;small&quot;&gt;{{ dest.country }}&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div style&#x3D;&quot;position:absolute;top:12px;right:12px&quot;&gt;
+                  &lt;span class&#x3D;&quot;badge bg-white text-primary fw-semibold&quot;&gt;{{ dest.code }}&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;card-body d-flex justify-content-between align-items-center py-2&quot;&gt;
+                &lt;span class&#x3D;&quot;text-muted small&quot;&gt;From&lt;/span&gt;
+                &lt;span class&#x3D;&quot;fw-bold text-success&quot;&gt;{{ dest.price }}&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Features --&gt;
+    &lt;section class&#x3D;&quot;py-5 bg-light&quot;&gt;
+      &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;h2 class&#x3D;&quot;text-center fw-bold mb-5&quot;&gt;Why Choose SkyBook?&lt;/h2&gt;
+        &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+          &lt;div class&#x3D;&quot;col-md-4&quot; *ngFor&#x3D;&quot;let feature of features&quot;&gt;
+            &lt;div class&#x3D;&quot;card border-0 shadow-sm h-100 text-center p-4 rounded-4&quot;&gt;
+              &lt;i [class]&#x3D;&quot;&#x27;bi &#x27; + feature.icon + &#x27; text-primary mb-3&#x27;&quot; style&#x3D;&quot;font-size:2.5rem;&quot;&gt;&lt;/i&gt;
+              &lt;h5 class&#x3D;&quot;fw-bold&quot;&gt;{{ feature.title }}&lt;/h5&gt;
+              &lt;p class&#x3D;&quot;text-muted mb-0 small&quot;&gt;{{ feature.desc }}&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Airlines --&gt;
+    &lt;section class&#x3D;&quot;py-5&quot;&gt;
+      &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;h2 class&#x3D;&quot;text-center fw-bold mb-5&quot;&gt;Our Airline Partners&lt;/h2&gt;
+        &lt;div class&#x3D;&quot;row g-4 justify-content-center&quot;&gt;
+          &lt;div class&#x3D;&quot;col-6 col-md-3&quot; *ngFor&#x3D;&quot;let airline of airlines&quot;&gt;
+            &lt;div class&#x3D;&quot;card border-0 shadow-sm text-center p-4 h-100 rounded-4&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-airplane text-primary mb-2&quot; style&#x3D;&quot;font-size:2rem;&quot;&gt;&lt;/i&gt;
+              &lt;div class&#x3D;&quot;fw-semibold&quot;&gt;{{ airline }}&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- CTA --&gt;
+    &lt;section class&#x3D;&quot;py-5 bg-primary text-white&quot; *ngIf&#x3D;&quot;!isLoggedIn&quot;&gt;
+      &lt;div class&#x3D;&quot;container text-center&quot;&gt;
+        &lt;h2 class&#x3D;&quot;fw-bold mb-3&quot;&gt;Ready to fly?&lt;/h2&gt;
+        &lt;p class&#x3D;&quot;lead mb-4 text-white-75&quot;&gt;Join thousands of travellers booking smarter with SkyBook.&lt;/p&gt;
+        &lt;a routerLink&#x3D;&quot;/register&quot; class&#x3D;&quot;btn btn-light btn-lg px-5 fw-semibold me-3&quot;&gt;
+          Create Free Account
+        &lt;/a&gt;
+        &lt;a routerLink&#x3D;&quot;/login&quot; class&#x3D;&quot;btn btn-outline-light btn-lg px-5&quot;&gt;Sign In&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &#x60;,
+  styles: [&#x60;
+    .destination-card:hover img { transform: scale(1.05); }
+    .text-white-75 { color: rgba(255,255,255,0.75) !important; }
+  &#x60;]
+})
+export class HomeComponent implements OnInit {
+  isLoggedIn &#x3D; false;
+  searchForm: FormGroup;
+
+  stats &#x3D; [
+    { value: &#x27;50+&#x27;, label: &#x27;Destinations&#x27; },
+    { value: &#x27;4&#x27;,   label: &#x27;Airlines&#x27; },
+    { value: &#x27;100+&#x27;, label: &#x27;Daily Flights&#x27; },
+    { value: &#x27;24/7&#x27;, label: &#x27;Support&#x27; }
+  ];
+
+  destinations &#x3D; [
+    {
+      city: &#x27;London&#x27;, country: &#x27;United Kingdom&#x27;, code: &#x27;LHR&#x27;, price: &#x27;£89&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w&#x3D;600&amp;q&#x3D;80&#x27;
+    },
+    {
+      city: &#x27;Paris&#x27;, country: &#x27;France&#x27;, code: &#x27;CDG&#x27;, price: &#x27;£109&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w&#x3D;600&amp;q&#x3D;80&#x27;
+    },
+    {
+      city: &#x27;Dubai&#x27;, country: &#x27;UAE&#x27;, code: &#x27;DXB&#x27;, price: &#x27;£299&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w&#x3D;600&amp;q&#x3D;80&#x27;
+    },
+    {
+      city: &#x27;New York&#x27;, country: &#x27;USA&#x27;, code: &#x27;JFK&#x27;, price: &#x27;£399&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w&#x3D;600&amp;q&#x3D;80&#x27;
+    },
+    {
+      city: &#x27;Frankfurt&#x27;, country: &#x27;Germany&#x27;, code: &#x27;FRA&#x27;, price: &#x27;£129&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w&#x3D;600&amp;q&#x3D;80&#x27;
+    },
+    {
+      city: &#x27;New York&#x27;, country: &#x27;USA&#x27;, code: &#x27;JFK&#x27;, price: &#x27;£379&#x27;,
+      image: &#x27;https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w&#x3D;600&amp;q&#x3D;80&#x27;
+    }
+  ];
+
+  features &#x3D; [
+    { icon: &#x27;bi-lightning-charge-fill&#x27;, title: &#x27;Instant Booking&#x27;,
+      desc: &#x27;Book your seat in seconds with our streamlined booking flow.&#x27; },
+    { icon: &#x27;bi-shield-check-fill&#x27;, title: &#x27;Secure &amp; Private&#x27;,
+      desc: &#x27;Industry-standard JWT authentication plus Google/Apple sign-in.&#x27; },
+    { icon: &#x27;bi-phone-fill&#x27;, title: &#x27;Mobile Friendly&#x27;,
+      desc: &#x27;Fully responsive design works perfectly on any device.&#x27; }
+  ];
+
+  airlines &#x3D; [&#x27;Emirates&#x27;, &#x27;Qatar Airways&#x27;, &#x27;British Airways&#x27;, &#x27;Lufthansa&#x27;];
+
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
+    this.searchForm &#x3D; this.fb.group({ origin: [&#x27;&#x27;], destination: [&#x27;&#x27;] });
+  }
+
+  ngOnInit(): void {
+    this.authService.currentUser$.subscribe(user &#x3D;&gt; {
+      this.isLoggedIn &#x3D; !!user;
+    });
+  }
+
+  onSearch(): void {
+    const { origin, destination } &#x3D; this.searchForm.value;
+    this.router.navigate([&#x27;/flights&#x27;], {
+      queryParams: { origin: origin || null, destination: destination || null }
+    });
+  }
+
+  searchDestination(code: string): void {
+    this.router.navigate([&#x27;/flights&#x27;], { queryParams: { destination: code } });
+  }
+}</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="styleData">
+            <pre class="line-numbers"><code class="language-scss">
+    .destination-card:hover img { transform: scale(1.05); }
+    .text-white-75 { color: rgba(255,255,255,0.75) !important; }
+  
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Hero with background image --><section class="hero-section text-white position-relative"         style="background: linear-gradient(135deg, rgba(13,110,253,0.92) 0%, rgba(0,30,90,0.95) 100%),                url(\'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=80\') center/cover no-repeat;                min-height: 520px;">  <div class="container py-5 position-relative" style="z-index:2">    <div class="row align-items-center min-vh-50 py-4">      <div class="col-lg-6">        <span class="badge bg-white text-primary mb-3 px-3 py-2">          ✈ Book flights worldwide        </span>        <h1 class="display-4 fw-bold mb-3 lh-sm">          Your Journey<br>Starts Here        </h1>        <p class="lead mb-4 text-white-75">          Search and book flights with Emirates, Qatar Airways,          British Airways, and Lufthansa — all in one place.        </p>        <div class="d-flex gap-3 flex-wrap">          <a routerLink="/flights" class="btn btn-light btn-lg px-4 fw-semibold">            <i class="bi bi-search me-2"></i>Browse Flights          </a>          <a *ngIf="!isLoggedIn" routerLink="/register"             class="btn btn-outline-light btn-lg px-4">            Get Started Free          </a>          <a *ngIf="isLoggedIn" routerLink="/my-bookings"             class="btn btn-outline-light btn-lg px-4">            <i class="bi bi-ticket-perforated me-2"></i>My Bookings          </a>        </div>      </div>      <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center">        <div class="text-center">          <i class="bi bi-airplane text-white" style="font-size:9rem;opacity:0.15"></i>        </div>      </div>    </div>    <!-- Quick search bar overlapping hero -->    <div class="row mt-4">      <div class="col-12">        <div class="card border-0 shadow-lg rounded-4 p-4">          <form [formGroup]="searchForm" (ngSubmit)="onSearch()">            <div class="row g-3 align-items-end">              <div class="col-md-4">                <label class="form-label fw-semibold small text-dark">From</label>                <div class="input-group">                  <span class="input-group-text bg-light border-end-0">                    <i class="bi bi-geo-alt text-primary"></i>                  </span>                  <input type="text" class="form-control border-start-0 ps-0"                         formControlName="origin"                         placeholder="City or airport code">                </div>              </div>              <div class="col-md-4">                <label class="form-label fw-semibold small text-dark">To</label>                <div class="input-group">                  <span class="input-group-text bg-light border-end-0">                    <i class="bi bi-geo text-primary"></i>                  </span>                  <input type="text" class="form-control border-start-0 ps-0"                         formControlName="destination"                         placeholder="City or airport code">                </div>              </div>              <div class="col-md-4">                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">                  <i class="bi bi-search me-2"></i>Search Flights                </button>              </div>            </div>          </form>        </div>      </div>    </div>  </div></section><!-- Stats bar --><section class="bg-primary text-white py-3">  <div class="container">    <div class="row text-center g-3">      <div class="col-6 col-md-3" *ngFor="let stat of stats">        <div class="fw-bold fs-5">{{ stat.value }}</div>        <div class="small text-white-50">{{ stat.label }}</div>      </div>    </div>  </div></section><!-- Popular destinations with real images --><section class="py-5">  <div class="container">    <div class="text-center mb-5">      <h2 class="fw-bold">Popular Destinations</h2>      <p class="text-muted">Most booked routes on SkyBook</p>    </div>    <div class="row g-4">      <div class="col-md-4" *ngFor="let dest of destinations">        <div class="card border-0 shadow-sm overflow-hidden rounded-4 destination-card"             style="cursor:pointer" (click)="searchDestination(dest.code)">          <div style="height:200px; overflow:hidden; position:relative">            <img [src]="dest.image" [alt]="dest.city"                 style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s">            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent)">            </div>            <div style="position:absolute;bottom:16px;left:16px" class="text-white">              <div class="fw-bold fs-5">{{ dest.city }}</div>              <div class="small">{{ dest.country }}</div>            </div>            <div style="position:absolute;top:12px;right:12px">              <span class="badge bg-white text-primary fw-semibold">{{ dest.code }}</span>            </div>          </div>          <div class="card-body d-flex justify-content-between align-items-center py-2">            <span class="text-muted small">From</span>            <span class="fw-bold text-success">{{ dest.price }}</span>          </div>        </div>      </div>    </div>  </div></section><!-- Features --><section class="py-5 bg-light">  <div class="container">    <h2 class="text-center fw-bold mb-5">Why Choose SkyBook?</h2>    <div class="row g-4">      <div class="col-md-4" *ngFor="let feature of features">        <div class="card border-0 shadow-sm h-100 text-center p-4 rounded-4">          <i [class]="\'bi \' + feature.icon + \' text-primary mb-3\'" style="font-size:2.5rem;"></i>          <h5 class="fw-bold">{{ feature.title }}</h5>          <p class="text-muted mb-0 small">{{ feature.desc }}</p>        </div>      </div>    </div>  </div></section><!-- Airlines --><section class="py-5">  <div class="container">    <h2 class="text-center fw-bold mb-5">Our Airline Partners</h2>    <div class="row g-4 justify-content-center">      <div class="col-6 col-md-3" *ngFor="let airline of airlines">        <div class="card border-0 shadow-sm text-center p-4 h-100 rounded-4">          <i class="bi bi-airplane text-primary mb-2" style="font-size:2rem;"></i>          <div class="fw-semibold">{{ airline }}</div>        </div>      </div>    </div>  </div></section><!-- CTA --><section class="py-5 bg-primary text-white" *ngIf="!isLoggedIn">  <div class="container text-center">    <h2 class="fw-bold mb-3">Ready to fly?</h2>    <p class="lead mb-4 text-white-75">Join thousands of travellers booking smarter with SkyBook.</p>    <a routerLink="/register" class="btn btn-light btn-lg px-5 fw-semibold me-3">      Create Free Account    </a>    <a routerLink="/login" class="btn btn-outline-light btn-lg px-5">Sign In</a>  </div></section></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookingComponent', 'selector': 'app-booking'},{'name': 'FlightCardComponent', 'selector': 'app-flight-card'},{'name': 'FlightDetailComponent', 'selector': 'app-flight-detail'},{'name': 'FlightsComponent', 'selector': 'app-flights'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'Login', 'selector': 'app-login'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyBookings', 'selector': 'app-my-bookings'},{'name': 'MyBookingsComponent', 'selector': 'app-my-bookings'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PassengerFormComponent', 'selector': 'app-passenger-form'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HomeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

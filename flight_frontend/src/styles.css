@@ -1,2 +1,102 @@
-/* You can add global styles to this file, and also import other style files */
-@import 'bootstrap/dist/css/bootstrap.min.css';
+/* You can add global styles to this file, and also import other style files 
+ * @import 'bootstrap/dist/css/bootstrap.min.css';
+ */
+
+ /* ── Purple & White Colour Palette ── */
+:root {
+  --purple-50:  #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7e22ce;
+  --purple-800: #6b21a8;
+  --purple-900: #581c87;
+
+  --bs-primary:        #7e22ce;
+  --bs-primary-rgb:    126, 34, 206;
+  --bs-link-color:     #7e22ce;
+  --bs-link-hover-color: #6b21a8;
+}
+
+/* Override Bootstrap primary everywhere */
+.bg-primary          { background-color: #7e22ce !important; }
+.text-primary        { color: #7e22ce !important; }
+.btn-primary         { background-color: #7e22ce; border-color: #7e22ce; }
+.btn-primary:hover   { background-color: #6b21a8; border-color: #6b21a8; }
+.btn-primary:active,
+.btn-primary:focus   { background-color: #581c87; border-color: #581c87; box-shadow: 0 0 0 .25rem rgba(126,34,206,.35); }
+
+.btn-outline-primary         { color: #7e22ce; border-color: #7e22ce; }
+.btn-outline-primary:hover   { background-color: #7e22ce; border-color: #7e22ce; color:#fff; }
+
+.border-primary { border-color: #7e22ce !important; }
+
+/* Nav pills active */
+.nav-pills .nav-link.active { background-color: #7e22ce !important; }
+.nav-pills .nav-link        { color: #7e22ce; }
+
+/* Badges */
+.badge.bg-primary { background-color: #7e22ce !important; }
+
+/* Form focus rings */
+.form-control:focus,
+.form-select:focus {
+  border-color: #c084fc;
+  box-shadow: 0 0 0 .25rem rgba(126,34,206,.2);
+}
+
+/* Checkboxes & radios */
+.form-check-input:checked {
+  background-color: #7e22ce;
+  border-color: #7e22ce;
+}
+
+/* Spinner */
+.spinner-border.text-primary { color: #7e22ce !important; }
+
+/* Accordion open button */
+.accordion-button:not(.collapsed) {
+  color: #7e22ce;
+  background-color: var(--purple-50);
+  box-shadow: inset 0 -1px 0 rgba(126,34,206,.15);
+}
+.accordion-button:focus {
+  box-shadow: 0 0 0 .25rem rgba(126,34,206,.2);
+}
+
+/* Progress / strength bar accent */
+.bg-primary-subtle { background-color: var(--purple-100) !important; }
+.text-primary       { color: #7e22ce !important; }
+
+/* Global smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Navbar brand glow on hover */
+.navbar-brand:hover { opacity: 0.9; }
+
+/* Card hover lift */
+.card { transition: box-shadow .2s, transform .2s; }
+
+/* Hero gradient override — purple */
+.hero-section {
+  background: linear-gradient(
+    135deg,
+    rgba(126,34,206,0.93) 0%,
+    rgba(88,28,135,0.97) 100%
+  ),
+  url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=80')
+  center/cover no-repeat !important;
+}
+
+/* Step circles use purple */
+.step-circle.active { background: #7e22ce !important; }
+.step-circle.done   { background: #16a34a !important; }
+
+/* Scrollbar (webkit) */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: #f3e8ff; }
+::-webkit-scrollbar-thumb { background: #c084fc; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #7e22ce; }

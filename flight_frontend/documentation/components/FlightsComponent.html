@@ -1,0 +1,1383 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>flight-frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">flight-frontend documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FlightsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/flights/flights.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-flights</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/ReactiveFormsModule" target="_blank" >ReactiveFormsModule</a></code>
+                                <code><a href="../components/FlightCardComponent.html" target="_self" >FlightCardComponent</a></code>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;bg-primary text-white py-4&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;h2 class&#x3D;&quot;fw-bold mb-0&quot;&gt;&lt;i class&#x3D;&quot;bi bi-search me-2&quot;&gt;&lt;/i&gt;Search Flights&lt;/h2&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Search bar --&gt;
+&lt;div class&#x3D;&quot;bg-white shadow-sm py-3 sticky-top&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;form [formGroup]&#x3D;&quot;searchForm&quot; (ngSubmit)&#x3D;&quot;onSearch()&quot; class&#x3D;&quot;row g-2 align-items-end&quot;&gt;
+      &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+        &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;origin&quot;
+               placeholder&#x3D;&quot;From (city or code e.g. London, LHR)&quot;&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+        &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;destination&quot;
+               placeholder&#x3D;&quot;To (city or code e.g. Paris, CDG)&quot;&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+        &lt;select class&#x3D;&quot;form-select&quot; formControlName&#x3D;&quot;status&quot;&gt;
+          &lt;option value&#x3D;&quot;&quot;&gt;Any Status&lt;/option&gt;
+          &lt;option value&#x3D;&quot;scheduled&quot;&gt;Scheduled&lt;/option&gt;
+          &lt;option value&#x3D;&quot;boarding&quot;&gt;Boarding&lt;/option&gt;
+          &lt;option value&#x3D;&quot;departed&quot;&gt;Departed&lt;/option&gt;
+          &lt;option value&#x3D;&quot;arrived&quot;&gt;Arrived&lt;/option&gt;
+          &lt;option value&#x3D;&quot;delayed&quot;&gt;Delayed&lt;/option&gt;
+          &lt;option value&#x3D;&quot;cancelled&quot;&gt;Cancelled&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-md-2&quot;&gt;
+        &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary w-100&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-search me-1&quot;&gt;&lt;/i&gt;Search
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-md-1&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-secondary w-100&quot;
+                (click)&#x3D;&quot;clearSearch()&quot; title&#x3D;&quot;Clear&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-x-lg&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;container py-4&quot;&gt;
+
+  &lt;div class&#x3D;&quot;text-center py-5&quot; *ngIf&#x3D;&quot;loading&quot;&gt;
+    &lt;div class&#x3D;&quot;spinner-border text-primary&quot;&gt;&lt;/div&gt;
+    &lt;p class&#x3D;&quot;mt-2 text-muted&quot;&gt;Loading flights...&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;alert alert-danger&quot; *ngIf&#x3D;&quot;errorMessage &amp;&amp; !loading&quot;&gt;
+    &lt;i class&#x3D;&quot;bi bi-exclamation-triangle-fill me-2&quot;&gt;&lt;/i&gt;{{ errorMessage }}
+  &lt;/div&gt;
+
+  &lt;ng-container *ngIf&#x3D;&quot;!loading &amp;&amp; !errorMessage&quot;&gt;
+    &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center mb-3&quot;&gt;
+      &lt;p class&#x3D;&quot;text-muted mb-0&quot;&gt;
+        &lt;strong&gt;{{ flights.length }}&lt;/strong&gt; flight(s) found
+        &lt;span *ngIf&#x3D;&quot;isSearchMode&quot; class&#x3D;&quot;ms-2 badge bg-primary&quot;&gt;Filtered&lt;/span&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;row g-4&quot; *ngIf&#x3D;&quot;flights.length &gt; 0; else noResults&quot;&gt;
+      &lt;div class&#x3D;&quot;col-md-6 col-lg-4&quot; *ngFor&#x3D;&quot;let flight of flights&quot;&gt;
+        &lt;app-flight-card [flight]&#x3D;&quot;flight&quot;&gt;&lt;/app-flight-card&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;ng-template #noResults&gt;
+      &lt;div class&#x3D;&quot;text-center py-5&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-airplane text-muted&quot; style&#x3D;&quot;font-size:4rem;&quot;&gt;&lt;/i&gt;
+        &lt;h4 class&#x3D;&quot;mt-3 text-muted&quot;&gt;No flights found&lt;/h4&gt;
+        &lt;p class&#x3D;&quot;text-muted&quot;&gt;Try a city name like &quot;London&quot; or &quot;Paris&quot; instead of the airport code.&lt;/p&gt;
+        &lt;button class&#x3D;&quot;btn btn-outline-primary&quot; (click)&#x3D;&quot;clearSearch()&quot;&gt;Show All Flights&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/ng-template&gt;
+
+    &lt;!-- Pagination --&gt;
+    &lt;nav class&#x3D;&quot;mt-4&quot; *ngIf&#x3D;&quot;!isSearchMode &amp;&amp; totalPages &gt; 1&quot;&gt;
+      &lt;ul class&#x3D;&quot;pagination justify-content-center&quot;&gt;
+        &lt;li class&#x3D;&quot;page-item&quot; [class.disabled]&#x3D;&quot;currentPage &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+          &lt;button class&#x3D;&quot;page-link&quot; (click)&#x3D;&quot;changePage(currentPage - 1)&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-chevron-left&quot;&gt;&lt;/i&gt;
+          &lt;/button&gt;
+        &lt;/li&gt;
+        &lt;li class&#x3D;&quot;page-item&quot; *ngFor&#x3D;&quot;let p of pageNumbers&quot; [class.active]&#x3D;&quot;p &#x3D;&#x3D;&#x3D; currentPage&quot;&gt;
+          &lt;button class&#x3D;&quot;page-link&quot; (click)&#x3D;&quot;changePage(p)&quot;&gt;{{ p }}&lt;/button&gt;
+        &lt;/li&gt;
+        &lt;li class&#x3D;&quot;page-item&quot; [class.disabled]&#x3D;&quot;currentPage &#x3D;&#x3D;&#x3D; totalPages&quot;&gt;
+          &lt;button class&#x3D;&quot;page-link&quot; (click)&#x3D;&quot;changePage(currentPage + 1)&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-chevron-right&quot;&gt;&lt;/i&gt;
+          &lt;/button&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/ng-container&gt;
+
+&lt;/div&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentPage" >currentPage</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage" >errorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#flights" >flights</a>
+                            </li>
+                            <li>
+                                <a href="#isSearchMode" >isSearchMode</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#pageSize" >pageSize</a>
+                            </li>
+                            <li>
+                                <a href="#searchForm" >searchForm</a>
+                            </li>
+                            <li>
+                                <a href="#totalPages" >totalPages</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#changePage" >changePage</a>
+                            </li>
+                            <li>
+                                <a href="#clearSearch" >clearSearch</a>
+                            </li>
+                            <li>
+                                <a href="#loadFlights" >loadFlights</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSearch" >onSearch</a>
+                            </li>
+                            <li>
+                                <a href="#resolveCity" >resolveCity</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#pageNumbers" >pageNumbers</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(flightsService: <a href="../injectables/FlightsService.html" target="_self">FlightsService</a>, fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/pages/flights/flights.component.ts:129</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>flightsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FlightsService.html" target="_self" >FlightsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changePage"></a>
+                    <span class="name">
+                        <span ><b>changePage</b></span>
+                        <a href="#changePage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changePage(page: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="214"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:214</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>page</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearSearch"></a>
+                    <span class="name">
+                        <span ><b>clearSearch</b></span>
+                        <a href="#clearSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearSearch()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:208</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadFlights"></a>
+                    <span class="name">
+                        <span ><b>loadFlights</b></span>
+                        <a href="#loadFlights"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadFlights()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="161"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:161</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:141</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSearch"></a>
+                    <span class="name">
+                        <span ><b>onSearch</b></span>
+                        <a href="#onSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSearch()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="180"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:180</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resolveCity"></a>
+                    <span class="name">
+                        <span ><b>resolveCity</b></span>
+                        <a href="#resolveCity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>resolveCity(input: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="155"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:155</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>input</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentPage"></a>
+                    <span class="name">
+                        <span ><b>currentPage</b></span>
+                        <a href="#currentPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/pages/flights/flights.component.ts:126</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMessage"></a>
+                    <span class="name">
+                        <span ><b>errorMessage</b></span>
+                        <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/app/pages/flights/flights.component.ts:124</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="flights"></a>
+                    <span class="name">
+                        <span ><b>flights</b></span>
+                        <a href="#flights"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Flight.html" target="_self" >Flight[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/app/pages/flights/flights.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSearchMode"></a>
+                    <span class="name">
+                        <span ><b>isSearchMode</b></span>
+                        <a href="#isSearchMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/app/pages/flights/flights.component.ts:125</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/app/pages/flights/flights.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageSize"></a>
+                    <span class="name">
+                        <span ><b>pageSize</b></span>
+                        <a href="#pageSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>9</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/pages/flights/flights.component.ts:127</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchForm"></a>
+                    <span class="name">
+                        <span ><b>searchForm</b></span>
+                        <a href="#searchForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/pages/flights/flights.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="totalPages"></a>
+                    <span class="name">
+                        <span ><b>totalPages</b></span>
+                        <a href="#totalPages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/app/pages/flights/flights.component.ts:128</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageNumbers"></a>
+                        <span class="name"><b>pageNumbers</b><a href="#pageNumbers"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>pageNumbers()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">src/app/pages/flights/flights.component.ts:220</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { ReactiveFormsModule, FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { FlightsService } from &#x27;../../services/flights.service&#x27;;
+import { Flight } from &#x27;../../models/flight.model&#x27;;
+import { FlightCardComponent } from &#x27;../../components/flight-card/flight-card.component&#x27;;
+
+// Map airport codes to city names for the API
+const CODE_TO_CITY: Record&lt;string, string&gt; &#x3D; {
+  &#x27;LHR&#x27;: &#x27;London&#x27;, &#x27;CDG&#x27;: &#x27;Paris&#x27;, &#x27;DXB&#x27;: &#x27;Dubai&#x27;,
+  &#x27;JFK&#x27;: &#x27;New York&#x27;, &#x27;FRA&#x27;: &#x27;Frankfurt&#x27;, &#x27;NYC&#x27;: &#x27;New York&#x27;
+};
+
+@Component({
+  selector: &#x27;app-flights&#x27;,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, FlightCardComponent],
+  template: &#x60;
+    &lt;div class&#x3D;&quot;bg-primary text-white py-4&quot;&gt;
+      &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;h2 class&#x3D;&quot;fw-bold mb-0&quot;&gt;&lt;i class&#x3D;&quot;bi bi-search me-2&quot;&gt;&lt;/i&gt;Search Flights&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Search bar --&gt;
+    &lt;div class&#x3D;&quot;bg-white shadow-sm py-3 sticky-top&quot;&gt;
+      &lt;div class&#x3D;&quot;container&quot;&gt;
+        &lt;form [formGroup]&#x3D;&quot;searchForm&quot; (ngSubmit)&#x3D;&quot;onSearch()&quot; class&#x3D;&quot;row g-2 align-items-end&quot;&gt;
+          &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;origin&quot;
+                   placeholder&#x3D;&quot;From (city or code e.g. London, LHR)&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;destination&quot;
+                   placeholder&#x3D;&quot;To (city or code e.g. Paris, CDG)&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-md-3&quot;&gt;
+            &lt;select class&#x3D;&quot;form-select&quot; formControlName&#x3D;&quot;status&quot;&gt;
+              &lt;option value&#x3D;&quot;&quot;&gt;Any Status&lt;/option&gt;
+              &lt;option value&#x3D;&quot;scheduled&quot;&gt;Scheduled&lt;/option&gt;
+              &lt;option value&#x3D;&quot;boarding&quot;&gt;Boarding&lt;/option&gt;
+              &lt;option value&#x3D;&quot;departed&quot;&gt;Departed&lt;/option&gt;
+              &lt;option value&#x3D;&quot;arrived&quot;&gt;Arrived&lt;/option&gt;
+              &lt;option value&#x3D;&quot;delayed&quot;&gt;Delayed&lt;/option&gt;
+              &lt;option value&#x3D;&quot;cancelled&quot;&gt;Cancelled&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-md-2&quot;&gt;
+            &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary w-100&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-search me-1&quot;&gt;&lt;/i&gt;Search
+            &lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-md-1&quot;&gt;
+            &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-secondary w-100&quot;
+                    (click)&#x3D;&quot;clearSearch()&quot; title&#x3D;&quot;Clear&quot;&gt;
+              &lt;i class&#x3D;&quot;bi bi-x-lg&quot;&gt;&lt;/i&gt;
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;container py-4&quot;&gt;
+
+      &lt;div class&#x3D;&quot;text-center py-5&quot; *ngIf&#x3D;&quot;loading&quot;&gt;
+        &lt;div class&#x3D;&quot;spinner-border text-primary&quot;&gt;&lt;/div&gt;
+        &lt;p class&#x3D;&quot;mt-2 text-muted&quot;&gt;Loading flights...&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;alert alert-danger&quot; *ngIf&#x3D;&quot;errorMessage &amp;&amp; !loading&quot;&gt;
+        &lt;i class&#x3D;&quot;bi bi-exclamation-triangle-fill me-2&quot;&gt;&lt;/i&gt;{{ errorMessage }}
+      &lt;/div&gt;
+
+      &lt;ng-container *ngIf&#x3D;&quot;!loading &amp;&amp; !errorMessage&quot;&gt;
+        &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center mb-3&quot;&gt;
+          &lt;p class&#x3D;&quot;text-muted mb-0&quot;&gt;
+            &lt;strong&gt;{{ flights.length }}&lt;/strong&gt; flight(s) found
+            &lt;span *ngIf&#x3D;&quot;isSearchMode&quot; class&#x3D;&quot;ms-2 badge bg-primary&quot;&gt;Filtered&lt;/span&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;row g-4&quot; *ngIf&#x3D;&quot;flights.length &gt; 0; else noResults&quot;&gt;
+          &lt;div class&#x3D;&quot;col-md-6 col-lg-4&quot; *ngFor&#x3D;&quot;let flight of flights&quot;&gt;
+            &lt;app-flight-card [flight]&#x3D;&quot;flight&quot;&gt;&lt;/app-flight-card&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;ng-template #noResults&gt;
+          &lt;div class&#x3D;&quot;text-center py-5&quot;&gt;
+            &lt;i class&#x3D;&quot;bi bi-airplane text-muted&quot; style&#x3D;&quot;font-size:4rem;&quot;&gt;&lt;/i&gt;
+            &lt;h4 class&#x3D;&quot;mt-3 text-muted&quot;&gt;No flights found&lt;/h4&gt;
+            &lt;p class&#x3D;&quot;text-muted&quot;&gt;Try a city name like &quot;London&quot; or &quot;Paris&quot; instead of the airport code.&lt;/p&gt;
+            &lt;button class&#x3D;&quot;btn btn-outline-primary&quot; (click)&#x3D;&quot;clearSearch()&quot;&gt;Show All Flights&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/ng-template&gt;
+
+        &lt;!-- Pagination --&gt;
+        &lt;nav class&#x3D;&quot;mt-4&quot; *ngIf&#x3D;&quot;!isSearchMode &amp;&amp; totalPages &gt; 1&quot;&gt;
+          &lt;ul class&#x3D;&quot;pagination justify-content-center&quot;&gt;
+            &lt;li class&#x3D;&quot;page-item&quot; [class.disabled]&#x3D;&quot;currentPage &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+              &lt;button class&#x3D;&quot;page-link&quot; (click)&#x3D;&quot;changePage(currentPage - 1)&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-chevron-left&quot;&gt;&lt;/i&gt;
+              &lt;/button&gt;
+            &lt;/li&gt;
+            &lt;li class&#x3D;&quot;page-item&quot; *ngFor&#x3D;&quot;let p of pageNumbers&quot; [class.active]&#x3D;&quot;p &#x3D;&#x3D;&#x3D; currentPage&quot;&gt;
+              &lt;button class&#x3D;&quot;page-link&quot; (click)&#x3D;&quot;changePage(p)&quot;&gt;{{ p }}&lt;/button&gt;
+            &lt;/li&gt;
+            &lt;li class&#x3D;&quot;page-item&quot; [class.disabled]&#x3D;&quot;currentPage &#x3D;&#x3D;&#x3D; totalPages&quot;&gt;
+              &lt;button class&#x3D;&quot;page-link&quot; (click)&#x3D;&quot;changePage(currentPage + 1)&quot;&gt;
+                &lt;i class&#x3D;&quot;bi bi-chevron-right&quot;&gt;&lt;/i&gt;
+              &lt;/button&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/nav&gt;
+      &lt;/ng-container&gt;
+
+    &lt;/div&gt;
+  &#x60;
+})
+export class FlightsComponent implements OnInit {
+  flights: Flight[] &#x3D; [];
+  loading &#x3D; false;
+  errorMessage &#x3D; &#x27;&#x27;;
+  isSearchMode &#x3D; false;
+  currentPage &#x3D; 1;
+  pageSize &#x3D; 9;
+  totalPages &#x3D; 1;
+  searchForm: FormGroup;
+
+  constructor(
+    private flightsService: FlightsService,
+    private fb: FormBuilder,
+    private route: ActivatedRoute
+  ) {
+    this.searchForm &#x3D; this.fb.group({
+      origin: [&#x27;&#x27;], destination: [&#x27;&#x27;], status: [&#x27;&#x27;]
+    });
+  }
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params &#x3D;&gt; {
+      if (params[&#x27;origin&#x27;] || params[&#x27;destination&#x27;]) {
+        // Convert code to city name if needed
+        const origin &#x3D; this.resolveCity(params[&#x27;origin&#x27;] ?? &#x27;&#x27;);
+        const destination &#x3D; this.resolveCity(params[&#x27;destination&#x27;] ?? &#x27;&#x27;);
+        this.searchForm.patchValue({ origin, destination });
+        this.onSearch();
+      } else {
+        this.loadFlights();
+      }
+    });
+  }
+
+  resolveCity(input: string): string {
+    if (!input) return &#x27;&#x27;;
+    const upper &#x3D; input.toUpperCase();
+    return CODE_TO_CITY[upper] ?? input;
+  }
+
+  loadFlights(): void {
+    this.loading &#x3D; true;
+    this.errorMessage &#x3D; &#x27;&#x27;;
+    this.isSearchMode &#x3D; false;
+
+    this.flightsService.getFlights(this.currentPage, this.pageSize).subscribe({
+      next: (res) &#x3D;&gt; {
+        this.flights &#x3D; res.flights ?? (res as any);
+        const total &#x3D; res.total ?? this.flights.length;
+        this.totalPages &#x3D; Math.ceil(total / this.pageSize);
+        this.loading &#x3D; false;
+      },
+      error: (err) &#x3D;&gt; {
+        this.errorMessage &#x3D; err.error?.message ?? &#x27;Failed to load flights. Is the Flask API running?&#x27;;
+        this.loading &#x3D; false;
+      }
+    });
+  }
+
+  onSearch(): void {
+    let { origin, destination, status } &#x3D; this.searchForm.value;
+
+    // Auto-convert codes to city names
+    origin &#x3D; this.resolveCity(origin);
+    destination &#x3D; this.resolveCity(destination);
+
+    if (!origin &amp;&amp; !destination &amp;&amp; !status) {
+      this.loadFlights();
+      return;
+    }
+
+    this.loading &#x3D; true;
+    this.errorMessage &#x3D; &#x27;&#x27;;
+    this.isSearchMode &#x3D; true;
+
+    this.flightsService.searchFlights(origin, destination, status).subscribe({
+      next: (res) &#x3D;&gt; {
+        this.flights &#x3D; res.flights ?? (res as any);
+        this.loading &#x3D; false;
+      },
+      error: (err) &#x3D;&gt; {
+        this.errorMessage &#x3D; err.error?.message ?? &#x27;Search failed.&#x27;;
+        this.loading &#x3D; false;
+      }
+    });
+  }
+
+  clearSearch(): void {
+    this.searchForm.reset({ origin: &#x27;&#x27;, destination: &#x27;&#x27;, status: &#x27;&#x27; });
+    this.currentPage &#x3D; 1;
+    this.loadFlights();
+  }
+
+  changePage(page: number): void {
+    if (page &lt; 1 || page &gt; this.totalPages) return;
+    this.currentPage &#x3D; page;
+    this.loadFlights();
+  }
+
+  get pageNumbers(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) &#x3D;&gt; i + 1);
+  }
+}</code></pre>
+    </div>
+
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="bg-primary text-white py-4">  <div class="container">    <h2 class="fw-bold mb-0"><i class="bi bi-search me-2"></i>Search Flights</h2>  </div></div><!-- Search bar --><div class="bg-white shadow-sm py-3 sticky-top">  <div class="container">    <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="row g-2 align-items-end">      <div class="col-md-3">        <input type="text" class="form-control" formControlName="origin"               placeholder="From (city or code e.g. London, LHR)">      </div>      <div class="col-md-3">        <input type="text" class="form-control" formControlName="destination"               placeholder="To (city or code e.g. Paris, CDG)">      </div>      <div class="col-md-3">        <select class="form-select" formControlName="status">          <option value="">Any Status</option>          <option value="scheduled">Scheduled</option>          <option value="boarding">Boarding</option>          <option value="departed">Departed</option>          <option value="arrived">Arrived</option>          <option value="delayed">Delayed</option>          <option value="cancelled">Cancelled</option>        </select>      </div>      <div class="col-md-2">        <button type="submit" class="btn btn-primary w-100">          <i class="bi bi-search me-1"></i>Search        </button>      </div>      <div class="col-md-1">        <button type="button" class="btn btn-outline-secondary w-100"                (click)="clearSearch()" title="Clear">          <i class="bi bi-x-lg"></i>        </button>      </div>    </form>  </div></div><div class="container py-4">  <div class="text-center py-5" *ngIf="loading">    <div class="spinner-border text-primary"></div>    <p class="mt-2 text-muted">Loading flights...</p>  </div>  <div class="alert alert-danger" *ngIf="errorMessage && !loading">    <i class="bi bi-exclamation-triangle-fill me-2"></i>{{ errorMessage }}  </div>  <ng-container *ngIf="!loading && !errorMessage">    <div class="d-flex justify-content-between align-items-center mb-3">      <p class="text-muted mb-0">        <strong>{{ flights.length }}</strong> flight(s) found        <span *ngIf="isSearchMode" class="ms-2 badge bg-primary">Filtered</span>      </p>    </div>    <div class="row g-4" *ngIf="flights.length > 0; else noResults">      <div class="col-md-6 col-lg-4" *ngFor="let flight of flights">        <app-flight-card [flight]="flight"></app-flight-card>      </div>    </div>    <ng-template #noResults>      <div class="text-center py-5">        <i class="bi bi-airplane text-muted" style="font-size:4rem;"></i>        <h4 class="mt-3 text-muted">No flights found</h4>        <p class="text-muted">Try a city name like "London" or "Paris" instead of the airport code.</p>        <button class="btn btn-outline-primary" (click)="clearSearch()">Show All Flights</button>      </div>    </ng-template>    <!-- Pagination -->    <nav class="mt-4" *ngIf="!isSearchMode && totalPages > 1">      <ul class="pagination justify-content-center">        <li class="page-item" [class.disabled]="currentPage === 1">          <button class="page-link" (click)="changePage(currentPage - 1)">            <i class="bi bi-chevron-left"></i>          </button>        </li>        <li class="page-item" *ngFor="let p of pageNumbers" [class.active]="p === currentPage">          <button class="page-link" (click)="changePage(p)">{{ p }}</button>        </li>        <li class="page-item" [class.disabled]="currentPage === totalPages">          <button class="page-link" (click)="changePage(currentPage + 1)">            <i class="bi bi-chevron-right"></i>          </button>        </li>      </ul>    </nav>  </ng-container></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookingComponent', 'selector': 'app-booking'},{'name': 'FlightCardComponent', 'selector': 'app-flight-card'},{'name': 'FlightDetailComponent', 'selector': 'app-flight-detail'},{'name': 'FlightsComponent', 'selector': 'app-flights'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'Login', 'selector': 'app-login'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyBookings', 'selector': 'app-my-bookings'},{'name': 'MyBookingsComponent', 'selector': 'app-my-bookings'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PassengerFormComponent', 'selector': 'app-passenger-form'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'FlightsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FlightsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
