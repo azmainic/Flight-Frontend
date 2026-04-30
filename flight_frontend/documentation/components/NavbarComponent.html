@@ -120,6 +120,10 @@
                 role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
         <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
             <a href="#tree" class="nav-link"
                 role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
@@ -180,19 +184,29 @@
             </tr>
 
 
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+    .nav-link { transition: color .2s; }
+    .nav-link:hover { color: #e9d5ff !important; }
+    .nav-link.active { color: #fff !important; font-weight: 600; }
+  </code></td>
+            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;nav class&#x3D;&quot;navbar navbar-expand-lg navbar-dark bg-primary shadow-sm&quot;&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;nav class&#x3D;&quot;navbar navbar-expand-lg navbar-dark shadow-sm&quot;
+     style&#x3D;&quot;background: linear-gradient(135deg, #7e22ce 0%, #581c87 100%);&quot;&gt;
   &lt;div class&#x3D;&quot;container&quot;&gt;
 
     &lt;!-- Brand --&gt;
-    &lt;a class&#x3D;&quot;navbar-brand fw-bold&quot; routerLink&#x3D;&quot;/home&quot;&gt;
-      &lt;i class&#x3D;&quot;bi bi-airplane-fill me-2&quot;&gt;&lt;/i&gt;SkyBook
+    &lt;a class&#x3D;&quot;navbar-brand fw-bold d-flex align-items-center gap-2&quot; routerLink&#x3D;&quot;/home&quot;&gt;
+      &lt;i class&#x3D;&quot;bi bi-airplane-fill&quot; style&#x3D;&quot;color:#e9d5ff&quot;&gt;&lt;/i&gt;
+      &lt;span&gt;SkyBook&lt;/span&gt;
     &lt;/a&gt;
 
     &lt;!-- Toggler --&gt;
-    &lt;button class&#x3D;&quot;navbar-toggler&quot; type&#x3D;&quot;button&quot;
+    &lt;button class&#x3D;&quot;navbar-toggler border-0&quot; type&#x3D;&quot;button&quot;
             data-bs-toggle&#x3D;&quot;collapse&quot; data-bs-target&#x3D;&quot;#mainNav&quot;&gt;
       &lt;span class&#x3D;&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
     &lt;/button&gt;
@@ -200,58 +214,69 @@
     &lt;div class&#x3D;&quot;collapse navbar-collapse&quot; id&#x3D;&quot;mainNav&quot;&gt;
       &lt;ul class&#x3D;&quot;navbar-nav me-auto mb-2 mb-lg-0&quot;&gt;
         &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-          &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/home&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Home&lt;/a&gt;
+          &lt;a class&#x3D;&quot;nav-link px-3&quot; routerLink&#x3D;&quot;/home&quot;
+             routerLinkActive&#x3D;&quot;active&quot;&gt;Home&lt;/a&gt;
         &lt;/li&gt;
         &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-          &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/flights&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Flights&lt;/a&gt;
+          &lt;a class&#x3D;&quot;nav-link px-3&quot; routerLink&#x3D;&quot;/flights&quot;
+             routerLinkActive&#x3D;&quot;active&quot;&gt;Flights&lt;/a&gt;
         &lt;/li&gt;
         &lt;li class&#x3D;&quot;nav-item&quot; *ngIf&#x3D;&quot;localUser || auth0User&quot;&gt;
-          &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/my-bookings&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;
-            My Bookings
-          &lt;/a&gt;
+          &lt;a class&#x3D;&quot;nav-link px-3&quot; routerLink&#x3D;&quot;/my-bookings&quot;
+             routerLinkActive&#x3D;&quot;active&quot;&gt;My Bookings&lt;/a&gt;
         &lt;/li&gt;
         &lt;li class&#x3D;&quot;nav-item&quot; *ngIf&#x3D;&quot;localUser?.admin&quot;&gt;
-          &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/admin&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;
+          &lt;a class&#x3D;&quot;nav-link px-3&quot; routerLink&#x3D;&quot;/admin&quot;
+             routerLinkActive&#x3D;&quot;active&quot;&gt;
             &lt;i class&#x3D;&quot;bi bi-shield-lock-fill me-1&quot;&gt;&lt;/i&gt;Admin
           &lt;/a&gt;
         &lt;/li&gt;
       &lt;/ul&gt;
 
-      &lt;!-- Auth buttons --&gt;
-      &lt;ul class&#x3D;&quot;navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center&quot;&gt;
+      &lt;ul class&#x3D;&quot;navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-1&quot;&gt;
 
-        &lt;!-- Auth0 social user logged in --&gt;
+        &lt;!-- Auth0 social user --&gt;
         &lt;ng-container *ngIf&#x3D;&quot;auth0User &amp;&amp; !localUser&quot;&gt;
           &lt;li class&#x3D;&quot;nav-item me-2&quot;&gt;
-            &lt;span class&#x3D;&quot;navbar-text text-white-50 d-flex align-items-center gap-2&quot;&gt;
+            &lt;span class&#x3D;&quot;navbar-text d-flex align-items-center gap-2&quot;
+                  style&#x3D;&quot;color:rgba(233,213,255,0.9)&quot;&gt;
               &lt;img *ngIf&#x3D;&quot;auth0User.picture&quot;
                    [src]&#x3D;&quot;auth0User.picture&quot;
-                   class&#x3D;&quot;rounded-circle&quot;
-                   width&#x3D;&quot;28&quot; height&#x3D;&quot;28&quot;
-                   style&#x3D;&quot;object-fit:cover&quot;&gt;
+                   class&#x3D;&quot;rounded-circle border border-2&quot;
+                   style&#x3D;&quot;border-color:#c084fc !important&quot;
+                   width&#x3D;&quot;28&quot; height&#x3D;&quot;28&quot; style&#x3D;&quot;object-fit:cover&quot;&gt;
               &lt;i *ngIf&#x3D;&quot;!auth0User.picture&quot; class&#x3D;&quot;bi bi-person-circle&quot;&gt;&lt;/i&gt;
               {{ auth0User.name || auth0User.email }}
             &lt;/span&gt;
           &lt;/li&gt;
           &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-            &lt;button class&#x3D;&quot;btn btn-outline-light btn-sm&quot; (click)&#x3D;&quot;logoutAuth0()&quot;&gt;
+            &lt;button class&#x3D;&quot;btn btn-sm fw-semibold px-3&quot;
+                    style&#x3D;&quot;background:#c084fc;color:#fff;border:none&quot;
+                    (click)&#x3D;&quot;logoutAuth0()&quot;&gt;
               &lt;i class&#x3D;&quot;bi bi-box-arrow-right me-1&quot;&gt;&lt;/i&gt;Logout
             &lt;/button&gt;
           &lt;/li&gt;
         &lt;/ng-container&gt;
 
-        &lt;!-- Local JWT user logged in --&gt;
+        &lt;!-- Local JWT user --&gt;
         &lt;ng-container *ngIf&#x3D;&quot;localUser&quot;&gt;
           &lt;li class&#x3D;&quot;nav-item me-2&quot;&gt;
-            &lt;span class&#x3D;&quot;navbar-text text-white-50&quot;&gt;
-              &lt;i class&#x3D;&quot;bi bi-person-circle me-1&quot;&gt;&lt;/i&gt;
+            &lt;span class&#x3D;&quot;navbar-text d-flex align-items-center gap-2&quot;
+                  style&#x3D;&quot;color:rgba(233,213,255,0.9)&quot;&gt;
+              &lt;div class&#x3D;&quot;rounded-circle d-flex align-items-center justify-content-center fw-bold small&quot;
+                   style&#x3D;&quot;width:28px;height:28px;background:#c084fc;color:#fff&quot;&gt;
+                {{ localUser.username.charAt(0).toUpperCase() }}
+              &lt;/div&gt;
               {{ localUser.username }}
               &lt;span *ngIf&#x3D;&quot;localUser.admin&quot;
-                    class&#x3D;&quot;badge bg-warning text-dark ms-1&quot;&gt;Admin&lt;/span&gt;
+                    class&#x3D;&quot;badge ms-1&quot;
+                    style&#x3D;&quot;background:#f59e0b;color:#1c1917&quot;&gt;Admin&lt;/span&gt;
             &lt;/span&gt;
           &lt;/li&gt;
           &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-            &lt;button class&#x3D;&quot;btn btn-outline-light btn-sm&quot; (click)&#x3D;&quot;logoutLocal()&quot;&gt;
+            &lt;button class&#x3D;&quot;btn btn-sm fw-semibold px-3&quot;
+                    style&#x3D;&quot;background:#c084fc;color:#fff;border:none&quot;
+                    (click)&#x3D;&quot;logoutLocal()&quot;&gt;
               &lt;i class&#x3D;&quot;bi bi-box-arrow-right me-1&quot;&gt;&lt;/i&gt;Logout
             &lt;/button&gt;
           &lt;/li&gt;
@@ -259,11 +284,14 @@
 
         &lt;!-- Not logged in --&gt;
         &lt;ng-container *ngIf&#x3D;&quot;!localUser &amp;&amp; !auth0User&quot;&gt;
-          &lt;li class&#x3D;&quot;nav-item me-2&quot;&gt;
-            &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/login&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Login&lt;/a&gt;
+          &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+            &lt;a class&#x3D;&quot;nav-link px-3&quot; routerLink&#x3D;&quot;/login&quot;
+               routerLinkActive&#x3D;&quot;active&quot;&gt;Login&lt;/a&gt;
           &lt;/li&gt;
           &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-            &lt;a class&#x3D;&quot;btn btn-light btn-sm&quot; routerLink&#x3D;&quot;/register&quot;&gt;Register&lt;/a&gt;
+            &lt;a class&#x3D;&quot;btn btn-sm fw-semibold px-3&quot;
+               style&#x3D;&quot;background:#c084fc;color:#fff&quot;
+               routerLink&#x3D;&quot;/register&quot;&gt;Register&lt;/a&gt;
           &lt;/li&gt;
         &lt;/ng-container&gt;
 
@@ -348,7 +376,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/components/navbar/navbar.component.ts:105</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/components/navbar/navbar.component.ts:126</a></div>
                             </td>
                         </tr>
 
@@ -427,8 +455,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="128"
-                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:128</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:140</a></div>
                         </td>
                     </tr>
 
@@ -464,8 +492,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="124"
-                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:124</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:138</a></div>
                         </td>
                     </tr>
 
@@ -501,8 +529,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="112"
-                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:112</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="133"
+                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:133</a></div>
                         </td>
                     </tr>
 
@@ -548,7 +576,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/components/navbar/navbar.component.ts:105</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/components/navbar/navbar.component.ts:126</a></div>
                         </td>
                     </tr>
 
@@ -579,7 +607,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/components/navbar/navbar.component.ts:104</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/app/components/navbar/navbar.component.ts:125</a></div>
                         </td>
                     </tr>
 
@@ -604,16 +632,18 @@ import { AuthUser } from &#x27;../../services/auth.service&#x27;;
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
   template: &#x60;
-    &lt;nav class&#x3D;&quot;navbar navbar-expand-lg navbar-dark bg-primary shadow-sm&quot;&gt;
+    &lt;nav class&#x3D;&quot;navbar navbar-expand-lg navbar-dark shadow-sm&quot;
+         style&#x3D;&quot;background: linear-gradient(135deg, #7e22ce 0%, #581c87 100%);&quot;&gt;
       &lt;div class&#x3D;&quot;container&quot;&gt;
 
         &lt;!-- Brand --&gt;
-        &lt;a class&#x3D;&quot;navbar-brand fw-bold&quot; routerLink&#x3D;&quot;/home&quot;&gt;
-          &lt;i class&#x3D;&quot;bi bi-airplane-fill me-2&quot;&gt;&lt;/i&gt;SkyBook
+        &lt;a class&#x3D;&quot;navbar-brand fw-bold d-flex align-items-center gap-2&quot; routerLink&#x3D;&quot;/home&quot;&gt;
+          &lt;i class&#x3D;&quot;bi bi-airplane-fill&quot; style&#x3D;&quot;color:#e9d5ff&quot;&gt;&lt;/i&gt;
+          &lt;span&gt;SkyBook&lt;/span&gt;
         &lt;/a&gt;
 
         &lt;!-- Toggler --&gt;
-        &lt;button class&#x3D;&quot;navbar-toggler&quot; type&#x3D;&quot;button&quot;
+        &lt;button class&#x3D;&quot;navbar-toggler border-0&quot; type&#x3D;&quot;button&quot;
                 data-bs-toggle&#x3D;&quot;collapse&quot; data-bs-target&#x3D;&quot;#mainNav&quot;&gt;
           &lt;span class&#x3D;&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
         &lt;/button&gt;
@@ -621,58 +651,69 @@ import { AuthUser } from &#x27;../../services/auth.service&#x27;;
         &lt;div class&#x3D;&quot;collapse navbar-collapse&quot; id&#x3D;&quot;mainNav&quot;&gt;
           &lt;ul class&#x3D;&quot;navbar-nav me-auto mb-2 mb-lg-0&quot;&gt;
             &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-              &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/home&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Home&lt;/a&gt;
+              &lt;a class&#x3D;&quot;nav-link px-3&quot; routerLink&#x3D;&quot;/home&quot;
+                 routerLinkActive&#x3D;&quot;active&quot;&gt;Home&lt;/a&gt;
             &lt;/li&gt;
             &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-              &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/flights&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Flights&lt;/a&gt;
+              &lt;a class&#x3D;&quot;nav-link px-3&quot; routerLink&#x3D;&quot;/flights&quot;
+                 routerLinkActive&#x3D;&quot;active&quot;&gt;Flights&lt;/a&gt;
             &lt;/li&gt;
             &lt;li class&#x3D;&quot;nav-item&quot; *ngIf&#x3D;&quot;localUser || auth0User&quot;&gt;
-              &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/my-bookings&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;
-                My Bookings
-              &lt;/a&gt;
+              &lt;a class&#x3D;&quot;nav-link px-3&quot; routerLink&#x3D;&quot;/my-bookings&quot;
+                 routerLinkActive&#x3D;&quot;active&quot;&gt;My Bookings&lt;/a&gt;
             &lt;/li&gt;
             &lt;li class&#x3D;&quot;nav-item&quot; *ngIf&#x3D;&quot;localUser?.admin&quot;&gt;
-              &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/admin&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;
+              &lt;a class&#x3D;&quot;nav-link px-3&quot; routerLink&#x3D;&quot;/admin&quot;
+                 routerLinkActive&#x3D;&quot;active&quot;&gt;
                 &lt;i class&#x3D;&quot;bi bi-shield-lock-fill me-1&quot;&gt;&lt;/i&gt;Admin
               &lt;/a&gt;
             &lt;/li&gt;
           &lt;/ul&gt;
 
-          &lt;!-- Auth buttons --&gt;
-          &lt;ul class&#x3D;&quot;navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center&quot;&gt;
+          &lt;ul class&#x3D;&quot;navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-1&quot;&gt;
 
-            &lt;!-- Auth0 social user logged in --&gt;
+            &lt;!-- Auth0 social user --&gt;
             &lt;ng-container *ngIf&#x3D;&quot;auth0User &amp;&amp; !localUser&quot;&gt;
               &lt;li class&#x3D;&quot;nav-item me-2&quot;&gt;
-                &lt;span class&#x3D;&quot;navbar-text text-white-50 d-flex align-items-center gap-2&quot;&gt;
+                &lt;span class&#x3D;&quot;navbar-text d-flex align-items-center gap-2&quot;
+                      style&#x3D;&quot;color:rgba(233,213,255,0.9)&quot;&gt;
                   &lt;img *ngIf&#x3D;&quot;auth0User.picture&quot;
                        [src]&#x3D;&quot;auth0User.picture&quot;
-                       class&#x3D;&quot;rounded-circle&quot;
-                       width&#x3D;&quot;28&quot; height&#x3D;&quot;28&quot;
-                       style&#x3D;&quot;object-fit:cover&quot;&gt;
+                       class&#x3D;&quot;rounded-circle border border-2&quot;
+                       style&#x3D;&quot;border-color:#c084fc !important&quot;
+                       width&#x3D;&quot;28&quot; height&#x3D;&quot;28&quot; style&#x3D;&quot;object-fit:cover&quot;&gt;
                   &lt;i *ngIf&#x3D;&quot;!auth0User.picture&quot; class&#x3D;&quot;bi bi-person-circle&quot;&gt;&lt;/i&gt;
                   {{ auth0User.name || auth0User.email }}
                 &lt;/span&gt;
               &lt;/li&gt;
               &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-                &lt;button class&#x3D;&quot;btn btn-outline-light btn-sm&quot; (click)&#x3D;&quot;logoutAuth0()&quot;&gt;
+                &lt;button class&#x3D;&quot;btn btn-sm fw-semibold px-3&quot;
+                        style&#x3D;&quot;background:#c084fc;color:#fff;border:none&quot;
+                        (click)&#x3D;&quot;logoutAuth0()&quot;&gt;
                   &lt;i class&#x3D;&quot;bi bi-box-arrow-right me-1&quot;&gt;&lt;/i&gt;Logout
                 &lt;/button&gt;
               &lt;/li&gt;
             &lt;/ng-container&gt;
 
-            &lt;!-- Local JWT user logged in --&gt;
+            &lt;!-- Local JWT user --&gt;
             &lt;ng-container *ngIf&#x3D;&quot;localUser&quot;&gt;
               &lt;li class&#x3D;&quot;nav-item me-2&quot;&gt;
-                &lt;span class&#x3D;&quot;navbar-text text-white-50&quot;&gt;
-                  &lt;i class&#x3D;&quot;bi bi-person-circle me-1&quot;&gt;&lt;/i&gt;
+                &lt;span class&#x3D;&quot;navbar-text d-flex align-items-center gap-2&quot;
+                      style&#x3D;&quot;color:rgba(233,213,255,0.9)&quot;&gt;
+                  &lt;div class&#x3D;&quot;rounded-circle d-flex align-items-center justify-content-center fw-bold small&quot;
+                       style&#x3D;&quot;width:28px;height:28px;background:#c084fc;color:#fff&quot;&gt;
+                    {{ localUser.username.charAt(0).toUpperCase() }}
+                  &lt;/div&gt;
                   {{ localUser.username }}
                   &lt;span *ngIf&#x3D;&quot;localUser.admin&quot;
-                        class&#x3D;&quot;badge bg-warning text-dark ms-1&quot;&gt;Admin&lt;/span&gt;
+                        class&#x3D;&quot;badge ms-1&quot;
+                        style&#x3D;&quot;background:#f59e0b;color:#1c1917&quot;&gt;Admin&lt;/span&gt;
                 &lt;/span&gt;
               &lt;/li&gt;
               &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-                &lt;button class&#x3D;&quot;btn btn-outline-light btn-sm&quot; (click)&#x3D;&quot;logoutLocal()&quot;&gt;
+                &lt;button class&#x3D;&quot;btn btn-sm fw-semibold px-3&quot;
+                        style&#x3D;&quot;background:#c084fc;color:#fff;border:none&quot;
+                        (click)&#x3D;&quot;logoutLocal()&quot;&gt;
                   &lt;i class&#x3D;&quot;bi bi-box-arrow-right me-1&quot;&gt;&lt;/i&gt;Logout
                 &lt;/button&gt;
               &lt;/li&gt;
@@ -680,11 +721,14 @@ import { AuthUser } from &#x27;../../services/auth.service&#x27;;
 
             &lt;!-- Not logged in --&gt;
             &lt;ng-container *ngIf&#x3D;&quot;!localUser &amp;&amp; !auth0User&quot;&gt;
-              &lt;li class&#x3D;&quot;nav-item me-2&quot;&gt;
-                &lt;a class&#x3D;&quot;nav-link&quot; routerLink&#x3D;&quot;/login&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;Login&lt;/a&gt;
+              &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+                &lt;a class&#x3D;&quot;nav-link px-3&quot; routerLink&#x3D;&quot;/login&quot;
+                   routerLinkActive&#x3D;&quot;active&quot;&gt;Login&lt;/a&gt;
               &lt;/li&gt;
               &lt;li class&#x3D;&quot;nav-item&quot;&gt;
-                &lt;a class&#x3D;&quot;btn btn-light btn-sm&quot; routerLink&#x3D;&quot;/register&quot;&gt;Register&lt;/a&gt;
+                &lt;a class&#x3D;&quot;btn btn-sm fw-semibold px-3&quot;
+                   style&#x3D;&quot;background:#c084fc;color:#fff&quot;
+                   routerLink&#x3D;&quot;/register&quot;&gt;Register&lt;/a&gt;
               &lt;/li&gt;
             &lt;/ng-container&gt;
 
@@ -692,7 +736,12 @@ import { AuthUser } from &#x27;../../services/auth.service&#x27;;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/nav&gt;
-  &#x60;
+  &#x60;,
+  styles: [&#x60;
+    .nav-link { transition: color .2s; }
+    .nav-link:hover { color: #e9d5ff !important; }
+    .nav-link.active { color: #fff !important; font-weight: 600; }
+  &#x60;]
 })
 export class NavbarComponent implements OnInit {
   localUser: AuthUser | null &#x3D; null;
@@ -704,30 +753,27 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Watch local JWT user
-    this.authService.currentUser$.subscribe(user &#x3D;&gt; {
-      this.localUser &#x3D; user;
-    });
-
-    // Watch Auth0 social user
-    this.auth0.user$.subscribe(user &#x3D;&gt; {
-      this.auth0User &#x3D; user ?? null;
-    });
+    this.authService.currentUser$.subscribe(user &#x3D;&gt; { this.localUser &#x3D; user; });
+    this.auth0.user$.subscribe(user &#x3D;&gt; { this.auth0User &#x3D; user ?? null; });
   }
 
-  logoutLocal(): void {
-    this.authService.logout();
-  }
+  logoutLocal(): void { this.authService.logout(); }
 
   logoutAuth0(): void {
-    this.auth0.logout({
-      logoutParams: { returnTo: window.location.origin }
-    });
+    this.auth0.logout({ logoutParams: { returnTo: window.location.origin } });
   }
 }</code></pre>
     </div>
 
 
+    <div class="tab-pane fade " id="styleData">
+            <pre class="line-numbers"><code class="language-scss">
+    .nav-link { transition: color .2s; }
+    .nav-link:hover { color: #e9d5ff !important; }
+    .nav-link.active { color: #fff !important; font-weight: 600; }
+  
+</code></pre>
+    </div>
 
     <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
@@ -754,7 +800,7 @@ export class NavbarComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">  <div class="container">    <!-- Brand -->    <a class="navbar-brand fw-bold" routerLink="/home">      <i class="bi bi-airplane-fill me-2"></i>SkyBook    </a>    <!-- Toggler -->    <button class="navbar-toggler" type="button"            data-bs-toggle="collapse" data-bs-target="#mainNav">      <span class="navbar-toggler-icon"></span>    </button>    <div class="collapse navbar-collapse" id="mainNav">      <ul class="navbar-nav me-auto mb-2 mb-lg-0">        <li class="nav-item">          <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>        </li>        <li class="nav-item">          <a class="nav-link" routerLink="/flights" routerLinkActive="active">Flights</a>        </li>        <li class="nav-item" *ngIf="localUser || auth0User">          <a class="nav-link" routerLink="/my-bookings" routerLinkActive="active">            My Bookings          </a>        </li>        <li class="nav-item" *ngIf="localUser?.admin">          <a class="nav-link" routerLink="/admin" routerLinkActive="active">            <i class="bi bi-shield-lock-fill me-1"></i>Admin          </a>        </li>      </ul>      <!-- Auth buttons -->      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">        <!-- Auth0 social user logged in -->        <ng-container *ngIf="auth0User && !localUser">          <li class="nav-item me-2">            <span class="navbar-text text-white-50 d-flex align-items-center gap-2">              <img *ngIf="auth0User.picture"                   [src]="auth0User.picture"                   class="rounded-circle"                   width="28" height="28"                   style="object-fit:cover">              <i *ngIf="!auth0User.picture" class="bi bi-person-circle"></i>              {{ auth0User.name || auth0User.email }}            </span>          </li>          <li class="nav-item">            <button class="btn btn-outline-light btn-sm" (click)="logoutAuth0()">              <i class="bi bi-box-arrow-right me-1"></i>Logout            </button>          </li>        </ng-container>        <!-- Local JWT user logged in -->        <ng-container *ngIf="localUser">          <li class="nav-item me-2">            <span class="navbar-text text-white-50">              <i class="bi bi-person-circle me-1"></i>              {{ localUser.username }}              <span *ngIf="localUser.admin"                    class="badge bg-warning text-dark ms-1">Admin</span>            </span>          </li>          <li class="nav-item">            <button class="btn btn-outline-light btn-sm" (click)="logoutLocal()">              <i class="bi bi-box-arrow-right me-1"></i>Logout            </button>          </li>        </ng-container>        <!-- Not logged in -->        <ng-container *ngIf="!localUser && !auth0User">          <li class="nav-item me-2">            <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>          </li>          <li class="nav-item">            <a class="btn btn-light btn-sm" routerLink="/register">Register</a>          </li>        </ng-container>      </ul>    </div>  </div></nav></div>'
+        var COMPONENT_TEMPLATE = '<div><nav class="navbar navbar-expand-lg navbar-dark shadow-sm"     style="background: linear-gradient(135deg, #7e22ce 0%, #581c87 100%);">  <div class="container">    <!-- Brand -->    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" routerLink="/home">      <i class="bi bi-airplane-fill" style="color:#e9d5ff"></i>      <span>SkyBook</span>    </a>    <!-- Toggler -->    <button class="navbar-toggler border-0" type="button"            data-bs-toggle="collapse" data-bs-target="#mainNav">      <span class="navbar-toggler-icon"></span>    </button>    <div class="collapse navbar-collapse" id="mainNav">      <ul class="navbar-nav me-auto mb-2 mb-lg-0">        <li class="nav-item">          <a class="nav-link px-3" routerLink="/home"             routerLinkActive="active">Home</a>        </li>        <li class="nav-item">          <a class="nav-link px-3" routerLink="/flights"             routerLinkActive="active">Flights</a>        </li>        <li class="nav-item" *ngIf="localUser || auth0User">          <a class="nav-link px-3" routerLink="/my-bookings"             routerLinkActive="active">My Bookings</a>        </li>        <li class="nav-item" *ngIf="localUser?.admin">          <a class="nav-link px-3" routerLink="/admin"             routerLinkActive="active">            <i class="bi bi-shield-lock-fill me-1"></i>Admin          </a>        </li>      </ul>      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-1">        <!-- Auth0 social user -->        <ng-container *ngIf="auth0User && !localUser">          <li class="nav-item me-2">            <span class="navbar-text d-flex align-items-center gap-2"                  style="color:rgba(233,213,255,0.9)">              <img *ngIf="auth0User.picture"                   [src]="auth0User.picture"                   class="rounded-circle border border-2"                   style="border-color:#c084fc !important"                   width="28" height="28" style="object-fit:cover">              <i *ngIf="!auth0User.picture" class="bi bi-person-circle"></i>              {{ auth0User.name || auth0User.email }}            </span>          </li>          <li class="nav-item">            <button class="btn btn-sm fw-semibold px-3"                    style="background:#c084fc;color:#fff;border:none"                    (click)="logoutAuth0()">              <i class="bi bi-box-arrow-right me-1"></i>Logout            </button>          </li>        </ng-container>        <!-- Local JWT user -->        <ng-container *ngIf="localUser">          <li class="nav-item me-2">            <span class="navbar-text d-flex align-items-center gap-2"                  style="color:rgba(233,213,255,0.9)">              <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold small"                   style="width:28px;height:28px;background:#c084fc;color:#fff">                {{ localUser.username.charAt(0).toUpperCase() }}              </div>              {{ localUser.username }}              <span *ngIf="localUser.admin"                    class="badge ms-1"                    style="background:#f59e0b;color:#1c1917">Admin</span>            </span>          </li>          <li class="nav-item">            <button class="btn btn-sm fw-semibold px-3"                    style="background:#c084fc;color:#fff;border:none"                    (click)="logoutLocal()">              <i class="bi bi-box-arrow-right me-1"></i>Logout            </button>          </li>        </ng-container>        <!-- Not logged in -->        <ng-container *ngIf="!localUser && !auth0User">          <li class="nav-item">            <a class="nav-link px-3" routerLink="/login"               routerLinkActive="active">Login</a>          </li>          <li class="nav-item">            <a class="btn btn-sm fw-semibold px-3"               style="background:#c084fc;color:#fff"               routerLink="/register">Register</a>          </li>        </ng-container>      </ul>    </div>  </div></nav></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookingComponent', 'selector': 'app-booking'},{'name': 'FlightCardComponent', 'selector': 'app-flight-card'},{'name': 'FlightDetailComponent', 'selector': 'app-flight-detail'},{'name': 'FlightsComponent', 'selector': 'app-flights'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'Login', 'selector': 'app-login'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyBookings', 'selector': 'app-my-bookings'},{'name': 'MyBookingsComponent', 'selector': 'app-my-bookings'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PassengerFormComponent', 'selector': 'app-passenger-form'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NavbarComponent'};
