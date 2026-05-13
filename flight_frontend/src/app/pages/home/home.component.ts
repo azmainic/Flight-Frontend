@@ -1,3 +1,10 @@
+/**
+ * HomeComponent: Landing page of the SkyBook application
+ * Serves as the main entry point for users with hero section, search, and marketing content
+ * Displays popular destinations, airline partners, features, and call-to-action sections
+ * Provides quick search functionality that navigates to flights page with query parameters
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -184,6 +191,13 @@ import { AuthService } from '../../services/auth.service';
     .text-white-75 { color: rgba(255,255,255,0.75) !important; }
   `]
 })
+
+ /** 
+   * Tracks whether current user is authenticated
+   * Used to conditionally show different CTAs and buttons
+   * Updated via subscription to AuthService.currentUser$
+   */
+
 export class HomeComponent implements OnInit {
   isLoggedIn = false;
   searchForm: FormGroup;
@@ -241,11 +255,25 @@ export class HomeComponent implements OnInit {
     this.searchForm = this.fb.group({ origin: [''], destination: [''] });
   }
 
+   /** 
+   * Lifecycle hook that runs after component initialization
+   * Subscribes to currentUser$ observable to track authentication state
+   * Updates isLoggedIn flag whenever user logs in or out
+   */
+
   ngOnInit(): void {
     this.authService.currentUser$.subscribe(user => {
       this.isLoggedIn = !!user;
     });
   }
+
+   // ==================== SEARCH METHODS ====================
+  /**
+   * Handles quick search form submission
+   * Extracts origin and destination values from form
+   * Navigates to flights page with query parameters
+   * Null values are omitted from URL (clean URL generation)
+   */
 
   onSearch(): void {
     const { origin, destination } = this.searchForm.value;
@@ -254,6 +282,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /**
+   * Searches for flights to a specific destination
+   * Called when user clicks on a popular destination card
+   * Navigates to flights page with destination query parameter
+   * Allows users to quickly see flights to popular destinations
+   */
+  
   searchDestination(code: string): void {
     this.router.navigate(['/flights'], { queryParams: { destination: code } });
   }

@@ -1,4 +1,4 @@
-/*
+/**
  *AuthO application configuration
  *Domain and CLient ID are obtained from the AuthO dashboard after creating an application
 */

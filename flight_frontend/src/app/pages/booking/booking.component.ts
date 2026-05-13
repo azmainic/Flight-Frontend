@@ -1,3 +1,10 @@
+/** 
+ * BookingComponent: Multi-step booking wizard for flight reservations
+ * Handles trip selection, passenger information collection, and booking confirmation
+ * Supports one-way, round-trip, and multi-city travel options with dynamic pricing
+ * Manages batch creation of multiple passengers per booking
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -324,6 +331,12 @@ import { PassengerFormData, BookingStatus } from '../../models/passenger.model';
     .step-circle.done{background:#198754;color:white;}
   `]
 })
+
+ /** 
+   * Flight object containing all details for the selected flight
+   * Loaded from API using flightId from route parameter
+   */
+
 export class BookingComponent implements OnInit {
   flight: Flight | null = null;
   flightLoading = false;
@@ -346,6 +359,12 @@ export class BookingComponent implements OnInit {
   tripForm: FormGroup;
   passengerGroups: FormGroup[] = [];
 
+  /** 
+   * Constructor initializes services and builds the trip form
+   * Trip form contains controls for trip type, dates, class, passenger count, and special requests
+   * Validators ensure required fields are filled before proceeding
+   */
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -364,12 +383,27 @@ export class BookingComponent implements OnInit {
     });
   }
 
+
+  /** 
+   * Lifecycle hook that runs after component initialization
+   * Extracts flight ID from route parameters
+   * Loads flight data from API
+   * Initializes passenger form array
+   * Sets up subscription to rebuild passenger forms when passenger count changes
+   */
+
   ngOnInit(): void {
     this.flightId = this.route.snapshot.paramMap.get('id')!;
     this.loadFlight();
     this.buildPassengerForms();
     this.tripForm.get('numPassengers')?.valueChanges.subscribe(() => this.buildPassengerForms());
   }
+
+  /**
+   * 
+   * Convenience getter for trip form controls
+   * Provides easier access in template without writing tripForm.controls repeatedly
+   */
 
   get tf() { return this.tripForm.controls; }
 
@@ -389,6 +423,13 @@ export class BookingComponent implements OnInit {
       ? this.totalPrice * 2 : this.totalPrice;
   }
 
+  /** 
+   * Builds or rebuilds the passenger forms array based on current passenger count
+   * Called when component initializes and when numPassengers value changes
+   * Each form contains required fields for name and passport number
+   * Seat number and nationality are optional
+   */
+
   buildPassengerForms(): void {
     const n = Number(this.tripForm.get('numPassengers')?.value ?? 1);
     this.passengerGroups = Array.from({ length: n }, () =>
@@ -401,6 +442,12 @@ export class BookingComponent implements OnInit {
     );
   }
 
+  /** 
+   * Calculates total price based on selected class, number of passengers, and trip type
+   * Used to display dynamic pricing summary in the UI
+   * Returns total price as a number
+   */
+
   loadFlight(): void {
     this.flightLoading = true;
     this.flightsService.getFlightById(this.flightId).subscribe({
@@ -411,6 +458,14 @@ export class BookingComponent implements OnInit {
       }
     });
   }
+
+  /** 
+   * Validates trip form and advances from step 1 to step 2, 3
+   * Marks all fields as touched to trigger validation errors
+   * Scrolls to top of page for better user experience
+   * Validates all passenger forms and advances from step 2 to step 3
+   * Checks each passenger group for validity and marks invalid fields as touched
+   */
 
   goToStep2(): void {
     if (this.tripForm.invalid) { this.tripForm.markAllAsTouched(); return; }
@@ -426,6 +481,12 @@ export class BookingComponent implements OnInit {
     window.scrollTo(0, 0);
   }
 
+  /** 
+   * Displays a toast notification with specified message and type
+   * Auto-hides after 5 seconds
+   * Used for success and error feedback during booking process
+   */
+
   showToast(message: string, type: 'success' | 'error'): void {
     this.toast = { visible: true, message, type };
     setTimeout(() => { this.toast.visible = false; }, 5000);
@@ -437,7 +498,10 @@ export class BookingComponent implements OnInit {
     const seatClass = this.tripForm.get('seatClass')?.value as 'economy' | 'business' | 'first';
     const currentUser = this.authService.getCurrentUser();
 
-    // Cast booking_status explicitly to satisfy the strict type
+    /**
+     *  Cast booking_status explicitly to satisfy the strict type 
+     */
+
     const bookings: PassengerFormData[] = this.passengerGroups.map((pg, i) => ({
       full_name:       pg.value.full_name as string,
       passport_number: pg.value.passport_number as string,
@@ -455,7 +519,12 @@ export class BookingComponent implements OnInit {
         next: () => {
           completed++;
 
-          // Save passport number to user's local storage for My Bookings lookup
+          /** Save passport number to user's local storage for My Bookings lookup
+           * Only saves if user is logged in, and avoids duplicates by checking existing stored passports
+           * Uses a unique storage key per user to prevent conflicts between different users on the same browser
+           * This allows the My Bookings page to easily retrieve and display relevant bookings based on stored passport numbers
+           */
+          
           if (currentUser) {
             const storageKey = `skybook_${currentUser.username}_passports`;
             const existing: string[] = JSON.parse(localStorage.getItem(storageKey) ?? '[]');

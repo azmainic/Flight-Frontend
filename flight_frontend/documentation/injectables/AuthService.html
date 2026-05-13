@@ -137,6 +137,16 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>AuthService class provides methods for user authentication and session management.
+It includes methods for registering new users, logging in, logging out, and checking authentication status.
+The service uses JWT tokens for managing sessions and integrates with Auth0 for social login functionality.
+It also provides an observable for the current user, allowing components to react to changes in authentication state.</p>
+
+            </p>
 
 
 
@@ -241,7 +251,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/services/auth.service.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/services/auth.service.ts:64</a></div>
                             </td>
                         </tr>
 
@@ -330,14 +340,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="121"
-                                    class="link-to-prism">src/app/services/auth.service.ts:121</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="203"
+                                    class="link-to-prism">src/app/services/auth.service.ts:203</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Removes JWT token from localStorage, clears user subject
+Navigates user to login page
+Return the JWT token or null if not found
+Called internally during logout or unauthorized handling</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -369,14 +384,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="62"
-                                    class="link-to-prism">src/app/services/auth.service.ts:62</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/services/auth.service.ts:109</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Decodes a JWT token&#39;s payload section without verifying signature
+Handles base64url decoding by replacing URL-safe characters
+Returns parsed payload object or null on failure</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -436,14 +455,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="139"
-                                    class="link-to-prism">src/app/services/auth.service.ts:139</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="242"
+                                    class="link-to-prism">src/app/services/auth.service.ts:242</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Returns the current user object or null if not logged in
+Synchronous getter for immediate access</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/AuthUser.html" target="_self" >AuthUser | null</a></code>
@@ -473,14 +495,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="127"
-                                    class="link-to-prism">src/app/services/auth.service.ts:127</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="215"
+                                    class="link-to-prism">src/app/services/auth.service.ts:215</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves the JWT token from localStorage
+Returns the token string or null if not found
+Used for attaching token to API requests and checking authentication state</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>string | null</code>
@@ -510,14 +536,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="143"
-                                    class="link-to-prism">src/app/services/auth.service.ts:143</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="252"
+                                    class="link-to-prism">src/app/services/auth.service.ts:252</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Handles unauthorized access by clearing session and redirecting to login
+Called when API returns 401 Unauthorized, indicating token is invalid or expired
+Ensures user is logged out and prompted to log in again for a new session</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -547,14 +577,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="135"
-                                    class="link-to-prism">src/app/services/auth.service.ts:135</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="233"
+                                    class="link-to-prism">src/app/services/auth.service.ts:233</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Checks if the currently authenticated user has admin privileges
+Returns true if admin flag is exactly true</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
@@ -584,14 +617,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="131"
-                                    class="link-to-prism">src/app/services/auth.service.ts:131</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="224"
+                                    class="link-to-prism">src/app/services/auth.service.ts:224</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Checks if any user is currently authenticated
+Returns true if currentUserSubject has a non-null value</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
@@ -623,14 +659,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="72"
-                                    class="link-to-prism">src/app/services/auth.service.ts:72</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/app/services/auth.service.ts:127</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves user from stored JWT token
+Checks token existence, validity, and expiration
+Removes expired token and returns null if invalid
+Extracts username from &#39;user&#39; or &#39;sub&#39; claim and admin flag</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/AuthUser.html" target="_self" >AuthUser | null</a></code>
@@ -660,14 +701,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="95"
-                                    class="link-to-prism">src/app/services/auth.service.ts:95</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="161"
+                                    class="link-to-prism">src/app/services/auth.service.ts:161</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Performs login using HTTP Basic Authentication
+Encodes credentials as base64, attaches to Authorization header
+On successful response, stores token in localStorage and updates currentUserSubject</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -739,14 +784,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="109"
-                                    class="link-to-prism">src/app/services/auth.service.ts:109</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="183"
+                                    class="link-to-prism">src/app/services/auth.service.ts:183</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Initiates Auth0 social login flow
+Logs user out by calling backend logout endpoint if token exists
+Regardless of success or error, clears local session data
+Redirects to login page after session cleanup</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -776,14 +826,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="88"
-                                    class="link-to-prism">src/app/services/auth.service.ts:88</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="148"
+                                    class="link-to-prism">src/app/services/auth.service.ts:148</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Sends registration request with username and password as FormData
+Returns observable that emits RegisterResponse</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -867,7 +920,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/services/auth.service.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/services/auth.service.ts:61</a></div>
                         </td>
                     </tr>
 
@@ -899,7 +952,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/services/auth.service.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/services/auth.service.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -931,7 +984,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/services/auth.service.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/services/auth.service.ts:63</a></div>
                         </td>
                     </tr>
 
@@ -964,7 +1017,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/services/auth.service.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/services/auth.service.ts:60</a></div>
                         </td>
                     </tr>
 
@@ -984,6 +1037,12 @@ import { BehaviorSubject, Observable, tap } from &#x27;rxjs&#x27;;
 import { AuthService as Auth0Service } from &#x27;@auth0/auth0-angular&#x27;;
 import { environment } from &#x27;../../environments/environment&#x27;;
 
+/**
+ * AuthUser interface defines the structure of the user object used in the authentication system.
+ * It includes properties for username, admin status, optional profile picture, and a flag to indicate if the user is authenticated via Auth0.
+ * This model is used for type safety when managing user data across the application, ensuring consistent handling of authentication state.
+ */
+
 export interface AuthUser {
   username: string;
   admin: boolean;
@@ -991,15 +1050,34 @@ export interface AuthUser {
   isAuth0?: boolean;
 }
 
+/**
+ * LoginResponse interface defines the expected structure of the response from the login API endpoint.
+ * It includes a required token property for the JWT token and optional properties for the username and admin status.
+ * This model is used for type safety when handling login responses, ensuring consistent processing of authentication data.
+ */
+
 export interface LoginResponse {
   token: string;
   user?: string;
   admin?: boolean;
 }
 
+/**
+ * RegisterResponse interface defines the expected structure of the response from the registration API endpoint.
+ * It includes a message property that can be used to convey success or error information about the registration process.
+ * This model is used for type safety when handling registration responses, ensuring consistent processing of registration data.
+ */
+
 export interface RegisterResponse {
   message: string;
 }
+
+/**
+ * AuthService class provides methods for user authentication and session management.
+ * It includes methods for registering new users, logging in, logging out, and checking authentication status.
+ * The service uses JWT tokens for managing sessions and integrates with Auth0 for social login functionality.
+ * It also provides an observable for the current user, allowing components to react to changes in authentication state.
+ */
 
 @Injectable({
   providedIn: &#x27;root&#x27;
@@ -1016,7 +1094,15 @@ export class AuthService {
     private router: Router,
     private auth0: Auth0Service
   ) {
-    // Sync Auth0 social login into currentUser$
+    
+    /** 
+     * Sync Auth0 social login into currentUser$
+     * Subscribes to Auth0&#x27;s user stream to handle social login
+     * When Auth0 user exists and no JWT token is present, creates local user object
+     * After redirect, checks for saved return URL and navigates there
+     * Clears user when Auth0 user logs out
+     */
+
     this.auth0.user$.subscribe(auth0User &#x3D;&gt; {
       if (auth0User &amp;&amp; !this.getToken()) {
         this.currentUserSubject.next({
@@ -1026,7 +1112,9 @@ export class AuthService {
           isAuth0: true
         });
 
-        // After Auth0 redirect, check if there&#x27;s a saved returnUrl
+        /** 
+         * After Auth0 redirect, check if there&#x27;s a saved returnUrl 
+         */
         const returnUrl &#x3D; localStorage.getItem(&#x27;auth0_return_url&#x27;);
         if (returnUrl) {
           localStorage.removeItem(&#x27;auth0_return_url&#x27;);
@@ -1038,6 +1126,12 @@ export class AuthService {
     });
   }
 
+  /** 
+   * Decodes a JWT token&#x27;s payload section without verifying signature
+   * Handles base64url decoding by replacing URL-safe characters
+   * Returns parsed payload object or null on failure
+   */
+
   private decodeToken(token: string): any | null {
     try {
       const payload &#x3D; token.split(&#x27;.&#x27;)[1];
@@ -1047,6 +1141,14 @@ export class AuthService {
       return null;
     }
   }
+
+
+  /** 
+   * Retrieves user from stored JWT token
+   * Checks token existence, validity, and expiration
+   * Removes expired token and returns null if invalid
+   * Extracts username from &#x27;user&#x27; or &#x27;sub&#x27; claim and admin flag
+   */
 
   private loadUserFromToken(): AuthUser | null {
     const token &#x3D; localStorage.getItem(this.TOKEN_KEY);
@@ -1064,12 +1166,23 @@ export class AuthService {
     };
   }
 
+  /** 
+   * Sends registration request with username and password as FormData
+   * Returns observable that emits RegisterResponse
+   */
+
   register(username: string, password: string): Observable&lt;RegisterResponse&gt; {
     const formData &#x3D; new FormData();
     formData.append(&#x27;username&#x27;, username);
     formData.append(&#x27;password&#x27;, password);
     return this.http.post&lt;RegisterResponse&gt;(&#x60;${this.apiUrl}/auth/register&#x60;, formData);
   }
+
+  /** 
+   * Performs login using HTTP Basic Authentication
+   * Encodes credentials as base64, attaches to Authorization header
+   * On successful response, stores token in localStorage and updates currentUserSubject
+   */
 
   login(username: string, password: string): Observable&lt;LoginResponse&gt; {
     const credentials &#x3D; btoa(&#x60;${username}:${password}&#x60;);
@@ -1085,6 +1198,14 @@ export class AuthService {
     );
   }
 
+
+  /** 
+   * Initiates Auth0 social login flow
+   * Logs user out by calling backend logout endpoint if token exists
+   * Regardless of success or error, clears local session data
+   * Redirects to login page after session cleanup
+   */
+
   logout(): void {
     const token &#x3D; this.getToken();
     if (token) {
@@ -1097,27 +1218,62 @@ export class AuthService {
     }
   }
 
+
+  /** 
+   * Removes JWT token from localStorage, clears user subject
+   * Navigates user to login page
+   * Return the JWT token or null if not found
+   * Called internally during logout or unauthorized handling
+   */
+
   private clearSession(): void {
     localStorage.removeItem(this.TOKEN_KEY);
     this.currentUserSubject.next(null);
     this.router.navigate([&#x27;/login&#x27;]);
   }
 
+  /** 
+   * Retrieves the JWT token from localStorage
+   * Returns the token string or null if not found
+   * Used for attaching token to API requests and checking authentication state
+   */
+  
   getToken(): string | null {
     return localStorage.getItem(this.TOKEN_KEY);
   }
+
+  /** 
+   * Checks if any user is currently authenticated
+   * Returns true if currentUserSubject has a non-null value
+   */
 
   isLoggedIn(): boolean {
     return this.currentUserSubject.value !&#x3D;&#x3D; null;
   }
 
+   /**
+    * Checks if the currently authenticated user has admin privileges
+    * Returns true if admin flag is exactly true
+    */
+
   isAdmin(): boolean {
     return this.currentUserSubject.value?.admin &#x3D;&#x3D;&#x3D; true;
   }
 
+  /** 
+   * Returns the current user object or null if not logged in
+   * Synchronous getter for immediate access
+   */
+
   getCurrentUser(): AuthUser | null {
     return this.currentUserSubject.value;
   }
+
+
+  /**  * Handles unauthorized access by clearing session and redirecting to login
+   * Called when API returns 401 Unauthorized, indicating token is invalid or expired
+   * Ensures user is logged out and prompted to log in again for a new session
+   */
 
   handleUnauthorized(): void {
     this.clearSession();

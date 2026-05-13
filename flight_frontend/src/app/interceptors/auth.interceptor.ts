@@ -1,3 +1,10 @@
+/** 
+ * AuthInterceptor: HTTP interceptor that attaches JWT token to outgoing requests
+ * Automatically adds x-access-token header to all API calls except excluded endpoints
+ * Handles 401 unauthorized responses by clearing user session
+ * Prevents token injection on login/register endpoints that use different auth methods
+ */
+
 import { Injectable } from '@angular/core';
 import {
   HttpInterceptor,
@@ -28,8 +35,22 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private authService: AuthService) {}
 
+  /** 
+   * Intercepts every HTTP request before it is sent to the server
+   * Checks if the request URL matches any excluded URLs
+   * Conditionally adds x-access-token header if token exists and URL is not excluded
+   * Handles 401 errors globally to trigger session cleanup
+   */
+
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const isExcluded = EXCLUDED_URLS.some(url => req.url.startsWith(url));
+
+    /** 
+     * Only adds token for non-excluded endpoints
+     * Retrieves JWT token from AuthService (checks localStorage)
+     * If token exists, clones the request with additional header
+     * Original request is immutable, so clone is required
+     */
 
     if (!isExcluded) {
       const token = this.authService.getToken();
@@ -42,6 +63,13 @@ export class AuthInterceptor implements HttpInterceptor {
       }
     }
 
+    /** 
+     * Passes the (potentially modified) request to the next handler
+     * Pipe catches HTTP errors from the response stream
+     * Specifically checks for 401 Unauthorized status code
+     * 401 indicates invalid, expired, or missing token
+     */
+    
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {

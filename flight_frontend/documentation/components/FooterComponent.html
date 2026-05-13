@@ -134,6 +134,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>FooterComponent class defines the structure and behavior of the footer section of the application.
+It includes a FAQ accordion with questions and answers, as well as a footer with brand information, quick links, and contact details.
+The component uses Bootstrap classes for styling and layout, and it manages the state of the open FAQ item to allow for an accordion effect.</p>
+
+    </p>
 
 
 
@@ -367,14 +376,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="143"
-                                    class="link-to-prism">src/app/components/footer/footer.component.ts:143</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/app/components/footer/footer.component.ts:169</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Toggles the open state of a FAQ item
+If the clicked FAQ is already open, it will be closed (set to null)
+If the clicked FAQ is closed, it will be set to its index to open it
+This allows only one FAQ to be open at a time, creating an accordion effect</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -469,7 +483,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/app/components/footer/footer.component.ts:116</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/app/components/footer/footer.component.ts:135</a></div>
                         </td>
                     </tr>
 
@@ -500,7 +514,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/components/footer/footer.component.ts:114</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/app/components/footer/footer.component.ts:133</a></div>
                         </td>
                     </tr>
 
@@ -516,6 +530,12 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { RouterLink } from &#x27;@angular/router&#x27;;
+
+/**
+ * FooterComponent class defines the structure and behavior of the footer section of the application.
+ * It includes a FAQ accordion with questions and answers, as well as a footer with brand information, quick links, and contact details.
+ * The component uses Bootstrap classes for styling and layout, and it manages the state of the open FAQ item to allow for an accordion effect.
+ */
 
 @Component({
   selector: &#x27;app-footer&#x27;,
@@ -625,6 +645,13 @@ import { RouterLink } from &#x27;@angular/router&#x27;;
     &lt;/footer&gt;
   &#x60;
 })
+
+  /** 
+   * Tracks which FAQ item is currently expanded (open)
+   * Null means no FAQ is open, number represents the index of open FAQ
+   * Used with toggleFaq method to implement accordion behavior
+   */
+  
 export class FooterComponent {
   openFaq: number | null &#x3D; null;
 
@@ -655,6 +682,13 @@ export class FooterComponent {
     }
   ];
 
+  /** 
+   * Toggles the open state of a FAQ item
+   * If the clicked FAQ is already open, it will be closed (set to null)  
+   * If the clicked FAQ is closed, it will be set to its index to open it
+   * This allows only one FAQ to be open at a time, creating an accordion effect
+   */
+   
   toggleFaq(i: number): void {
     this.openFaq &#x3D; this.openFaq &#x3D;&#x3D;&#x3D; i ? null : i;
   }

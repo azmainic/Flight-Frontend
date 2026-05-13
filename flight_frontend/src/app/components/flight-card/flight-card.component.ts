@@ -1,8 +1,18 @@
+/**
+ * FlightCardComponent: Displays a single flight's information in a card format
+ * Used in flight listings, search results, and dashboard views
+ * Shows route, times, pricing, and provides navigation to details/booking pages
+ */
+
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Flight } from '../../models/flight.model';
 
+/**
+ * FlightCardComponent class implements the logic for displaying a single flight's information
+ * It receives a Flight object as input and renders details such as route, times, status, and pricing
+ */
 @Component({
   selector: 'app-flight-card',
   standalone: true,
@@ -90,8 +100,21 @@ import { Flight } from '../../models/flight.model';
     .flight-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.12) !important; }
   `]
 })
+
+  /** 
+   * Required input property that receives the flight data object
+   * Component will not render without this input being provided
+   * Contains all flight details including route, times, status, and identifiers
+   */
+  
 export class FlightCardComponent {
   @Input({ required: true }) flight!: Flight;
+
+  /**
+   * Computes the CSS class for the status badge based on flight status
+   * Uses a mapping of status values to Bootstrap badge classes for consistent styling
+   * Defaults to 'bg-secondary' if status is unrecognized or missing
+   */
 
   get statusBadgeClass(): string {
     const map: Record<string, string> = {
@@ -102,6 +125,12 @@ export class FlightCardComponent {
     return map[this.flight.status] ?? 'bg-secondary';
   }
 
+  /**
+   * Computes the CSS class for the card header based on flight status
+   * Provides visual cues through background and text colors to indicate flight status
+   * Defaults to 'bg-light text-dark' for unrecognized or missing status
+   */
+  
   get headerClass(): string {
     const map: Record<string, string> = {
       scheduled: 'bg-light text-dark',

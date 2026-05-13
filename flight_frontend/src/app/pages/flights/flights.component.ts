@@ -1,3 +1,9 @@
+/** 
+ * FlightsComponent: Displays searchable and paginated list of flights
+ * Provides search functionality by origin, destination, and flight status
+ * Supports pagination for browsing through large flight lists
+ * Converts airport codes to city names automatically for better search experience
+ */
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
@@ -6,7 +12,10 @@ import { FlightsService } from '../../services/flights.service';
 import { Flight } from '../../models/flight.model';
 import { FlightCardComponent } from '../../components/flight-card/flight-card.component';
 
-// Map airport codes to city names for the API
+/** Map airport codes to city names for the API 
+ * This allows users to search using either city names or airport codes
+ * The API expects city names, so we convert codes to cities before sending search requests
+*/
 const CODE_TO_CITY: Record<string, string> = {
   'LHR': 'London', 'CDG': 'Paris', 'DXB': 'Dubai',
   'JFK': 'New York', 'FRA': 'Frankfurt', 'NYC': 'New York'
@@ -118,6 +127,14 @@ const CODE_TO_CITY: Record<string, string> = {
     </div>
   `
 })
+
+/**
+ * FlightsComponent class implements the logic for displaying and searching flights
+ * It manages state for flights list, loading status, error messages, search mode, and pagination
+ * It interacts with FlightsService to fetch flight data based on search criteria and pagination
+ * The component also handles conversion of airport codes to city names for better search experience
+ */
+
 export class FlightsComponent implements OnInit {
   flights: Flight[] = [];
   loading = false;
@@ -138,6 +155,13 @@ export class FlightsComponent implements OnInit {
     });
   }
 
+  /** 
+   * Lifecycle hook that runs after component initialization
+   * Subscribes to query parameters for deep linking support
+   * If origin/destination are present in URL, pre-fills form and triggers search
+   * Otherwise loads all flights with default pagination
+   */
+
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       if (params['origin'] || params['destination']) {
@@ -152,11 +176,24 @@ export class FlightsComponent implements OnInit {
     });
   }
 
+  /** 
+   * Converts airport code to city name if it exists in the mapping
+   * If input is empty or not found in mapping, returns original input
+   * This allows users to search using either city names or airport codes
+   */
+
   resolveCity(input: string): string {
     if (!input) return '';
     const upper = input.toUpperCase();
     return CODE_TO_CITY[upper] ?? input;
   }
+  /** 
+   * ==================== API METHODS ====================
+   * Fetches paginated list of all flights from the API
+   * Sets loading flag, clears error message, and disables search mode
+   * Updates flights array, total pages, and handles errors
+   * Called on initial load and when changing pages
+   */
 
   loadFlights(): void {
     this.loading = true;
@@ -176,6 +213,13 @@ export class FlightsComponent implements OnInit {
       }
     });
   }
+
+  /** 
+   * Performs search with current form values
+   * Converts origin/destination to city names before sending to API
+   * If all filters are empty, falls back to loading all flights
+   * Sets search mode flag to true for UI adjustments
+   */
 
   onSearch(): void {
     let { origin, destination, status } = this.searchForm.value;
@@ -205,11 +249,24 @@ export class FlightsComponent implements OnInit {
     });
   }
 
+  /** 
+   * Resets all search filters to empty values
+   * Resets current page to 1
+   * Loads the full paginated flight list
+   * Called when user clicks clear button or "Show All Flights" link
+   */
+
   clearSearch(): void {
     this.searchForm.reset({ origin: '', destination: '', status: '' });
     this.currentPage = 1;
     this.loadFlights();
   }
+
+  /** 
+   * Changes the current page number and reloads flights
+   * Validates page number is within valid range (1 to totalPages)
+   * Called when user clicks on page numbers or prev/next buttons
+   */
 
   changePage(page: number): void {
     if (page < 1 || page > this.totalPages) return;

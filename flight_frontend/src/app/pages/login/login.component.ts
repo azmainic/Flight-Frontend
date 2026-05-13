@@ -1,3 +1,11 @@
+/**
+ * LoginComponent: Handles user authentication through local JWT and social logins
+ * Provides login form for username/password credentials
+ * Integrates Auth0 for social authentication (Google, Facebook, Apple, Microsoft)
+ * Supports return URL redirection after successful login
+ * Handles registration success messages and remembers return URL for social auth redirects
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -179,6 +187,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /** 
+   * Lifecycle hook that runs after component initialization
+   * Captures returnUrl from query parameters for post-login redirect
+   * Checks navigation state for registration success message
+   * Subscribes to currentUser$ to redirect if already logged in
+   */
+
   ngOnInit(): void {
     // Capture returnUrl from query params
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] ?? '';
@@ -196,15 +211,35 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /** 
+   * Removes readonly attribute from input field on focus
+   * Workaround for browsers that pre-fill disabled/readonly fields
+   * Once user interacts, autofill blocking is disabled
+   */
+
   enableInput(event: FocusEvent): void {
     (event.target as HTMLInputElement).removeAttribute('readonly');
     this.autofillBlocked = false;
   }
 
+  /** 
+   * Checks if form field is both invalid and has been touched
+   * Returns true for displaying Bootstrap's is-invalid class
+   * Used in template to show validation error styling
+   */
+
   isInvalid(field: string): boolean {
     const ctrl = this.loginForm.get(field);
     return !!(ctrl && ctrl.invalid && ctrl.touched);
   }
+
+  // ==================== AUTHENTICATION METHODS ====================
+  /** 
+   * Initiates social login with specified Auth0 connection
+   * Stores returnUrl in localStorage before redirecting
+   * After Auth0 redirect, returnUrl is retrieved and used in auth.service.ts
+   * Supported connections: google-oauth2, facebook, apple, windowslive
+   */
 
   loginWith(connection: string): void {
     // Store returnUrl in localStorage so Auth0 redirect can use it
@@ -216,6 +251,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /**
+   * Handles local login form submission
+   * Validates form, marks all fields touched if invalid
+   * Calls authService.login with username and password
+   * On success, redirects to returnUrl or default page (admin or flights)
+   * On error, displays error message from API response
+   */
+
   onSubmit(): void {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
@@ -225,6 +268,8 @@ export class LoginComponent implements OnInit {
     this.errorMessage = '';
     const { username, password } = this.loginForm.value;
 
+    // Call AuthService to perform login
+    
     this.authService.login(username, password).subscribe({
       next: () => {
         this.loading = false;

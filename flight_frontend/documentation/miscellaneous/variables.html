@@ -185,10 +185,30 @@
   const authService &#x3D; inject(AuthService);
   const router &#x3D; inject(Router);
 
+  /** 
+   * First condition: User is successfully authenticated AND has admin privileges
+   * Both checks must pass to allow access to the admin route
+   * Returns true immediately, allowing navigation to proceed
+   */
+
   if (authService.isLoggedIn() &amp;&amp; authService.isAdmin()) {
     return true;
   }
 
+   /** 
+    * Second condition: User is NOT logged in at all
+    * This occurs when an unauthenticated visitor tries to access admin pages
+    * Redirects to the login page to prompt for authentication 
+    * Unauthenticated users should not see admin content and must log in first
+    */
+
+   /** 
+    * Third condition: User is logged in but does NOT have admin privileges
+    * This occurs when a regular non-admin user tries to access admin pages
+    * Redirects to home page with query parameter indicating access was denied
+    * Home page can read error parameter to show an access-denied message
+    */
+  
   if (!authService.isLoggedIn()) {
     // Not logged in at all — send to login
     router.navigate([&#x27;/login&#x27;]);
@@ -202,6 +222,15 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Functional route guard for admin-only routes
+Called automatically by Angular Router before activating a route
+Returns true to allow navigation, false to block and redirect
+Uses dependency injection with inject() function for services</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -249,6 +278,14 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>appConfig is the main configuration object for the Angular application.
+It includes providers for zone change detection, routing, HTTP client with interceptors, and Auth0 authentication.
+This configuration ensures that the app has the necessary services and settings to function correctly, including handling authentication and API requests.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -284,11 +321,24 @@
     switchMap(isAuth0LoggedIn &#x3D;&gt; {
       const isJwtLoggedIn &#x3D; authService.isLoggedIn();
 
+       /**
+        * First condition: User is authenticated via either method
+        * JWT token OR Auth0 social login is sufficient for access
+        * Returns observable of true to allow route activation
+        */
+
       if (isJwtLoggedIn || isAuth0LoggedIn) {
         return of(true);
       }
 
       // Save the attempted URL so we can redirect after login
+      /** 
+       * Second condition: User is not authenticated at all
+       * Saves the attempted URL (state.url) as returnUrl query parameter
+       * After successful login, user will be redirected back to this URL
+       * Navigates to login page and returns observable of false to block access
+       */
+
       router.navigate([&#x27;/login&#x27;], {
         queryParams: { returnUrl: state.url }
       });
@@ -299,6 +349,15 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Functional route guard that checks both JWT and Auth0 authentication
+Called by Angular Router before activating protected routes
+Returns Observable<boolean> to handle Auth0&#39;s async auth check
+Receives route snapshot and state (contains target URL for redirect)</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -331,6 +390,14 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Map airport codes to city names for the API 
+This allows users to search using either city names or airport codes
+The API expects city names, so we convert codes to cities before sending search requests</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -368,6 +435,13 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>AuthO application configuration
+Domain and CLient ID are obtained from the AuthO dashboard after creating an application</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -405,6 +479,13 @@
                     </td>
                 </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>AuthO application configuration
+Domain and CLient ID are obtained from the AuthO dashboard after creating an application</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>

@@ -144,6 +144,15 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>PassengerFormData interface defines the structure of the data used when creating or updating a passenger through a form.
+It has the same fields as the Passenger interface, but can be used to differentiate between form input data and actual passenger objects in the system.
+This model helps in handling form data consistently across the application when managing passenger information.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -411,6 +420,12 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export type SeatClass &#x3D; &#x27;economy&#x27; | &#x27;business&#x27; | &#x27;first&#x27;;
 export type BookingStatus &#x3D; &#x27;confirmed&#x27; | &#x27;cancelled&#x27; | &#x27;checked_in&#x27; | &#x27;booked&#x27;;
 
+/**
+ * Passenger interface defines the structure of a passenger object in the system.
+ * It includes details such as full name, passport number, nationality, seat class, seat number, and booking status.
+ * This model is used for type safety when working with passenger data across the application, ensuring consistent handling of passenger information.
+ */
+
 export interface Passenger {
   full_name: string;
   passport_number: string;
@@ -419,6 +434,12 @@ export interface Passenger {
   seat_number: string;
   booking_status: BookingStatus;
 }
+
+/**
+ * PassengerFormData interface defines the structure of the data used when creating or updating a passenger through a form.
+ * It has the same fields as the Passenger interface, but can be used to differentiate between form input data and actual passenger objects in the system.
+ * This model helps in handling form data consistently across the application when managing passenger information.
+ */
 
 export interface PassengerFormData {
   full_name: string;

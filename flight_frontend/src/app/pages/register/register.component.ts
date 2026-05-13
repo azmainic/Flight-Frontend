@@ -1,8 +1,21 @@
+/** 
+ * RegisterComponent: Handles new user account creation for local JWT authentication
+ * Provides registration form with username and password validation
+ * Requires password confirmation with matching validation
+ * Redirects to login page with success message after successful registration
+ */
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+
+/** 
+ * Custom validator function that checks if password and confirmPassword fields match
+ * Returns null if passwords match, otherwise returns mismatch error object
+ * Applied at the form group level (cross-field validation)
+ */
 
 function passwordsMatch(group: AbstractControl): ValidationErrors | null {
   const pw  = group.get('password')?.value;
@@ -125,17 +138,33 @@ export class RegisterComponent {
     }, { validators: passwordsMatch });
   }
 
+   /** 
+   * Checks if a form field is both invalid and has been touched
+   * Returns true for displaying Bootstrap's is-invalid class
+   * Used in template to show validation error styling
+   * Prevents showing errors before user has interacted with field
+   */
+
   isInvalid(field: string): boolean {
     const ctrl = this.registerForm.get(field);
     return !!(ctrl && ctrl.invalid && ctrl.touched);
   }
 
+   /** 
+   * Handles registration form submission
+   * Validates form and marks all fields as touched if invalid
+   * Extracts username and password from form values
+   * Calls authService.register API endpoint
+   * On success, navigates to login page with registration success state
+   * On error, displays error message from API or fallback text
+   */
   onSubmit(): void {
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
       return;
     }
 
+    // Show loadin state and clear previous error message
     this.loading = true;
     this.errorMessage = '';
     const { username, password } = this.registerForm.value;

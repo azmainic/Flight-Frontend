@@ -179,7 +179,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/interceptors/auth.interceptor.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/interceptors/auth.interceptor.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -242,14 +242,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/interceptors/auth.interceptor.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/interceptors/auth.interceptor.ts:45</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Intercepts every HTTP request before it is sent to the server
+Checks if the request URL matches any excluded URLs
+Conditionally adds x-access-token header if token exists and URL is not excluded
+Handles 401 errors globally to trigger session cleanup</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -337,8 +342,22 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private authService: AuthService) {}
 
+  /** 
+   * Intercepts every HTTP request before it is sent to the server
+   * Checks if the request URL matches any excluded URLs
+   * Conditionally adds x-access-token header if token exists and URL is not excluded
+   * Handles 401 errors globally to trigger session cleanup
+   */
+
   intercept(req: HttpRequest&lt;unknown&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;unknown&gt;&gt; {
     const isExcluded &#x3D; EXCLUDED_URLS.some(url &#x3D;&gt; req.url.startsWith(url));
+
+    /** 
+     * Only adds token for non-excluded endpoints
+     * Retrieves JWT token from AuthService (checks localStorage)
+     * If token exists, clones the request with additional header
+     * Original request is immutable, so clone is required
+     */
 
     if (!isExcluded) {
       const token &#x3D; this.authService.getToken();
@@ -351,6 +370,13 @@ export class AuthInterceptor implements HttpInterceptor {
       }
     }
 
+    /** 
+     * Passes the (potentially modified) request to the next handler
+     * Pipe catches HTTP errors from the response stream
+     * Specifically checks for 401 Unauthorized status code
+     * 401 indicates invalid, expired, or missing token
+     */
+    
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) &#x3D;&gt; {
         if (error.status &#x3D;&#x3D;&#x3D; 401) {

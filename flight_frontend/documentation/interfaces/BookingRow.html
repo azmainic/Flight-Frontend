@@ -267,6 +267,10 @@ import { catchError } from &#x27;rxjs/operators&#x27;;
  
 interface BookingRow { flight: Flight; passenger: Passenger; }
  
+/**
+ * MyBookingsComponent class implements the logic for displaying user profile and bookings
+ * It manages state for profile information, bookings list, loading status, and API connectivity 
+ */
 @Component({
   selector: &#x27;app-my-bookings&#x27;,
   standalone: true,
@@ -520,6 +524,12 @@ interface BookingRow { flight: Flight; passenger: Passenger; }
     .booking-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1) !important; }
   &#x60;]
 })
+
+/**
+ * MyBookingsComponent class implements the logic for displaying user profile and bookings
+ * It manages state for profile information, bookings list, loading status, and API connectivity 
+ */
+
 export class MyBookingsComponent implements OnInit {
   activeTab &#x3D; &#x27;bookings&#x27;;
   editingProfile &#x3D; false;
@@ -538,8 +548,14 @@ export class MyBookingsComponent implements OnInit {
   apiConnected &#x3D; false;
  
   toast &#x3D; { visible: false, message: &#x27;&#x27; };
- 
-  // CRITICAL: unique key per user — prevents data leaking between users
+  /** 
+   * CRITICAL: unique key per user — prevents data leaking between users
+   * User-specific storage key for isolated data per user
+   * Format: skybook_{username} for local users
+   * Format: skybook_auth0_{email_with_underscores} for Auth0 users
+   * Prevents data leaking between different users
+   */
+
   private userKey &#x3D; &#x27;&#x27;;
   private currentUsername &#x3D; &#x27;&#x27;;
  
@@ -558,7 +574,15 @@ export class MyBookingsComponent implements OnInit {
     });
   }
  
+  /** 
+   * Lifecycle hook that runs after component initialization
+   * Subscribes to both local JWT user and Auth0 user streams
+   * Sets up user data, loads profile from storage, and fetches bookings
+   * Handles user switching by checking username change
+   */
+
   ngOnInit(): void {
+    // Subscribe to local JWT user stream
     this.authService.currentUser$.subscribe(user &#x3D;&gt; {
       if (user &amp;&amp; user.username !&#x3D;&#x3D; this.currentUsername) {
         this.currentUsername &#x3D; user.username;
@@ -575,6 +599,9 @@ export class MyBookingsComponent implements OnInit {
       }
     });
  
+    /**
+     * Subscribe to Auth0 user stream
+     */ 
     this.auth0.user$.subscribe(u &#x3D;&gt; {
       if (u) {
         this.displayName &#x3D; u.name ?? u.email ?? &#x27;User&#x27;;
@@ -590,6 +617,12 @@ export class MyBookingsComponent implements OnInit {
     });
   }
  
+  /** 
+   * Loads user profile data from localStorage
+   * Retrieves saved mobile, nationality, about, fullName, and passport photo
+   * Patches form values and restores profile picture for local users
+   */
+
   loadProfileFromStorage(): void {
     if (!this.userKey) return;
     const saved &#x3D; localStorage.getItem(this.userKey);
@@ -604,6 +637,12 @@ export class MyBookingsComponent implements OnInit {
     }
   }
  
+  /** 
+   * Loads user&#x27;s flight bookings by fetching all flights and their passengers
+   * Matches passengers against saved passport numbers in localStorage
+   * Only bookings with matching passport numbers are added to myBookings list
+   * Handles API connectivity status and loading state for better UX
+   */
   loadMyBookings(): void {
     this.bookingsLoading &#x3D; true;
     this.myBookings &#x3D; [];
@@ -613,7 +652,9 @@ export class MyBookingsComponent implements OnInit {
         this.apiConnected &#x3D; true;
         const flights: Flight[] &#x3D; res.flights ?? (res as any);
  
-        // Get saved passports for this user
+        /**
+         * Get saved passports for this user
+         */
         const passportKey &#x3D; &#x60;${this.userKey}_passports&#x60;;
         const myPassports: string[] &#x3D; JSON.parse(localStorage.getItem(passportKey) ?? &#x27;[]&#x27;);
  
@@ -626,7 +667,9 @@ export class MyBookingsComponent implements OnInit {
             flights.forEach((flight, idx) &#x3D;&gt; {
               const passengers: Passenger[] &#x3D; allPassengers[idx] as Passenger[];
               passengers.forEach(p &#x3D;&gt; {
-                // Only show if passport number matches what this user booked
+                /**
+                 * Only show if passport number matches what this user booked
+                 */
                 if (myPassports.includes(p.passport_number)) {
                   this.myBookings.push({ flight, passenger: p });
                 }
@@ -644,6 +687,12 @@ export class MyBookingsComponent implements OnInit {
     });
   }
  
+  /**   
+   * Handles profile picture upload from file input
+   * Reads file as data URL and stores in component state
+   * Saves to localStorage immediately
+   */
+
   onPhotoChange(event: Event): void {
     const file &#x3D; (event.target as HTMLInputElement).files?.[0];
     if (!file) return;
@@ -655,6 +704,12 @@ export class MyBookingsComponent implements OnInit {
     reader.readAsDataURL(file);
   }
  
+  /** 
+   * Handles passport photo upload from file input
+   * Reads file as data URL and stores in component state
+   * Does NOT auto-save; will be saved when profile is saved
+   */
+
   onPassportPhotoChange(event: Event): void {
     const file &#x3D; (event.target as HTMLInputElement).files?.[0];
     if (!file) return;
@@ -682,6 +737,11 @@ export class MyBookingsComponent implements OnInit {
     }));
   }
  
+  /** Utility methods to determine CSS classes based on flight and booking status
+   * These methods return appropriate Bootstrap classes for badges and headers
+   * based on the status of flights and bookings to visually differentiate them
+   */
+
   flightStatusBadge(status: string): string {
     const m: Record&lt;string,string&gt; &#x3D; {
       scheduled:&#x27;bg-secondary&#x27;, boarding:&#x27;bg-success&#x27;,
@@ -691,6 +751,11 @@ export class MyBookingsComponent implements OnInit {
     return m[status] ?? &#x27;bg-secondary&#x27;;
   }
  
+  /** Flight header classes based on status for better visual cues
+   * Uses lighter background colors for headers to differentiate from badges
+   * Provides quick visual indication of flight status in the booking cards
+   */
+
   flightHeaderClass(status: string): string {
     const m: Record&lt;string,string&gt; &#x3D; {
       scheduled:&#x27;bg-light text-dark&#x27;, boarding:&#x27;bg-success bg-opacity-10&#x27;,
@@ -700,6 +765,11 @@ export class MyBookingsComponent implements OnInit {
     return m[status] ?? &#x27;bg-light text-dark&#x27;;
   }
  
+  /** Booking status badge classes for visual differentiation of booking states
+   * Uses distinct colors for different booking statuses like confirmed, cancelled, checked-in, etc.
+   * Provides immediate visual feedback on the status of each booking in the user&#x27;s list
+   */
+  
   bookingStatusBadge(status: string): string {
     const m: Record&lt;string,string&gt; &#x3D; {
       confirmed:&#x27;bg-success&#x27;, cancelled:&#x27;bg-danger&#x27;,

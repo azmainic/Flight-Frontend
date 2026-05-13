@@ -213,7 +213,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/flights.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/services/flights.service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -276,15 +276,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/app/services/flights.service.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/services/flights.service.ts:84</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>POST /flights — Admin only</p>
+                        <div class="io-description"><p>POST /flights — Admin only
+Creates a new flight in the system
+Endpoint requires admin privileges
+Accepts partial flight object and returns the created flight with server-generated fields</p>
 </div>
 
                             <div class="io-description">
@@ -345,15 +348,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/app/services/flights.service.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/services/flights.service.ts:102</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>DELETE /flights/:id — Admin only</p>
+                        <div class="io-description"><p>DELETE /flights/:id — Admin only
+Deletes a flight identified by its ID
+Endpoint requires admin privileges</p>
 </div>
 
                             <div class="io-description">
@@ -414,15 +419,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/services/flights.service.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/services/flights.service.ts:63</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>GET /flights/analytics — Admin only (token attached by interceptor)</p>
+                        <div class="io-description"><p>GET /flights/analytics — Admin only
+Endpoint requires admin privileges, token is attached by HTTP interceptor
+Retrieves flight analytics data for administrative dashboard
+Returns observable containing analytics metrics such as total flights, on-time percentage, and delay statistics</p>
 </div>
 
                         <div class="io-description">
@@ -453,15 +461,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/app/services/flights.service.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/services/flights.service.ts:73</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>GET /flights/:id — public</p>
+                        <div class="io-description"><p>GET /flights/:id — public
+Fetches detailed information for a single flight by its unique ID
+Returns complete flight object including schedule and capacity details</p>
 </div>
 
                             <div class="io-description">
@@ -522,15 +532,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="18"
-                                    class="link-to-prism">src/app/services/flights.service.ts:18</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/app/services/flights.service.ts:30</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>GET /flights — public, supports pagination</p>
+                        <div class="io-description"><p>GET /flights — public
+Fetches a paginated list of all flights from the server
+Accepts page number and page size as query parameters
+Endpoint is publicly accessible without authentication
+Returns observable containing flight list and pagination metadata</p>
 </div>
 
                             <div class="io-description">
@@ -610,15 +624,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="29"
-                                    class="link-to-prism">src/app/services/flights.service.ts:29</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/services/flights.service.ts:47</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>GET /flights/search — public</p>
+                        <div class="io-description"><p>GET /flights/search — public
+Searches flights based on optional filters
+Supported filters: origin airport, destination airport, flight status
+All parameters are optional and only included when provided
+Endpoint is publicly accessible without authentication
+Returns observable containing list of flights matching the search criteria</p>
 </div>
 
                             <div class="io-description">
@@ -703,15 +722,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="62"
-                                    class="link-to-prism">src/app/services/flights.service.ts:62</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/services/flights.service.ts:93</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>PUT /flights/:id — Admin only</p>
+                        <div class="io-description"><p>PUT /flights/:id — Admin only
+Updates an existing flight identified by its ID
+Endpoint requires admin privileges</p>
 </div>
 
                             <div class="io-description">
@@ -796,7 +817,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/flights.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/services/flights.service.ts:18</a></div>
                         </td>
                     </tr>
 
@@ -823,9 +844,14 @@ export class FlightsService {
 
   constructor(private http: HttpClient) {}
 
-  /**
-   * GET /flights — public, supports pagination
-   */
+   /** 
+    * GET /flights — public
+    * Fetches a paginated list of all flights from the server
+    * Accepts page number and page size as query parameters
+    * Endpoint is publicly accessible without authentication
+    * Returns observable containing flight list and pagination metadata
+    */
+
   getFlights(page: number &#x3D; 1, pageSize: number &#x3D; 10): Observable&lt;FlightListResponse&gt; {
     const params &#x3D; new HttpParams()
       .set(&#x27;pn&#x27;, page.toString())
@@ -834,9 +860,15 @@ export class FlightsService {
     return this.http.get&lt;FlightListResponse&gt;(&#x60;${this.apiUrl}/flights&#x60;, { params });
   }
 
-  /**
-   * GET /flights/search — public
-   */
+   /**
+    * GET /flights/search — public
+    * Searches flights based on optional filters
+    * Supported filters: origin airport, destination airport, flight status
+    * All parameters are optional and only included when provided
+    * Endpoint is publicly accessible without authentication
+    * Returns observable containing list of flights matching the search criteria
+    */
+
   searchFlights(origin?: string, destination?: string, status?: string): Observable&lt;FlightListResponse&gt; {
     let params &#x3D; new HttpParams();
     if (origin)      params &#x3D; params.set(&#x27;origin&#x27;, origin);
@@ -846,29 +878,42 @@ export class FlightsService {
     return this.http.get&lt;FlightListResponse&gt;(&#x60;${this.apiUrl}/flights/search&#x60;, { params });
   }
 
-  /**
-   * GET /flights/analytics — Admin only (token attached by interceptor)
-   */
+   /**
+    * GET /flights/analytics — Admin only
+    * Endpoint requires admin privileges, token is attached by HTTP interceptor
+    * Retrieves flight analytics data for administrative dashboard
+    * Returns observable containing analytics metrics such as total flights, on-time percentage, and delay statistics
+    */
+
   getAnalytics(): Observable&lt;any&gt; {
     return this.http.get&lt;any&gt;(&#x60;${this.apiUrl}/flights/analytics&#x60;);
   }
 
   /**
    * GET /flights/:id — public
+   * Fetches detailed information for a single flight by its unique ID
+   * Returns complete flight object including schedule and capacity details
    */
+
   getFlightById(id: string): Observable&lt;Flight&gt; {
     return this.http.get&lt;Flight&gt;(&#x60;${this.apiUrl}/flights/${id}&#x60;);
   }
 
   /**
    * POST /flights — Admin only
+   * Creates a new flight in the system
+   * Endpoint requires admin privileges
+   * Accepts partial flight object and returns the created flight with server-generated fields
    */
+
   createFlight(flight: Partial&lt;Flight&gt;): Observable&lt;Flight&gt; {
     return this.http.post&lt;Flight&gt;(&#x60;${this.apiUrl}/flights&#x60;, flight);
   }
 
   /**
    * PUT /flights/:id — Admin only
+   * Updates an existing flight identified by its ID
+   * Endpoint requires admin privileges
    */
   updateFlight(id: string, flight: Partial&lt;Flight&gt;): Observable&lt;Flight&gt; {
     return this.http.put&lt;Flight&gt;(&#x60;${this.apiUrl}/flights/${id}&#x60;, flight);
@@ -876,6 +921,8 @@ export class FlightsService {
 
   /**
    * DELETE /flights/:id — Admin only
+   * Deletes a flight identified by its ID
+   * Endpoint requires admin privileges
    */
   deleteFlight(id: string): Observable&lt;any&gt; {
     return this.http.delete&lt;any&gt;(&#x60;${this.apiUrl}/flights/${id}&#x60;);

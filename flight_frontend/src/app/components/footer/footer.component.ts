@@ -1,6 +1,18 @@
+/** 
+ * FooterComponent: Displays the FAQ accordion section and website footer
+ * Rendered at the bottom of every page in the application
+ * Contains expandable FAQ items, brand info, quick links, and contact details
+ */
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+
+/**
+ * FooterComponent class defines the structure and behavior of the footer section of the application.
+ * It includes a FAQ accordion with questions and answers, as well as a footer with brand information, quick links, and contact details.
+ * The component uses Bootstrap classes for styling and layout, and it manages the state of the open FAQ item to allow for an accordion effect.
+ */
 
 @Component({
   selector: 'app-footer',
@@ -110,6 +122,13 @@ import { RouterLink } from '@angular/router';
     </footer>
   `
 })
+
+  /** 
+   * Tracks which FAQ item is currently expanded (open)
+   * Null means no FAQ is open, number represents the index of open FAQ
+   * Used with toggleFaq method to implement accordion behavior
+   */
+  
 export class FooterComponent {
   openFaq: number | null = null;
 
@@ -140,6 +159,13 @@ export class FooterComponent {
     }
   ];
 
+  /** 
+   * Toggles the open state of a FAQ item
+   * If the clicked FAQ is already open, it will be closed (set to null)  
+   * If the clicked FAQ is closed, it will be set to its index to open it
+   * This allows only one FAQ to be open at a time, creating an accordion effect
+   */
+   
   toggleFaq(i: number): void {
     this.openFaq = this.openFaq === i ? null : i;
   }

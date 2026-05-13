@@ -1,3 +1,8 @@
+/**
+ * FlightDetailComponent displays detailed information about a specific flight
+ * It shows flight details, pricing, and passenger information (if logged in)
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -143,6 +148,14 @@ import { Passenger } from '../../models/passenger.model';
     </div>
   `
 })
+
+/**
+ * FlightDetailComponent class implements the logic for displaying flight details
+ * It manages state for flight information, passengers, loading states, and error messages
+ * It interacts with FlightsService to fetch flight data and PassengersService to fetch passenger data
+ * The component also checks authentication status to conditionally display passenger information
+ */
+
 export class FlightDetailComponent implements OnInit {
   flight: Flight | null = null;
   passengers: Passenger[] = [];
@@ -160,7 +173,10 @@ export class FlightDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Subscribe so it reacts to Auth0 login state too
+    /** 
+     * load the flight data
+     * require login to see flight details
+     */
     this.authService.currentUser$.subscribe(user => {
       this.isLoggedIn = !!user;
     });
@@ -195,6 +211,11 @@ export class FlightDetailComponent implements OnInit {
     });
   }
 
+  /** 
+   * Maps flight status to corresponding Bootstrap badge classes
+   * Provides visual differentiation of flight statuses in the UI
+   * Returns appropriate badge class based on status value
+   */
   get statusBadgeClass(): string {
     const map: Record<string, string> = {
       scheduled: 'bg-secondary', boarding: 'bg-success',
@@ -204,6 +225,11 @@ export class FlightDetailComponent implements OnInit {
     return map[this.flight?.status ?? ''] ?? 'bg-secondary';
   }
 
+  /** 
+   * Maps passenger booking status to corresponding Bootstrap badge classes
+   * Provides visual differentiation of passenger statuses in the UI
+   * Returns appropriate badge class based on booking status value
+   */
   passengerStatusClass(status: string): string {
     const map: Record<string, string> = {
       confirmed: 'bg-success', cancelled: 'bg-danger',

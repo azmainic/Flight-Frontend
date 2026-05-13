@@ -1,3 +1,10 @@
+/**   
+ * PassengerFormComponent: Reusable form for adding or editing passenger details
+ * Supports both create and update modes with conditional fields
+ * Uses reactive forms with validation for all passenger data fields
+ * Emits form data to parent component when submitted
+ */
+
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -89,6 +96,14 @@ import { PassengerFormData } from '../../models/passenger.model';
     </form>
   `
 })
+
+  /** 
+   * Determines whether form is in edit mode or create mode
+   * When true, passport_number field becomes read-only
+   * When true, booking_status dropdown becomes visible
+   * Changes submit button text from "Add" to "Update"
+   */
+
 export class PassengerFormComponent implements OnInit {
   @Input() editMode = false;
   @Input() initialData: Partial<PassengerFormData> | null = null;
@@ -113,10 +128,25 @@ export class PassengerFormComponent implements OnInit {
     });
   }
 
+  /** 
+   * Checks if a form field is both invalid and has been touched
+   * Returns true for displaying Bootstrap's is-invalid class
+   * Used in template to show red borders and error messages
+   * Prevents showing errors before user has interacted with field
+   */
+
   isInvalid(field: string): boolean {
     const ctrl = this.form.get(field);
     return !!(ctrl && ctrl.invalid && ctrl.touched);
   }
+
+
+   /** 
+   * Handles form submission when user clicks submit button
+   * Marks all fields as touched to trigger validation display
+   * If form is invalid, submission is blocked
+   * If form is valid, emits form values via formSubmit event
+   */
 
   onSubmit(): void {
     if (this.form.invalid) {

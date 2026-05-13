@@ -204,7 +204,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/passengers.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/passengers.service.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -267,15 +267,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/services/passengers.service.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/app/services/passengers.service.ts:39</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>POST /flights/:id/passengers — JWT required</p>
+                        <div class="io-description"><p>POST /flights/:id/passengers — JWT required
+Adds a new passenger to an existing flight
+Requires valid JWT token (any authenticated user)
+Accepts passenger form data including name, passport number, and seat preference
+Returns confirmation response after successful addition</p>
 </div>
 
                             <div class="io-description">
@@ -348,15 +352,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/app/services/passengers.service.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/services/passengers.service.ts:63</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>DELETE /flights/:id/passengers/:passport — Admin only</p>
+                        <div class="io-description"><p>DELETE /flights/:id/passengers/:passport — Admin only
+Removes a passenger from a specific flight
+Requires valid JWT token with admin privileges
+Returns confirmation response after successful deletion</p>
 </div>
 
                             <div class="io-description">
@@ -429,15 +436,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="18"
-                                    class="link-to-prism">src/app/services/passengers.service.ts:18</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app/services/passengers.service.ts:27</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>GET /flights/:id/passengers — JWT required</p>
+                        <div class="io-description"><p>GET /flights/:id/passengers — JWT required
+Retrieves all passengers booked on a specific flight
+Requires valid JWT token (any authenticated user)
+Returns array of passenger objects with personal details</p>
 </div>
 
                             <div class="io-description">
@@ -498,15 +508,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/app/services/passengers.service.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/services/passengers.service.ts:50</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>PUT /flights/:id/passengers/:passport — JWT required</p>
+                        <div class="io-description"><p>PUT /flights/:id/passengers/:passport — JWT required
+Updates an existing passenger&#39;s information on a specific flight
+Requires valid JWT token (any authenticated user)
+Accepts partial passenger form data and updates the corresponding fields
+Returns confirmation response after successful update</p>
 </div>
 
                             <div class="io-description">
@@ -603,7 +617,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/passengers.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/passengers.service.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -632,20 +646,33 @@ export class PassengersService {
 
   /**
    * GET /flights/:id/passengers — JWT required
+   * Retrieves all passengers booked on a specific flight
+   * Requires valid JWT token (any authenticated user)
+   * Returns array of passenger objects with personal details
    */
+
   getPassengers(flightId: string): Observable&lt;Passenger[]&gt; {
     return this.http.get&lt;Passenger[]&gt;(&#x60;${this.apiUrl}/flights/${flightId}/passengers&#x60;);
   }
 
   /**
    * POST /flights/:id/passengers — JWT required
+   * Adds a new passenger to an existing flight
+   * Requires valid JWT token (any authenticated user)
+   * Accepts passenger form data including name, passport number, and seat preference
+   * Returns confirmation response after successful addition
    */
+  
   addPassenger(flightId: string, passenger: PassengerFormData): Observable&lt;any&gt; {
     return this.http.post&lt;any&gt;(&#x60;${this.apiUrl}/flights/${flightId}/passengers&#x60;, passenger);
   }
 
   /**
    * PUT /flights/:id/passengers/:passport — JWT required
+   * Updates an existing passenger&#x27;s information on a specific flight
+   * Requires valid JWT token (any authenticated user)
+   * Accepts partial passenger form data and updates the corresponding fields
+   * Returns confirmation response after successful update
    */
   updatePassenger(flightId: string, passportNumber: string, data: Partial&lt;PassengerFormData&gt;): Observable&lt;any&gt; {
     return this.http.put&lt;any&gt;(
@@ -656,6 +683,9 @@ export class PassengersService {
 
   /**
    * DELETE /flights/:id/passengers/:passport — Admin only
+   * Removes a passenger from a specific flight
+   * Requires valid JWT token with admin privileges
+   * Returns confirmation response after successful deletion
    */
   deletePassenger(flightId: string, passportNumber: string): Observable&lt;any&gt; {
     return this.http.delete&lt;any&gt;(

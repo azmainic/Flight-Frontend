@@ -1,3 +1,8 @@
+/**
+ * app.routes.ts defines the routing configuration for the Angular application.
+ * It sets up routes for public pages (home, login, register, flights), authenticated pages (booking, my bookings), and admin pages (admin dashboard).
+ */
+
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';

@@ -347,7 +347,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/pages/register/register.component.ts:114</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/pages/register/register.component.ts:127</a></div>
                             </td>
                         </tr>
 
@@ -438,14 +438,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="128"
-                                    class="link-to-prism">src/app/pages/register/register.component.ts:128</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="148"
+                                    class="link-to-prism">src/app/pages/register/register.component.ts:148</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Checks if a form field is both invalid and has been touched
+Returns true for displaying Bootstrap&#39;s is-invalid class
+Used in template to show validation error styling
+Prevents showing errors before user has interacted with field</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -505,14 +510,21 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="133"
-                                    class="link-to-prism">src/app/pages/register/register.component.ts:133</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="161"
+                                    class="link-to-prism">src/app/pages/register/register.component.ts:161</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Handles registration form submission
+Validates form and marks all fields as touched if invalid
+Extracts username and password from form values
+Calls authService.register API endpoint
+On success, navigates to login page with registration success state
+On error, displays error message from API or fallback text</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -552,7 +564,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/pages/register/register.component.ts:113</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/pages/register/register.component.ts:126</a></div>
                         </td>
                     </tr>
 
@@ -583,7 +595,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/app/pages/register/register.component.ts:112</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/app/pages/register/register.component.ts:125</a></div>
                         </td>
                     </tr>
 
@@ -609,7 +621,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/app/pages/register/register.component.ts:111</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/app/pages/register/register.component.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -640,7 +652,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/pages/register/register.component.ts:114</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/pages/register/register.component.ts:127</a></div>
                         </td>
                     </tr>
 
@@ -658,6 +670,12 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from &#x27;@angular/forms&#x27;;
 import { Router, RouterLink } from &#x27;@angular/router&#x27;;
 import { AuthService } from &#x27;../../services/auth.service&#x27;;
+
+/** 
+ * Custom validator function that checks if password and confirmPassword fields match
+ * Returns null if passwords match, otherwise returns mismatch error object
+ * Applied at the form group level (cross-field validation)
+ */
 
 function passwordsMatch(group: AbstractControl): ValidationErrors | null {
   const pw  &#x3D; group.get(&#x27;password&#x27;)?.value;
@@ -780,17 +798,33 @@ export class RegisterComponent {
     }, { validators: passwordsMatch });
   }
 
+   /** 
+   * Checks if a form field is both invalid and has been touched
+   * Returns true for displaying Bootstrap&#x27;s is-invalid class
+   * Used in template to show validation error styling
+   * Prevents showing errors before user has interacted with field
+   */
+
   isInvalid(field: string): boolean {
     const ctrl &#x3D; this.registerForm.get(field);
     return !!(ctrl &amp;&amp; ctrl.invalid &amp;&amp; ctrl.touched);
   }
 
+   /** 
+   * Handles registration form submission
+   * Validates form and marks all fields as touched if invalid
+   * Extracts username and password from form values
+   * Calls authService.register API endpoint
+   * On success, navigates to login page with registration success state
+   * On error, displays error message from API or fallback text
+   */
   onSubmit(): void {
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
       return;
     }
 
+    // Show loadin state and clear previous error message
     this.loading &#x3D; true;
     this.errorMessage &#x3D; &#x27;&#x27;;
     const { username, password } &#x3D; this.registerForm.value;

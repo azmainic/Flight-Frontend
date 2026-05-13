@@ -1,3 +1,10 @@
+/** 
+ * NavbarComponent: Displays the main navigation bar at the top of every page
+ * Shows different menu items and user info based on authentication state
+ * Supports both local JWT users and Auth0 social login users
+ * Includes admin-only navigation items and conditional logout buttons
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -121,6 +128,15 @@ import { AuthUser } from '../../services/auth.service';
     .nav-link.active { color: #fff !important; font-weight: 600; }
   `]
 })
+
+ /** 
+   * Stores the locally authenticated user (JWT-based)
+   * Contains username, admin flag, and other user properties
+   * Subscribed from AuthService.currentUser$ observable
+   * Stores the Auth0 authenticated user object
+   * Contains social login user data including name, email, and picture
+   */
+
 export class NavbarComponent implements OnInit {
   localUser: AuthUser | null = null;
   auth0User: any = null;
@@ -130,6 +146,14 @@ export class NavbarComponent implements OnInit {
     private auth0: Auth0Service
   ) {}
 
+  /** 
+   * Initializes component by subscribing to both authentication streams
+   * Listens for changes from local JWT service and Auth0 service
+   * Updates localUser when local authentication state changes
+   * Updates auth0User when Auth0 authentication state changes
+   * Runs once when component is first created
+   */
+  
   ngOnInit(): void {
     this.authService.currentUser$.subscribe(user => { this.localUser = user; });
     this.auth0.user$.subscribe(user => { this.auth0User = user ?? null; });

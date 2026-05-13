@@ -1,3 +1,11 @@
+/** 
+ * AdminComponent: Dashboard for administrative users to manage flights and view analytics
+ * Requires admin privileges (protected by adminGuard)
+ * Features three main tabs: Analytics dashboard, flight management, and flight creation
+ * Provides CRUD operations for flights including status updates and deletions
+ */
+
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -205,6 +213,14 @@ type AdminTab = 'analytics' | 'flights' | 'add-flight';
     </div>
   `
 })
+
+/**
+ * AdminComponent class implements the logic for the admin dashboard
+ * It manages state for active tab, analytics data, flight list, and form handling
+ * It interacts with FlightsService to perform API calls for analytics and flight management
+ * The component includes methods for loading analytics, managing flights, and handling form submissions
+ */
+
 export class AdminComponent implements OnInit {
   activeTab: AdminTab = 'analytics';
   analytics: any = null;
@@ -226,10 +242,22 @@ export class AdminComponent implements OnInit {
 
   constructor(private flightsService: FlightsService, private fb: FormBuilder) {}
 
+  /** 
+   * Lifecycle hook that runs after component initialization
+   * Builds the flight creation form and loads analytics data
+   */
+
   ngOnInit(): void {
     this.buildFlightForm();
     this.loadAnalytics();
   }
+
+  
+  /** 
+   * Switches between admin dashboard tabs
+   * Clears success/error messages on tab change
+   * Lazy loads analytics and flights data when first accessed
+   */
 
   setTab(tab: AdminTab): void {
     this.activeTab = tab;
@@ -238,6 +266,12 @@ export class AdminComponent implements OnInit {
     if (tab === 'analytics' && !this.analytics) this.loadAnalytics();
     if (tab === 'flights' && this.flights.length === 0) this.loadFlights();
   }
+
+  /** 
+   * Fetches analytics data from the flights service
+   * Displays loading spinner, stores response, and builds summary stats
+   * Handles errors by setting error message
+   */
 
   loadAnalytics(): void {
     this.analyticsLoading = true;
@@ -248,6 +282,12 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  /**
+   * Transforms raw analytics data into summary statistics card format
+   * Maps total flights, passengers, delays, and on-time flights
+   * Handles different possible property names from backend
+   */
+
   buildSummaryStats(data: any): void {
     this.summaryStats = [
       { icon: 'bi-airplane-fill',     label: 'Total Flights',    value: data.total_flights    ?? data.flights    ?? '—' },
@@ -257,6 +297,12 @@ export class AdminComponent implements OnInit {
     ];
   }
 
+  /** 
+   * Fetches list of flights (page 1, 100 items per page)
+   * Used in the Manage Flights tab for displaying all flights
+   * Handles different response structures from API
+   */
+
   loadFlights(): void {
     this.flightsLoading = true;
     this.flightsService.getFlights(1, 100).subscribe({
@@ -264,6 +310,13 @@ export class AdminComponent implements OnInit {
       error: () => { this.flightsLoading = false; }
     });
   }
+
+   /**
+    * Deletes a flight after user confirmation
+    * Shows confirmation dialog before proceeding
+    * Updates local flight list and shows success/error messages based on API response
+    * Disables delete button and shows spinner while deletion is in progress
+    */
 
   deleteFlight(id: string): void {
     if (!confirm('Are you sure you want to delete this flight?')) return;
@@ -274,10 +327,23 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  /** 
+   * Prepares the status update form for a specific flight
+   * Sets the currently editing flight and initializes newStatus with current status
+   * Displays the status update card in the UI
+   */
+
   promptStatusUpdate(flight: Flight): void {
     this.editingFlight = flight;
     this.newStatus = flight.status;
   }
+
+  /** 
+   * Sends API request to update the status of the currently editing flight
+   * Shows loading spinner on save button while request is in progress
+   * Updates local flight data and shows success/error messages based on API response
+   * Closes the status update card after successful update
+   */
 
   updateStatus(): void {
     if (!this.editingFlight) return;
@@ -288,6 +354,12 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  /** 
+   * Builds the reactive form for adding a new flight
+   * Initializes form controls with default values and validators
+   * Called during component initialization to set up the form
+   */
+  
   buildFlightForm(): void {
     this.flightForm = this.fb.group({
       flight_number: ['', Validators.required],
@@ -306,6 +378,13 @@ export class AdminComponent implements OnInit {
     return !!(ctrl && ctrl.invalid && ctrl.touched);
   }
 
+  /** 
+   * Handles submission of the new flight form
+   * Validates form, marks all fields touched if invalid
+   * Calls createFlight API and handles success/error responses
+   * Resets form and clears flight cache on success
+   */
+  
   onAddFlight(): void {
     if (this.flightForm.invalid) { this.flightForm.markAllAsTouched(); return; }
     this.addLoading = true;
@@ -317,6 +396,12 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  /** 
+   * Maps flight status to corresponding Bootstrap badge classes
+   * Provides visual differentiation of flight statuses in the UI
+   * Returns appropriate badge class based on status value
+   */
+  
   statusBadge(status: string): string {
     const map: Record<string, string> = {
       scheduled: 'bg-secondary', boarding: 'bg-success', departed: 'bg-info text-dark',

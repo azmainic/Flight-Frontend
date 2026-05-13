@@ -646,12 +646,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="347" class="link-to-prism">src/app/pages/booking/booking.component.ts:347</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="360" class="link-to-prism">src/app/pages/booking/booking.component.ts:360</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor initializes services and builds the trip form
+Trip form contains controls for trip type, dates, class, passenger count, and special requests
+Validators ensure required fields are filled before proceeding</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -773,14 +777,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="392"
-                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:392</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="433"
+                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:433</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Builds or rebuilds the passenger forms array based on current passenger count
+Called when component initializes and when numPassengers value changes
+Each form contains required fields for name and passport number
+Seat number and nationality are optional</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -810,8 +819,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="434"
-                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:434</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="495"
+                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:495</a></div>
                         </td>
                     </tr>
 
@@ -847,14 +856,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="415"
-                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:415</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="470"
+                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:470</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Validates trip form and advances from step 1 to step 2, 3
+Marks all fields as touched to trigger validation errors
+Scrolls to top of page for better user experience
+Validates all passenger forms and advances from step 2 to step 3
+Checks each passenger group for validity and marks invalid fields as touched</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -884,8 +899,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="421"
-                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:421</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="476"
+                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:476</a></div>
                         </td>
                     </tr>
 
@@ -921,14 +936,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="404"
-                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:404</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="451"
+                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:451</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Calculates total price based on selected class, number of passengers, and trip type
+Used to display dynamic pricing summary in the UI
+Returns total price as a number</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -958,14 +977,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="367"
-                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:367</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="395"
+                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:395</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook that runs after component initialization
+Extracts flight ID from route parameters
+Loads flight data from API
+Initializes passenger form array
+Sets up subscription to rebuild passenger forms when passenger count changes</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -995,14 +1020,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="429"
-                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:429</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="490"
+                                    class="link-to-prism">src/app/pages/booking/booking.component.ts:490</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Displays a toast notification with specified message and type
+Auto-hides after 5 seconds
+Used for success and error feedback during booking process</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -1084,7 +1113,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="328" class="link-to-prism">src/app/pages/booking/booking.component.ts:328</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="341" class="link-to-prism">src/app/pages/booking/booking.component.ts:341</a></div>
                         </td>
                     </tr>
 
@@ -1115,7 +1144,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="330" class="link-to-prism">src/app/pages/booking/booking.component.ts:330</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="343" class="link-to-prism">src/app/pages/booking/booking.component.ts:343</a></div>
                         </td>
                     </tr>
 
@@ -1147,7 +1176,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="334" class="link-to-prism">src/app/pages/booking/booking.component.ts:334</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="347" class="link-to-prism">src/app/pages/booking/booking.component.ts:347</a></div>
                         </td>
                     </tr>
 
@@ -1178,7 +1207,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="329" class="link-to-prism">src/app/pages/booking/booking.component.ts:329</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="342" class="link-to-prism">src/app/pages/booking/booking.component.ts:342</a></div>
                         </td>
                     </tr>
 
@@ -1209,7 +1238,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="332" class="link-to-prism">src/app/pages/booking/booking.component.ts:332</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="345" class="link-to-prism">src/app/pages/booking/booking.component.ts:345</a></div>
                         </td>
                     </tr>
 
@@ -1240,7 +1269,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="347" class="link-to-prism">src/app/pages/booking/booking.component.ts:347</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="360" class="link-to-prism">src/app/pages/booking/booking.component.ts:360</a></div>
                         </td>
                     </tr>
 
@@ -1271,7 +1300,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="344" class="link-to-prism">src/app/pages/booking/booking.component.ts:344</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="357" class="link-to-prism">src/app/pages/booking/booking.component.ts:357</a></div>
                         </td>
                     </tr>
 
@@ -1302,7 +1331,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="333" class="link-to-prism">src/app/pages/booking/booking.component.ts:333</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="346" class="link-to-prism">src/app/pages/booking/booking.component.ts:346</a></div>
                         </td>
                     </tr>
 
@@ -1333,7 +1362,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="331" class="link-to-prism">src/app/pages/booking/booking.component.ts:331</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="344" class="link-to-prism">src/app/pages/booking/booking.component.ts:344</a></div>
                         </td>
                     </tr>
 
@@ -1364,7 +1393,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="336" class="link-to-prism">src/app/pages/booking/booking.component.ts:336</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="349" class="link-to-prism">src/app/pages/booking/booking.component.ts:349</a></div>
                         </td>
                     </tr>
 
@@ -1395,7 +1424,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="335" class="link-to-prism">src/app/pages/booking/booking.component.ts:335</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="348" class="link-to-prism">src/app/pages/booking/booking.component.ts:348</a></div>
                         </td>
                     </tr>
 
@@ -1421,7 +1450,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="346" class="link-to-prism">src/app/pages/booking/booking.component.ts:346</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="359" class="link-to-prism">src/app/pages/booking/booking.component.ts:359</a></div>
                         </td>
                     </tr>
 
@@ -1456,7 +1485,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="338" class="link-to-prism">src/app/pages/booking/booking.component.ts:338</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="351" class="link-to-prism">src/app/pages/booking/booking.component.ts:351</a></div>
                         </td>
                     </tr>
 
@@ -1485,9 +1514,17 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="374" class="link-to-prism">src/app/pages/booking/booking.component.ts:374</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="408" class="link-to-prism">src/app/pages/booking/booking.component.ts:408</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Convenience getter for trip form controls
+Provides easier access in template without writing tripForm.controls repeatedly</p>
+</div>
+
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -1507,7 +1544,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="376" class="link-to-prism">src/app/pages/booking/booking.component.ts:376</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="410" class="link-to-prism">src/app/pages/booking/booking.component.ts:410</a></div>
                                 </td>
                             </tr>
 
@@ -1529,7 +1566,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="381" class="link-to-prism">src/app/pages/booking/booking.component.ts:381</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="415" class="link-to-prism">src/app/pages/booking/booking.component.ts:415</a></div>
                                 </td>
                             </tr>
 
@@ -1551,7 +1588,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="387" class="link-to-prism">src/app/pages/booking/booking.component.ts:387</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="421" class="link-to-prism">src/app/pages/booking/booking.component.ts:421</a></div>
                                 </td>
                             </tr>
 
@@ -1888,6 +1925,12 @@ import { PassengerFormData, BookingStatus } from &#x27;../../models/passenger.mo
     .step-circle.done{background:#198754;color:white;}
   &#x60;]
 })
+
+ /** 
+   * Flight object containing all details for the selected flight
+   * Loaded from API using flightId from route parameter
+   */
+
 export class BookingComponent implements OnInit {
   flight: Flight | null &#x3D; null;
   flightLoading &#x3D; false;
@@ -1910,6 +1953,12 @@ export class BookingComponent implements OnInit {
   tripForm: FormGroup;
   passengerGroups: FormGroup[] &#x3D; [];
 
+  /** 
+   * Constructor initializes services and builds the trip form
+   * Trip form contains controls for trip type, dates, class, passenger count, and special requests
+   * Validators ensure required fields are filled before proceeding
+   */
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -1928,12 +1977,27 @@ export class BookingComponent implements OnInit {
     });
   }
 
+
+  /** 
+   * Lifecycle hook that runs after component initialization
+   * Extracts flight ID from route parameters
+   * Loads flight data from API
+   * Initializes passenger form array
+   * Sets up subscription to rebuild passenger forms when passenger count changes
+   */
+
   ngOnInit(): void {
     this.flightId &#x3D; this.route.snapshot.paramMap.get(&#x27;id&#x27;)!;
     this.loadFlight();
     this.buildPassengerForms();
     this.tripForm.get(&#x27;numPassengers&#x27;)?.valueChanges.subscribe(() &#x3D;&gt; this.buildPassengerForms());
   }
+
+  /**
+   * 
+   * Convenience getter for trip form controls
+   * Provides easier access in template without writing tripForm.controls repeatedly
+   */
 
   get tf() { return this.tripForm.controls; }
 
@@ -1953,6 +2017,13 @@ export class BookingComponent implements OnInit {
       ? this.totalPrice * 2 : this.totalPrice;
   }
 
+  /** 
+   * Builds or rebuilds the passenger forms array based on current passenger count
+   * Called when component initializes and when numPassengers value changes
+   * Each form contains required fields for name and passport number
+   * Seat number and nationality are optional
+   */
+
   buildPassengerForms(): void {
     const n &#x3D; Number(this.tripForm.get(&#x27;numPassengers&#x27;)?.value ?? 1);
     this.passengerGroups &#x3D; Array.from({ length: n }, () &#x3D;&gt;
@@ -1965,6 +2036,12 @@ export class BookingComponent implements OnInit {
     );
   }
 
+  /** 
+   * Calculates total price based on selected class, number of passengers, and trip type
+   * Used to display dynamic pricing summary in the UI
+   * Returns total price as a number
+   */
+
   loadFlight(): void {
     this.flightLoading &#x3D; true;
     this.flightsService.getFlightById(this.flightId).subscribe({
@@ -1975,6 +2052,14 @@ export class BookingComponent implements OnInit {
       }
     });
   }
+
+  /** 
+   * Validates trip form and advances from step 1 to step 2, 3
+   * Marks all fields as touched to trigger validation errors
+   * Scrolls to top of page for better user experience
+   * Validates all passenger forms and advances from step 2 to step 3
+   * Checks each passenger group for validity and marks invalid fields as touched
+   */
 
   goToStep2(): void {
     if (this.tripForm.invalid) { this.tripForm.markAllAsTouched(); return; }
@@ -1990,6 +2075,12 @@ export class BookingComponent implements OnInit {
     window.scrollTo(0, 0);
   }
 
+  /** 
+   * Displays a toast notification with specified message and type
+   * Auto-hides after 5 seconds
+   * Used for success and error feedback during booking process
+   */
+
   showToast(message: string, type: &#x27;success&#x27; | &#x27;error&#x27;): void {
     this.toast &#x3D; { visible: true, message, type };
     setTimeout(() &#x3D;&gt; { this.toast.visible &#x3D; false; }, 5000);
@@ -2001,7 +2092,10 @@ export class BookingComponent implements OnInit {
     const seatClass &#x3D; this.tripForm.get(&#x27;seatClass&#x27;)?.value as &#x27;economy&#x27; | &#x27;business&#x27; | &#x27;first&#x27;;
     const currentUser &#x3D; this.authService.getCurrentUser();
 
-    // Cast booking_status explicitly to satisfy the strict type
+    /**
+     *  Cast booking_status explicitly to satisfy the strict type 
+     */
+
     const bookings: PassengerFormData[] &#x3D; this.passengerGroups.map((pg, i) &#x3D;&gt; ({
       full_name:       pg.value.full_name as string,
       passport_number: pg.value.passport_number as string,
@@ -2019,7 +2113,12 @@ export class BookingComponent implements OnInit {
         next: () &#x3D;&gt; {
           completed++;
 
-          // Save passport number to user&#x27;s local storage for My Bookings lookup
+          /** Save passport number to user&#x27;s local storage for My Bookings lookup
+           * Only saves if user is logged in, and avoids duplicates by checking existing stored passports
+           * Uses a unique storage key per user to prevent conflicts between different users on the same browser
+           * This allows the My Bookings page to easily retrieve and display relevant bookings based on stored passport numbers
+           */
+          
           if (currentUser) {
             const storageKey &#x3D; &#x60;skybook_${currentUser.username}_passports&#x60;;
             const existing: string[] &#x3D; JSON.parse(localStorage.getItem(storageKey) ?? &#x27;[]&#x27;);

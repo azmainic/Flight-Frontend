@@ -138,6 +138,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>FlightCardComponent class implements the logic for displaying a single flight&#39;s information
+It receives a Flight object as input and renders details such as route, times, status, and pricing</p>
+
+    </p>
 
 
 
@@ -347,7 +355,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/app/components/flight-card/flight-card.component.ts:94</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/app/components/flight-card/flight-card.component.ts:111</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -378,9 +386,22 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/components/flight-card/flight-card.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/app/components/flight-card/flight-card.component.ts:119</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Computes the CSS class for the status badge based on flight status
+Uses a mapping of status values to Bootstrap badge classes for consistent styling
+Defaults to &#39;bg-secondary&#39; if status is unrecognized or missing</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -400,9 +421,22 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/components/flight-card/flight-card.component.ts:105</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/app/components/flight-card/flight-card.component.ts:134</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Computes the CSS class for the card header based on flight status
+Provides visual cues through background and text colors to indicate flight status
+Defaults to &#39;bg-light text-dark&#39; for unrecognized or missing status</p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -416,6 +450,10 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
 import { RouterLink } from &#x27;@angular/router&#x27;;
 import { Flight } from &#x27;../../models/flight.model&#x27;;
 
+/**
+ * FlightCardComponent class implements the logic for displaying a single flight&#x27;s information
+ * It receives a Flight object as input and renders details such as route, times, status, and pricing
+ */
 @Component({
   selector: &#x27;app-flight-card&#x27;,
   standalone: true,
@@ -503,8 +541,21 @@ import { Flight } from &#x27;../../models/flight.model&#x27;;
     .flight-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.12) !important; }
   &#x60;]
 })
+
+  /** 
+   * Required input property that receives the flight data object
+   * Component will not render without this input being provided
+   * Contains all flight details including route, times, status, and identifiers
+   */
+  
 export class FlightCardComponent {
   @Input({ required: true }) flight!: Flight;
+
+  /**
+   * Computes the CSS class for the status badge based on flight status
+   * Uses a mapping of status values to Bootstrap badge classes for consistent styling
+   * Defaults to &#x27;bg-secondary&#x27; if status is unrecognized or missing
+   */
 
   get statusBadgeClass(): string {
     const map: Record&lt;string, string&gt; &#x3D; {
@@ -515,6 +566,12 @@ export class FlightCardComponent {
     return map[this.flight.status] ?? &#x27;bg-secondary&#x27;;
   }
 
+  /**
+   * Computes the CSS class for the card header based on flight status
+   * Provides visual cues through background and text colors to indicate flight status
+   * Defaults to &#x27;bg-light text-dark&#x27; for unrecognized or missing status
+   */
+  
   get headerClass(): string {
     const map: Record&lt;string, string&gt; &#x3D; {
       scheduled: &#x27;bg-light text-dark&#x27;,

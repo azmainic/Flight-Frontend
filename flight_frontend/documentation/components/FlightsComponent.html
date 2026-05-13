@@ -400,7 +400,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/pages/flights/flights.component.ts:129</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/app/pages/flights/flights.component.ts:146</a></div>
                             </td>
                         </tr>
 
@@ -491,14 +491,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="214"
-                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:214</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="271"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:271</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Changes the current page number and reloads flights
+Validates page number is within valid range (1 to totalPages)
+Called when user clicks on page numbers or prev/next buttons</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -558,14 +562,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="208"
-                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:208</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="259"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:259</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Resets all search filters to empty values
+Resets current page to 1
+Loads the full paginated flight list
+Called when user clicks clear button or &quot;Show All Flights&quot; link</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -595,14 +604,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="161"
-                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:161</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:198</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>==================== API METHODS ====================
+Fetches paginated list of all flights from the API
+Sets loading flag, clears error message, and disables search mode
+Updates flights array, total pages, and handles errors
+Called on initial load and when changing pages</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -632,14 +647,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="141"
-                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:141</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="165"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:165</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook that runs after component initialization
+Subscribes to query parameters for deep linking support
+If origin/destination are present in URL, pre-fills form and triggers search
+Otherwise loads all flights with default pagination</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -669,14 +689,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="180"
-                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:180</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="224"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:224</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Performs search with current form values
+Converts origin/destination to city names before sending to API
+If all filters are empty, falls back to loading all flights
+Sets search mode flag to true for UI adjustments</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -706,14 +731,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="155"
-                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:155</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="185"
+                                    class="link-to-prism">src/app/pages/flights/flights.component.ts:185</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Converts airport code to city name if it exists in the mapping
+If input is empty or not found in mapping, returns original input
+This allows users to search using either city names or airport codes</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -783,7 +812,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/pages/flights/flights.component.ts:126</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/app/pages/flights/flights.component.ts:143</a></div>
                         </td>
                     </tr>
 
@@ -814,7 +843,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/app/pages/flights/flights.component.ts:124</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/app/pages/flights/flights.component.ts:141</a></div>
                         </td>
                     </tr>
 
@@ -845,7 +874,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/app/pages/flights/flights.component.ts:122</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/app/pages/flights/flights.component.ts:139</a></div>
                         </td>
                     </tr>
 
@@ -876,7 +905,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/app/pages/flights/flights.component.ts:125</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/app/pages/flights/flights.component.ts:142</a></div>
                         </td>
                     </tr>
 
@@ -907,7 +936,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/app/pages/flights/flights.component.ts:123</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/app/pages/flights/flights.component.ts:140</a></div>
                         </td>
                     </tr>
 
@@ -938,7 +967,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/pages/flights/flights.component.ts:127</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/app/pages/flights/flights.component.ts:144</a></div>
                         </td>
                     </tr>
 
@@ -964,7 +993,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/pages/flights/flights.component.ts:129</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/app/pages/flights/flights.component.ts:146</a></div>
                         </td>
                     </tr>
 
@@ -995,7 +1024,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/app/pages/flights/flights.component.ts:128</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">src/app/pages/flights/flights.component.ts:145</a></div>
                         </td>
                     </tr>
 
@@ -1024,7 +1053,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">src/app/pages/flights/flights.component.ts:220</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="277" class="link-to-prism">src/app/pages/flights/flights.component.ts:277</a></div>
                                 </td>
                             </tr>
 
@@ -1043,7 +1072,10 @@ import { FlightsService } from &#x27;../../services/flights.service&#x27;;
 import { Flight } from &#x27;../../models/flight.model&#x27;;
 import { FlightCardComponent } from &#x27;../../components/flight-card/flight-card.component&#x27;;
 
-// Map airport codes to city names for the API
+/** Map airport codes to city names for the API 
+ * This allows users to search using either city names or airport codes
+ * The API expects city names, so we convert codes to cities before sending search requests
+*/
 const CODE_TO_CITY: Record&lt;string, string&gt; &#x3D; {
   &#x27;LHR&#x27;: &#x27;London&#x27;, &#x27;CDG&#x27;: &#x27;Paris&#x27;, &#x27;DXB&#x27;: &#x27;Dubai&#x27;,
   &#x27;JFK&#x27;: &#x27;New York&#x27;, &#x27;FRA&#x27;: &#x27;Frankfurt&#x27;, &#x27;NYC&#x27;: &#x27;New York&#x27;
@@ -1155,6 +1187,14 @@ const CODE_TO_CITY: Record&lt;string, string&gt; &#x3D; {
     &lt;/div&gt;
   &#x60;
 })
+
+/**
+ * FlightsComponent class implements the logic for displaying and searching flights
+ * It manages state for flights list, loading status, error messages, search mode, and pagination
+ * It interacts with FlightsService to fetch flight data based on search criteria and pagination
+ * The component also handles conversion of airport codes to city names for better search experience
+ */
+
 export class FlightsComponent implements OnInit {
   flights: Flight[] &#x3D; [];
   loading &#x3D; false;
@@ -1175,6 +1215,13 @@ export class FlightsComponent implements OnInit {
     });
   }
 
+  /** 
+   * Lifecycle hook that runs after component initialization
+   * Subscribes to query parameters for deep linking support
+   * If origin/destination are present in URL, pre-fills form and triggers search
+   * Otherwise loads all flights with default pagination
+   */
+
   ngOnInit(): void {
     this.route.queryParams.subscribe(params &#x3D;&gt; {
       if (params[&#x27;origin&#x27;] || params[&#x27;destination&#x27;]) {
@@ -1189,11 +1236,24 @@ export class FlightsComponent implements OnInit {
     });
   }
 
+  /** 
+   * Converts airport code to city name if it exists in the mapping
+   * If input is empty or not found in mapping, returns original input
+   * This allows users to search using either city names or airport codes
+   */
+
   resolveCity(input: string): string {
     if (!input) return &#x27;&#x27;;
     const upper &#x3D; input.toUpperCase();
     return CODE_TO_CITY[upper] ?? input;
   }
+  /** 
+   * &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; API METHODS &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+   * Fetches paginated list of all flights from the API
+   * Sets loading flag, clears error message, and disables search mode
+   * Updates flights array, total pages, and handles errors
+   * Called on initial load and when changing pages
+   */
 
   loadFlights(): void {
     this.loading &#x3D; true;
@@ -1213,6 +1273,13 @@ export class FlightsComponent implements OnInit {
       }
     });
   }
+
+  /** 
+   * Performs search with current form values
+   * Converts origin/destination to city names before sending to API
+   * If all filters are empty, falls back to loading all flights
+   * Sets search mode flag to true for UI adjustments
+   */
 
   onSearch(): void {
     let { origin, destination, status } &#x3D; this.searchForm.value;
@@ -1242,11 +1309,24 @@ export class FlightsComponent implements OnInit {
     });
   }
 
+  /** 
+   * Resets all search filters to empty values
+   * Resets current page to 1
+   * Loads the full paginated flight list
+   * Called when user clicks clear button or &quot;Show All Flights&quot; link
+   */
+
   clearSearch(): void {
     this.searchForm.reset({ origin: &#x27;&#x27;, destination: &#x27;&#x27;, status: &#x27;&#x27; });
     this.currentPage &#x3D; 1;
     this.loadFlights();
   }
+
+  /** 
+   * Changes the current page number and reloads flights
+   * Validates page number is within valid range (1 to totalPages)
+   * Called when user clicks on page numbers or prev/next buttons
+   */
 
   changePage(page: number): void {
     if (page &lt; 1 || page &gt; this.totalPages) return;

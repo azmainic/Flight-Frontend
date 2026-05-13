@@ -376,7 +376,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/components/navbar/navbar.component.ts:126</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/app/components/navbar/navbar.component.ts:142</a></div>
                             </td>
                         </tr>
 
@@ -455,8 +455,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="140"
-                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:140</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="164"
+                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:164</a></div>
                         </td>
                     </tr>
 
@@ -492,8 +492,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="138"
-                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:138</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="162"
+                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:162</a></div>
                         </td>
                     </tr>
 
@@ -529,14 +529,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="133"
-                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:133</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/components/navbar/navbar.component.ts:157</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Initializes component by subscribing to both authentication streams
+Listens for changes from local JWT service and Auth0 service
+Updates localUser when local authentication state changes
+Updates auth0User when Auth0 authentication state changes
+Runs once when component is first created</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -576,7 +582,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/app/components/navbar/navbar.component.ts:126</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/app/components/navbar/navbar.component.ts:142</a></div>
                         </td>
                     </tr>
 
@@ -607,7 +613,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/app/components/navbar/navbar.component.ts:125</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">src/app/components/navbar/navbar.component.ts:141</a></div>
                         </td>
                     </tr>
 
@@ -743,6 +749,15 @@ import { AuthUser } from &#x27;../../services/auth.service&#x27;;
     .nav-link.active { color: #fff !important; font-weight: 600; }
   &#x60;]
 })
+
+ /** 
+   * Stores the locally authenticated user (JWT-based)
+   * Contains username, admin flag, and other user properties
+   * Subscribed from AuthService.currentUser$ observable
+   * Stores the Auth0 authenticated user object
+   * Contains social login user data including name, email, and picture
+   */
+
 export class NavbarComponent implements OnInit {
   localUser: AuthUser | null &#x3D; null;
   auth0User: any &#x3D; null;
@@ -752,6 +767,14 @@ export class NavbarComponent implements OnInit {
     private auth0: Auth0Service
   ) {}
 
+  /** 
+   * Initializes component by subscribing to both authentication streams
+   * Listens for changes from local JWT service and Auth0 service
+   * Updates localUser when local authentication state changes
+   * Updates auth0User when Auth0 authentication state changes
+   * Runs once when component is first created
+   */
+  
   ngOnInit(): void {
     this.authService.currentUser$.subscribe(user &#x3D;&gt; { this.localUser &#x3D; user; });
     this.auth0.user$.subscribe(user &#x3D;&gt; { this.auth0User &#x3D; user ?? null; });

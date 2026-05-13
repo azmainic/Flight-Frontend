@@ -1,8 +1,8 @@
-/*
- *AuthO application configuration
- *Domain and CLient ID are obtained from the AuthO dashboard after creating an application
+/**
+ * AuthO application configuration
+ * Domain and CLient ID are obtained from the AuthO dashboard after creating an application
 */
-
+ 
 export const environment = {
   production: false,
   apiUrl: 'http://127.0.0.1:5001',
